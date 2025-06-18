@@ -9,6 +9,9 @@ import { LanguageSwitcher } from "@/components/language-switcher"
 import Image from "next/image"
 import { useLanguage } from "@/contexts/language-context"
 
+
+const LinkMotion = motion.create(Link)
+
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
   const [isDropdownOpen, setIsDropdownOpen] = useState(false)
@@ -28,8 +31,9 @@ export function Navbar() {
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           {/* Actualizar el logo y nombre de la empresa */}
-          <motion.div whileHover={{ scale: 1.05 }} className="flex items-center space-x-2">
+          <LinkMotion href="/" whileHover={{ scale: 1.05 }} className="flex items-center space-x-2">
             <Image
+
               src="/logo.png"
               alt="Evolution Legal Advantage Logo"
               width={32}
@@ -37,7 +41,8 @@ export function Navbar() {
               className="rounded-full"
             />
             <span className="text-xl font-bold text-white">{t("company.name")}</span>
-          </motion.div>
+
+          </LinkMotion>
 
           {/* Desktop Navigation */}
           {/* Actualizar la navegación del desktop */}
