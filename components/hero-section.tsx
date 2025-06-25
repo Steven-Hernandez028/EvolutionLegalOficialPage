@@ -83,7 +83,7 @@ export function HeroSection() {
             </motion.div>
 
             {/* Stats */}
-            <motion.div
+            {/* <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.8, duration: 0.8 }}
@@ -101,7 +101,7 @@ export function HeroSection() {
                 <div className="text-3xl font-bold text-accent">98%</div>
                 <div className="text-white/80">{t("hero.stats.satisfaction")}</div>
               </div>
-            </motion.div>
+            </motion.div> */}
           </motion.div>
 
           {/* Visual Element */}

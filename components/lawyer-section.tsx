@@ -28,7 +28,7 @@ export function LawyerSection() {
             </div>
 
             {/* Floating Card */}
-            <motion.div
+            {/* <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3, duration: 0.8 }}
@@ -44,7 +44,7 @@ export function LawyerSection() {
                   <div className="text-sm text-primary/70">Colegio de Abogados</div>
                 </div>
               </div>
-            </motion.div>
+            </motion.div> */}
           </motion.div>
 
           {/* Content */}

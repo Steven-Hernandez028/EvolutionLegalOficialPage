@@ -71,7 +71,7 @@ export function Navbar() {
               </AnimatePresence>
             </div>
 
-            <Link href="#services" className="text-white hover:text-accent transition-colors">
+            <Link href="/services" className="text-white hover:text-accent transition-colors">
               {t("nav.services")}
             </Link>
             <Link href="/schedule" className="text-white hover:text-accent transition-colors">

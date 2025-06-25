@@ -71,7 +71,7 @@ export default function NewsPage() {
     <div className="min-h-screen bg-secondary">
       <Navbar />
 
-      {/* Header */}
+
       <section className="pt-20 pb-12 bg-gradient-to-br from-primary via-primary to-primary/90">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="text-center space-y-4">
@@ -93,7 +93,6 @@ export default function NewsPage() {
         </div>
       </section>
 
-      {/* Featured News */}
       <section className="py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
@@ -145,7 +144,6 @@ export default function NewsPage() {
         </div>
       </section>
 
-      {/* All News */}
       <section className="py-16 bg-primary">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
@@ -190,7 +188,7 @@ export default function NewsPage() {
         </div>
       </section>
 
-      {/* Upcoming Events */}
+
       <section className="py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
