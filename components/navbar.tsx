@@ -9,16 +9,15 @@ import { LanguageSwitcher } from "@/components/language-switcher"
 import Image from "next/image"
 import { useLanguage } from "@/contexts/language-context"
 
-
 const LinkMotion = motion.create(Link)
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false)
+  const [isDropdownOpen, setIsDropdownOpen] = useState<null | "about" | "resources">(null)
+
   const { t } = useLanguage()
 
-  // Actualizar el número de WhatsApp
-  const whatsappNumber = "18092611453" // Reemplazar con el número real
+  const whatsappNumber = "18092611453"
   const whatsappMessage = "Hola, me gustaría agendar una consulta legal"
 
   return (
@@ -30,10 +29,8 @@ export function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
-          {/* Actualizar el logo y nombre de la empresa */}
           <LinkMotion href="/" whileHover={{ scale: 1.05 }} className="flex items-center space-x-2">
             <Image
-
               src="/logo.png"
               alt="Evolution Legal Advantage Logo"
               width={32}
@@ -41,30 +38,26 @@ export function Navbar() {
               className="rounded-full"
             />
             <span className="text-xl font-bold text-white">{t("company.name")}</span>
-
           </LinkMotion>
 
           {/* Desktop Navigation */}
-          {/* Actualizar la navegación del desktop */}
           <div className="hidden lg:flex items-center space-x-8">
-            <div className="relative">
-              <button
-                onMouseEnter={() => setIsDropdownOpen(true)}
-                onMouseLeave={() => setIsDropdownOpen(false)}
-                className="flex items-center space-x-1 text-white hover:text-accent transition-colors"
-              >
+            {/* Nosotros Dropdown */}
+            <div
+              className="relative"
+              onMouseEnter={() => setIsDropdownOpen("about")}
+              onMouseLeave={() => setIsDropdownOpen(null)}
+            >
+              <button className="flex items-center space-x-1 text-white hover:text-accent transition-colors">
                 <span>{t("nav.about")}</span>
                 <ChevronDown className="h-4 w-4" />
               </button>
-
               <AnimatePresence>
-                {isDropdownOpen && (
+                {isDropdownOpen === "about" && (
                   <motion.div
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: 10 }}
-                    onMouseEnter={() => setIsDropdownOpen(true)}
-                    onMouseLeave={() => setIsDropdownOpen(false)}
                     className="absolute top-full left-0 mt-2 w-64 bg-secondary rounded-lg shadow-xl border border-white/10 overflow-hidden"
                   >
                     <Link href="/about" className="block px-4 py-3 text-primary hover:bg-accent/10 transition-colors">
@@ -87,29 +80,52 @@ export function Navbar() {
             <Link href="#testimonials" className="text-white hover:text-accent transition-colors">
               {t("nav.testimonials")}
             </Link>
-            <Link href="/blog" className="text-white hover:text-accent transition-colors">
-              {t("nav.blog")}
-            </Link>
-            <Link href="/news" className="text-white hover:text-accent transition-colors">
-              {t("nav.news")}
-            </Link>
-            <Link href="/resources" className="text-white hover:text-accent transition-colors">
-              {t("nav.resources")}
-            </Link>
+
+            {/* Recursos Dropdown */}
+            <div
+              className="relative"
+              onMouseEnter={() => setIsDropdownOpen("resources")}
+              onMouseLeave={() => setIsDropdownOpen(null)}
+            >
+              <button className="flex items-center space-x-1 text-white hover:text-accent transition-colors">
+                <span>{t("nav.resources")}</span>
+                <ChevronDown className="h-4 w-4" />
+              </button>
+              <AnimatePresence>
+                {isDropdownOpen === "resources" && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: 10 }}
+                    className="absolute top-full left-0 mt-2 w-64 bg-secondary rounded-lg shadow-xl border border-white/10 overflow-hidden"
+                  >
+                    <Link href="/blog" className="block px-4 py-3 text-primary hover:bg-accent/10 transition-colors">
+                      {t("nav.blog")}
+                    </Link>
+                    <Link href="/news" className="block px-4 py-3 text-primary hover:bg-accent/10 transition-colors">
+                      {t("nav.news")}
+                    </Link>
+                    <Link href="/resources" className="block px-4 py-3 text-primary hover:bg-accent/10 transition-colors">
+                      {t("nav.resources")}
+                    </Link>
+                    <Link href="/links" className="block px-4 py-3 text-primary hover:bg-accent/10 transition-colors">
+                      {t("nav.links")}
+                    </Link>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
+
             <Link href="/contact" className="text-white hover:text-accent transition-colors">
               {t("nav.contact")}
             </Link>
-            <Link href="/links" className="text-white hover:text-accent transition-colors">
-              {t("nav.links")}
-            </Link>
           </div>
 
-          {/* CTA Button */}
-          {/* Actualizar el botón CTA */}
+          {/* CTA Buttons */}
           <div className="hidden lg:block">
             <LanguageSwitcher />
           </div>
-          <div className="hidden lg:block">
+          {/* <div className="hidden lg:block">
             <Button asChild className="bg-accent hover:bg-accent/90 text-primary font-semibold">
               <Link
                 href={`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`}
@@ -120,9 +136,9 @@ export function Navbar() {
                 <span>{t("common.contact")}</span>
               </Link>
             </Button>
-          </div>
+          </div> */}
 
-          {/* Mobile menu button */}
+          {/* Mobile Menu Button */}
           <button onClick={() => setIsOpen(!isOpen)} className="lg:hidden text-white">
             {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
           </button>
@@ -137,7 +153,6 @@ export function Navbar() {
               exit={{ opacity: 0, height: 0 }}
               className="lg:hidden bg-primary/95 backdrop-blur-md"
             >
-              {/* Actualizar la navegación móvil */}
               <div className="px-2 pt-2 pb-3 space-y-1">
                 <Link href="/about" className="block px-3 py-2 text-white hover:text-accent">
                   {t("nav.about")}
@@ -154,20 +169,20 @@ export function Navbar() {
                 <Link href="#testimonials" className="block px-3 py-2 text-white hover:text-accent">
                   {t("nav.testimonials")}
                 </Link>
-                <Link href="/blog" className="block px-3 py-2 text-white hover:text-accent">
-                  {t("nav.blog")}
-                </Link>
-                <Link href="/news" className="block px-3 py-2 text-white hover:text-accent">
-                  {t("nav.news")}
-                </Link>
-                <Link href="/resources" className="block px-3 py-2 text-white hover:text-accent">
-                  {t("nav.resources")}
-                </Link>
+
+                {/* Recursos agrupados */}
+                <details className="px-3 py-2 text-white">
+                  <summary className="cursor-pointer hover:text-accent">{t("nav.resources")}</summary>
+                  <div className="ml-3 space-y-1 mt-2">
+                    <Link href="/blog" className="block px-2 py-1 text-white hover:text-accent">{t("nav.blog")}</Link>
+                    <Link href="/news" className="block px-2 py-1 text-white hover:text-accent">{t("nav.news")}</Link>
+                    <Link href="/resources" className="block px-2 py-1 text-white hover:text-accent">{t("nav.resources")}</Link>
+                    <Link href="/links" className="block px-2 py-1 text-white hover:text-accent">{t("nav.links")}</Link>
+                  </div>
+                </details>
+
                 <Link href="/contact" className="block px-3 py-2 text-white hover:text-accent">
                   {t("nav.contact")}
-                </Link>
-                <Link href="/links" className="block px-3 py-2 text-white hover:text-accent">
-                  {t("nav.links")}
                 </Link>
                 <div className="px-3 py-2">
                   <LanguageSwitcher />

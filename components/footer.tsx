@@ -9,7 +9,8 @@ export function Footer() {
   const { t } = useLanguage()
   // Actualizar las variables de contacto
   const whatsappNumber = "18092611453"
-  const email = "Evolutionlegala@gmail.com"
+  const whatsappNumberToShow = "+1 (809) 261-1453"
+  const email = "contact@evolutionlegaladvantage.com"
   const address = "Puerto Plata RD, Canadá y Estados Unidos"
 
   return (
@@ -154,7 +155,7 @@ export function Footer() {
                 <div className="flex items-center space-x-3">
                   <Phone className="h-5 w-5 text-accent flex-shrink-0" />
                   <Link href={`tel:${whatsappNumber}`} className="text-white/80 hover:text-accent transition-colors">
-                    +57 {whatsappNumber}
+                    {whatsappNumberToShow}
                   </Link>
                 </div>
                 <div className="flex items-center space-x-3">

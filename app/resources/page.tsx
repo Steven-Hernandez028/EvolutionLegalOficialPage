@@ -179,7 +179,7 @@ export default function ResourcesPage() {
       </section>
 
       {/* All Resources */}
-      <section className="py-16 bg-primary">
+      <section className="py-16 bg-secondary">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -188,8 +188,8 @@ export default function ResourcesPage() {
             viewport={{ once: true }}
             className="text-center mb-12"
           >
-            <h2 className="text-3xl font-bold text-white mb-4">Biblioteca de Recursos</h2>
-            <p className="text-white/80 max-w-2xl mx-auto">
+            <h2 className="text-3xl font-bold text-primary mb-4">Biblioteca de Recursos</h2>
+            <p className="text-primary/80 max-w-2xl mx-auto">
               Accede a nuestra colección completa de materiales educativos y herramientas profesionales.
             </p>
           </motion.div>
@@ -231,7 +231,7 @@ export default function ResourcesPage() {
       </section>
 
       {/* Workshops */}
-      <section className="py-16">
+      {/* <section className="py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -292,10 +292,10 @@ export default function ResourcesPage() {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Call to Action */}
-      <section className="py-16 bg-gradient-to-br from-accent/10 via-secondary to-accent/5">
+      {/* <section className="py-16 bg-gradient-to-br from-accent/10 via-secondary to-accent/5">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -321,7 +321,7 @@ export default function ResourcesPage() {
             </div>
           </motion.div>
         </div>
-      </section>
+      </section> */}
 
       <Footer />
     </div>

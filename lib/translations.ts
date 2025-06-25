@@ -1,9 +1,14 @@
 export const translations = {
   es: {
     // Navigation
+    founder: {
+      education: 'Carrera',
+      specializations: 'Especializaciones',
+      achievements: 'Logros'
+    },
     nav: {
       home: "Inicio",
-      about: "Sobre Nosotros",
+      about: "Nosotros",
       founder: "Nuestra CEO",
       services: "Nuestros Servicios",
       schedule: "Agendar Cita",

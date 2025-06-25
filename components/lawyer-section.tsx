@@ -73,7 +73,7 @@ export function LawyerSection() {
                 viewport={{ once: true }}
                 className="text-4xl lg:text-5xl font-bold text-primary"
               >
-                Dra. María González
+                Abigail Santos de Thibodeau
               </motion.h2>
 
               <motion.p
@@ -83,8 +83,7 @@ export function LawyerSection() {
                 viewport={{ once: true }}
                 className="text-xl text-primary/80 leading-relaxed"
               >
-                Con más de 15 años de experiencia en derecho civil, penal y corporativo, la Dra. González ha dedicado su
-                carrera a defender los derechos de sus clientes con pasión, integridad y resultados excepcionales.
+                Bienvenido a Evolution Legal. Gracias por estar aquí. Soy Abigail Santos de Thibodeau, abogada fundadora y CEO de esta firma legal. Quiero compartirte un poco sobre mi trayectoria y la esencia que impulsa a nuestro equipo.
               </motion.p>
             </div>
 
