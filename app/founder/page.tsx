@@ -35,10 +35,10 @@ export default function FounderPage() {
 
       <MainProfile />
       <Education />
-             <Specializations/>
-        <Timeline/>
-         <Footer />
-     
+      <Specializations />
+      <Timeline />
+      <Footer />
+
     </div>
   )
 }
