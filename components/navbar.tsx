@@ -160,7 +160,7 @@ export function Navbar() {
                 <Link href="/founder" className="block px-3 py-2 text-white hover:text-accent">
                   {t("nav.founder")}
                 </Link>
-                <Link href="#services" className="block px-3 py-2 text-white hover:text-accent">
+                <Link href="/services" className="block px-3 py-2 text-white hover:text-accent">
                   {t("nav.services")}
                 </Link>
                 <Link href="/schedule" className="block px-3 py-2 text-white hover:text-accent">
