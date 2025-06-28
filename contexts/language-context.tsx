@@ -31,10 +31,18 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
     let value: any = translations[language]
 
     for (const k of keys) {
-      value = value?.[k]
+      // Check if k is an array index, e.g., items[0]
+      const arrayMatch = k.match(/^(\w+)\[(\d+)\]$/)
+      if (arrayMatch) {
+        const prop = arrayMatch[1]
+        const index = parseInt(arrayMatch[2], 10)
+        value = value?.[prop]?.[index]
+      } else {
+        value = value?.[k]
+      }
     }
 
-    return value || key
+    return (typeof value === "string" ? value : key)
   }
 
   return (
