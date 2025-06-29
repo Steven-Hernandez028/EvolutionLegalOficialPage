@@ -60,9 +60,9 @@ export function Navbar() {
                     exit={{ opacity: 0, y: 10 }}
                     className="absolute top-full left-0 mt-2 w-64 bg-secondary rounded-lg shadow-xl border border-white/10 overflow-hidden"
                   >
-                    <Link href="/about" className="block px-4 py-3 text-primary hover:bg-accent/10 transition-colors">
+                    {/* <Link href="/about" className="block px-4 py-3 text-primary hover:bg-accent/10 transition-colors">
                       {t("nav.about")}
-                    </Link>
+                    </Link> */}
                     <Link href="/founder" className="block px-4 py-3 text-primary hover:bg-accent/10 transition-colors">
                       {t("nav.founder")}
                     </Link>
@@ -154,9 +154,9 @@ export function Navbar() {
               className="lg:hidden bg-primary/95 backdrop-blur-md"
             >
               <div className="px-2 pt-2 pb-3 space-y-1">
-                <Link href="/about" className="block px-3 py-2 text-white hover:text-accent">
+                {/* <Link href="/about" className="block px-3 py-2 text-white hover:text-accent">
                   {t("nav.about")}
-                </Link>
+                </Link> */}
                 <Link href="/founder" className="block px-3 py-2 text-white hover:text-accent">
                   {t("nav.founder")}
                 </Link>
