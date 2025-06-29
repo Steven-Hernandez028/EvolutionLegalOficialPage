@@ -67,7 +67,7 @@ export function HeroSection() {
                   className="flex items-center space-x-2"
                 >
                   <MessageCircle className="h-5 w-5" />
-                  <span>Consulta Gratuita</span>
+                  <span>Agenta tu Cita</span>
                   <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
                 </Link>
               </Button>

@@ -6,43 +6,54 @@ import { Scale, Shield, FileText, Users, Building, Heart } from "lucide-react"
 
 const services = [
   {
+    id: "due-diligence",
     icon: Scale,
-    title: "services.dueDiligence.title",
-    description: "services.dueDiligence.description",
-    features: ["Verificación de Permisos", "Análisis de Títulos", "Revisión de Deudas"],
+    title: "Investigación Jurídica Inmobiliaria",
+    subtitle: "Su Inversión Segura",
+    description: "Verificamos meticulosamente que el inmueble cuente con todos los permisos, que esté libre de deudas y que el título corresponda con la realidad física. Protegemos su inversión desde el primer día.",
+    features: ["Verificación de Permisos y Títulos", "Análisis de Deudas Pendientes", "Evaluación de Riesgos Jurídicos"],
   },
   {
+    id: "relocation",
     icon: Users,
-    title: "services.relocation.title",
-    description: "services.relocation.description",
-    features: ["Gestión de Seguros", "Licencias de Conducir", "Asesoría Integral"],
+    title: "Reubicación Integral para Extranjeros",
+    subtitle: "Su Nuevo Comienzo en RD",
+    description: "Le acompañamos en cada paso de su transición a la República Dominicana. Desde seguros hasta licencias, aseguramos que su establecimiento sea suave y sin contratiempos.",
+    features: ["Gestión de Seguros de Salud", "Licencias de Conducir", "Asesoría de Zonificación"],
   },
   {
+    id: "real-estate",
     icon: Building,
-    title: "services.realEstate.title",
-    description: "services.realEstate.description",
-    features: ["Compra y Venta", "Asesoría Legal", "Protección de Intereses"],
+    title: "Asesoría y Gestión de Bienes Inmuebles",
+    subtitle: "Compra, Venta y Renta",
+    description: "Facilitamos su experiencia en el mercado inmobiliario con asesoría completa para decisiones informadas y protección total de sus intereses.",
+    features: ["Compra y Venta de Propiedades", "Contratos de Arrendamiento", "Protección de Intereses"],
   },
   {
+    id: "rural-lands",
     icon: Heart,
-    title: "services.ruralLands.title",
-    description: "services.ruralLands.description",
-    features: ["Terrenos Rurales", "Fincas del Norte", "Proyectos Personales"],
+    title: "Tierras Vírgenes del Norte",
+    subtitle: "Su Retiro Soñado en el Campo",
+    description: "Para quienes buscan tranquilidad en el campo, ofrecemos terrenos rurales y fincas en el norte de RD. El lugar perfecto para su retiro o proyectos personales.",
+    features: ["Terrenos Rurales Vírgenes", "Fincas Productivas del Norte", "Proyectos de Retiro"],
   },
   {
+    id: "immigration",
     icon: FileText,
-    title: "services.immigration.title",
-    description: "services.immigration.description",
-    features: ["Residencia", "Ciudadanía", "Permisos de Menores"],
+    title: "Extranjería: Residencia y Ciudadanía",
+    subtitle: "Establecimiento Legal en RD",
+    description: "Gestionamos todos los aspectos legales para su residencia permanente y eventual ciudadanía dominicana, incluyendo permisos especiales.",
+    features: ["Residencia Dominicana", "Ciudadanía Dominicana", "Permisos de Salida de Menores"],
   },
   {
+    id: "consular",
     icon: Shield,
-    title: "services.consular.title",
-    description: "services.consular.description",
-    features: ["Visas USA", "Visas Canadá", "Evaluación de Perfil"],
+    title: "Derecho Migratorio y Consular",
+    subtitle: "Conectando Familias y Oportunidades",
+    description: "Acompañamiento meticuloso para obtener visas de turismo a Estados Unidos y Canadá. Evaluamos su perfil y le preparamos para un proceso exitoso.",
+    features: ["Visas de Turismo USA", "Visas de Turismo Canadá", "Evaluación de Perfil"],
   },
 ]
-
 export function ServicesSection() {
   const { t } = useLanguage()
 

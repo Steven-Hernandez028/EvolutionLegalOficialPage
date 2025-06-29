@@ -63,7 +63,7 @@ export function CTASection() {
                 viewport={{ once: true }}
                 className="text-xl text-primary/80 leading-relaxed"
               >
-                No esperes más. Obtén la representación legal que mereces. Agenda tu consulta gratuita y descubre cómo
+                No esperes más. Obtén la representación legal que mereces. Agenda tu cita y descubre cómo
                 podemos ayudarte.
               </motion.p>
             </div>
