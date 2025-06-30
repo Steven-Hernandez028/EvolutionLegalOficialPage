@@ -40,6 +40,10 @@ export const translations = {
         "Tu éxito sin barreras de idioma: te atendemos en español, inglés y francés. Envíenos un mensaje y le atenderemos a la mayor brevedad para coordinar una cita virtual o presencial.",
       cta: "Agendar Cita",
       services: "Nuestros Servicios",
+      buttons: {
+        schedule: "Agenda tu Cita",
+        services: "Nuestros Servicios"
+      },
       stats: {
         experience: "Década de Experiencia",
         countries: "Países de Presencia",
@@ -290,6 +294,10 @@ export const translations = {
         "Your success without language barriers: we serve you in Spanish, English and French. Send us a message and we will assist you as soon as possible to coordinate a virtual or in-person appointment.",
       cta: "Schedule Appointment",
       services: "Our Services",
+      buttons: {
+        schedule: "Schedule your Appointment",
+        services: "Our Services"
+      },
       stats: {
         experience: "Decade of Experience",
         countries: "Countries Presence",
@@ -448,48 +456,48 @@ export const translations = {
       title: "All our Links",
       subtitle: "Connect with us",
       description: "Find all our social networks and contact methods in one place.",
-    items: [
-      {
-        title: "Schedule Appointment",
-        description: "Book your appointment for a personalized consultation"
-      },
-      {
-        title: "Whatsapp",
-        description: "Direct contact for urgent inquiries"
-      },
-      {
-        title: "Call Now",
-        description: "Direct line for phone consultations"
-      },
-      {
-        title: "Email",
-        description: "Send us your inquiry by email"
-      },
-      {
-        title: "Instagram",
-        description: "Follow us for daily legal tips"
-      },
-      {
-        title: "Facebook",
-        description: "Join our legal community"
-      },
-      {
-        title: "LinkedIn",
-        description: "Connect with us professionally"
-      },
-      {
-        title: "Legal Blog",
-        description: "Articles and advice on legal topics"
-      },
-      {
-        title: "About Us",
-        description: "Learn about our history and values"
-      },
-      {
-        title: "Our Founding Lawyer",
-        description: "Meet Abigail Santos de Thibodeau"
-      }
-    ]
+      items: [
+        {
+          title: "Schedule Appointment",
+          description: "Book your appointment for a personalized consultation"
+        },
+        {
+          title: "Whatsapp",
+          description: "Direct contact for urgent inquiries"
+        },
+        {
+          title: "Call Now",
+          description: "Direct line for phone consultations"
+        },
+        {
+          title: "Email",
+          description: "Send us your inquiry by email"
+        },
+        {
+          title: "Instagram",
+          description: "Follow us for daily legal tips"
+        },
+        {
+          title: "Facebook",
+          description: "Join our legal community"
+        },
+        {
+          title: "LinkedIn",
+          description: "Connect with us professionally"
+        },
+        {
+          title: "Legal Blog",
+          description: "Articles and advice on legal topics"
+        },
+        {
+          title: "About Us",
+          description: "Learn about our history and values"
+        },
+        {
+          title: "Our Founding Lawyer",
+          description: "Meet Abigail Santos de Thibodeau"
+        }
+      ]
     },
     // Common
     common: {
@@ -540,15 +548,19 @@ export const translations = {
     // Hero Section
     hero: {
       title: "Evolution Legal",
-      subtitle: "Advantage",
+      subtitle: "Avantage",
       description: "Nous sommes les avantages de l'évolution juridique",
       content:
         "Votre succès sans barrières linguistiques : nous vous servons en espagnol, anglais et français. Envoyez-nous un message et nous vous assisterons dans les plus brefs délais pour coordonner un rendez-vous virtuel ou en personne.",
       cta: "Prendre Rendez-vous",
       services: "Nos Services",
+      buttons: {
+        schedule: "Prendre Rendez-vous",
+        services: "Nos Services"
+      },
       stats: {
         experience: "Décennie d'Expérience",
-        countries: "Présence dans les Pays",
+        countries: "Pays de Présence",
         satisfaction: "Satisfaction",
       },
     },

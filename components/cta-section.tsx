@@ -6,14 +6,14 @@ import Link from "next/link"
 import { Button } from "@/components/ui/button"
 
 export function CTASection() {
-  const whatsappNumber = "1234567890"
+  
+  const whatsappNumber = "+1 (809) 261-1453"
   const whatsappMessage = "Hola, me gustaría agendar una consulta legal"
 
   const benefits = [
-    "Consulta inicial gratuita",
     "Respuesta en menos de 24 horas",
     "Asesoría personalizada",
-    "Sin compromiso",
+
   ]
 
   return (
@@ -143,7 +143,7 @@ export function CTASection() {
             viewport={{ once: true }}
             className="relative"
           >
-            <div className="relative w-full h-96 lg:h-[500px] bg-gradient-to-br from-primary/20 to-accent/10 rounded-3xl backdrop-blur-sm border border-accent/20 flex items-center justify-center">
+            <div className="relative w-full h-96 lg:h-[400px] bg-gradient-to-br from-primary/20 to-accent/10 rounded-3xl backdrop-blur-sm border border-accent/20 flex items-center justify-center">
               <div className="text-center space-y-6">
                 <div className="w-24 h-24 bg-accent rounded-full flex items-center justify-center mx-auto">
                   <MessageCircle className="w-12 h-12 text-primary" />
@@ -153,8 +153,8 @@ export function CTASection() {
                   Comunícate con nosotros de forma inmediata y obtén respuestas a tus consultas legales
                 </p>
                 <div className="space-y-2">
-                  <div className="text-accent font-semibold">+57 {whatsappNumber}</div>
-                  <div className="text-primary/60">contacto@legalstudio.com</div>
+                  <div className="text-accent font-semibold">{whatsappNumber}</div>
+                  <div className="text-primary/60">contact@evolutionlegaladvantage.com</div>
                 </div>
               </div>
             </div>
