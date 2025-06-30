@@ -72,14 +72,7 @@ export default function LinksPage() {
       color: "bg-blue-600",
       external: true,
     },
-    {
-      title: "LinkedIn",
-      description: t("links.items[6].description"),
-      icon: Linkedin,
-      href: "https://linkedin.com/company/legalstudio",
-      color: "bg-blue-700",
-      external: true,
-    },
+  
     {
       title: "Blog Legal",
       description: t("links.items[7].description"),

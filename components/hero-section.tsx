@@ -62,8 +62,8 @@ export function HeroSection() {
                 className="bg-accent hover:bg-accent/90 text-primary font-semibold text-lg px-8 py-4 rounded-full group"
               >
                 <Link
-                  href={`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`}
-                  target="_blank"
+                  href="/schedule"
+                  
                   className="flex items-center space-x-2"
                 >
                   <MessageCircle className="h-5 w-5" />
