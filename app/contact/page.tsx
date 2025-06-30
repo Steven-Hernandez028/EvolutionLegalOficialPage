@@ -95,7 +95,7 @@ export default function ContactPage() {
       </section>
 
       {/* Contact Section */}
-      <section className="py-20">
+      <section className="py-20   ">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-16">
             {/* Contact Form */}
@@ -256,41 +256,8 @@ export default function ContactPage() {
                 </div>
               </div>
 
-              {/* WhatsApp Contact */}
-              <div className="bg-gradient-to-br from-green-50 to-green-100 rounded-2xl p-8 border border-green-200">
-                <div className="text-center">
-                  <div className="w-16 h-16 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <MessageSquare className="h-8 w-8 text-white" />
-                  </div>
-                  <h3 className="text-xl font-bold text-primary mb-2">¿Necesitas Ayuda Inmediata?</h3>
-                  <p className="text-primary/80 mb-4">
-                    Contáctanos por WhatsApp para una respuesta rápida a tu consulta legal.
-                  </p>
-                  <Button asChild className="bg-green-500 hover:bg-green-600 text-white">
-                    <a
-                      href={`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center space-x-2"
-                    >
-                      <MessageSquare className="h-4 w-4" />
-                      <span>Escribir por WhatsApp</span>
-                    </a>
-                  </Button>
-                </div>
-              </div>
 
-              {/* Map Placeholder */}
-              <div className="bg-white rounded-2xl p-8 shadow-lg">
-                <h3 className="text-xl font-bold text-primary mb-4">Nuestra Ubicación</h3>
-                <div className="w-full h-64 bg-gray-200 rounded-lg flex items-center justify-center">
-                  <div className="text-center text-primary/60">
-                    <MapPin className="h-12 w-12 mx-auto mb-2" />
-                    <p>Mapa interactivo</p>
-                    <p className="text-sm">Calle 123 #45-67, Bogotá</p>
-                  </div>
-                </div>
-              </div>
+         
             </motion.div>
           </div>
         </div>

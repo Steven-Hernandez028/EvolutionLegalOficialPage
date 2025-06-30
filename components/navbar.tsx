@@ -17,8 +17,6 @@ export function Navbar() {
 
   const { t } = useLanguage()
 
-  const whatsappNumber = "18092611453"
-  const whatsappMessage = "Hola, me gustaría agendar una consulta legal"
 
   return (
     <motion.nav
@@ -60,9 +58,9 @@ export function Navbar() {
                     exit={{ opacity: 0, y: 10 }}
                     className="absolute top-full left-0 mt-2 w-64 bg-secondary rounded-lg shadow-xl border border-white/10 overflow-hidden"
                   >
-                    <Link href="/about" className="block px-4 py-3 text-primary hover:bg-accent/10 transition-colors">
+                    {/* <Link href="/about" className="block px-4 py-3 text-primary hover:bg-accent/10 transition-colors">
                       {t("nav.about")}
-                    </Link>
+                    </Link> */}
                     <Link href="/founder" className="block px-4 py-3 text-primary hover:bg-accent/10 transition-colors">
                       {t("nav.founder")}
                     </Link>
@@ -121,30 +119,15 @@ export function Navbar() {
             </Link>
           </div>
 
-          {/* CTA Buttons */}
           <div className="hidden lg:block">
             <LanguageSwitcher />
           </div>
-          {/* <div className="hidden lg:block">
-            <Button asChild className="bg-accent hover:bg-accent/90 text-primary font-semibold">
-              <Link
-                href={`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`}
-                target="_blank"
-                className="flex items-center space-x-2"
-              >
-                <Phone className="h-4 w-4" />
-                <span>{t("common.contact")}</span>
-              </Link>
-            </Button>
-          </div> */}
-
-          {/* Mobile Menu Button */}
+         
           <button onClick={() => setIsOpen(!isOpen)} className="lg:hidden text-white">
             {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
           </button>
         </div>
 
-        {/* Mobile Navigation */}
         <AnimatePresence>
           {isOpen && (
             <motion.div
@@ -154,13 +137,13 @@ export function Navbar() {
               className="lg:hidden bg-primary/95 backdrop-blur-md"
             >
               <div className="px-2 pt-2 pb-3 space-y-1">
-                <Link href="/about" className="block px-3 py-2 text-white hover:text-accent">
+                {/* <Link href="/about" className="block px-3 py-2 text-white hover:text-accent">
                   {t("nav.about")}
-                </Link>
+                </Link> */}
                 <Link href="/founder" className="block px-3 py-2 text-white hover:text-accent">
                   {t("nav.founder")}
                 </Link>
-                <Link href="#services" className="block px-3 py-2 text-white hover:text-accent">
+                <Link href="/services" className="block px-3 py-2 text-white hover:text-accent">
                   {t("nav.services")}
                 </Link>
                 <Link href="/schedule" className="block px-3 py-2 text-white hover:text-accent">

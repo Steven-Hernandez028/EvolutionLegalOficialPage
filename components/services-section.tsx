@@ -2,46 +2,165 @@
 
 import { useLanguage } from "@/contexts/language-context"
 import { motion } from "framer-motion"
-import { Scale, Shield, FileText, Users, Building, Heart } from "lucide-react"
-
+import { Scale, Shield, FileText, Users, Building, Heart, HeartHandshake, FileCheck, Briefcase, Building2, Gavel } from "lucide-react"
 const services = [
   {
+    id: "due-diligence",
     icon: Scale,
-    title: "services.dueDiligence.title",
-    description: "services.dueDiligence.description",
-    features: ["Verificación de Permisos", "Análisis de Títulos", "Revisión de Deudas"],
+    title: "Investigación Jurídica Inmobiliaria",
+    subtitle: "Su Inversión Segura",
+    description:
+      "Verificamos títulos, permisos, ubicación, deudas y cláusulas contractuales para asegurar que su inversión inmobiliaria sea sólida y libre de riesgos.",
+    features: [
+      "Verificación de Permisos y Títulos",
+      "Evaluación de Riesgos Jurídicos",
+      "Revisión de Documentación Legal",
+    ],
   },
   {
+    id: "relocation",
     icon: Users,
-    title: "services.relocation.title",
-    description: "services.relocation.description",
-    features: ["Gestión de Seguros", "Licencias de Conducir", "Asesoría Integral"],
+    title: "Reubicación Integral para Extranjeros",
+    subtitle: "Su Nuevo Comienzo en RD",
+    description:
+      "Le asistimos en cada aspecto de su transición a RD: seguros, licencias, vivienda, educación, servicios y legalidad. Una reubicación sin contratiempos.",
+    features: [
+      "Gestión de Seguros de Salud",
+      "Licencias de Conducir",
+      "Asesoría de Zonificación",
+    ],
   },
   {
+    id: "real-estate",
     icon: Building,
-    title: "services.realEstate.title",
-    description: "services.realEstate.description",
-    features: ["Compra y Venta", "Asesoría Legal", "Protección de Intereses"],
+    title: "Asesoría y Gestión de Bienes Inmuebles",
+    subtitle: "Compra, Venta y Renta",
+    description:
+      "Asesoría legal completa en transacciones inmobiliarias para asegurar decisiones informadas y proteger sus intereses en todo momento.",
+    features: [
+      "Compra y Venta de Propiedades",
+      "Contratos de Arrendamiento",
+      "Protección de Intereses",
+    ],
   },
   {
+    id: "rural-lands",
     icon: Heart,
-    title: "services.ruralLands.title",
-    description: "services.ruralLands.description",
-    features: ["Terrenos Rurales", "Fincas del Norte", "Proyectos Personales"],
+    title: "Tierras Vírgenes del Norte",
+    subtitle: "Su Retiro Soñado en el Campo",
+    description:
+      "Ofrecemos terrenos y fincas en el norte del país, ideales para proyectos personales, retiro o inversión sostenible en contacto con la naturaleza.",
+    features: [
+      "Terrenos Rurales Vírgenes",
+      "Fincas Productivas del Norte",
+      "Proyectos de Retiro",
+    ],
   },
   {
+    id: "immigration",
     icon: FileText,
-    title: "services.immigration.title",
-    description: "services.immigration.description",
-    features: ["Residencia", "Ciudadanía", "Permisos de Menores"],
+    title: "Extranjería: Residencia y Ciudadanía",
+    subtitle: "Establecimiento Legal en RD",
+    description:
+      "Asistencia legal para obtener residencia dominicana, ciudadanía y permisos especiales, facilitando su integración formal en el país.",
+    features: [
+      "Residencia Dominicana",
+      "Ciudadanía Dominicana",
+      "Permisos de Salida de Menores",
+    ],
   },
   {
+    id: "consular",
     icon: Shield,
-    title: "services.consular.title",
-    description: "services.consular.description",
-    features: ["Visas USA", "Visas Canadá", "Evaluación de Perfil"],
+    title: "Derecho Migratorio y Consular",
+    subtitle: "Conectando Familias y Oportunidades",
+    description:
+      "Preparación integral para solicitar visas de turismo a EE. UU. y Canadá, incluyendo evaluación de perfil, documentación y entrevistas.",
+    features: [
+      "Visas de Turismo USA",
+      "Visas de Turismo Canadá",
+      "Evaluación de Perfil",
+    ],
   },
-]
+  {
+    id: "corporate",
+    icon: Building2,
+    title: "Derecho Societario",
+    subtitle: "Fundamentando su Negocio",
+    description:
+      "Le asesoramos en la creación, modificación y disolución de empresas, así como en compra de acciones y debida diligencia corporativa.",
+    features: [
+      "Creación de Sociedades",
+      "Compra y Venta de Acciones",
+      "Due Diligence Empresarial",
+    ],
+  },
+  {
+    id: "family-law",
+    icon: HeartHandshake,
+    title: "Derecho de Familia",
+    subtitle: "Protegiendo lo que Más Importa",
+    description:
+      "Le apoyamos legalmente en procesos familiares delicados como divorcios, paternidad, matrimonios y planificación sucesoral.",
+    features: [
+      "Divorcio por Mutuo Consentimiento",
+      "Matrimonio de Extranjeros",
+      "Testamentos y Planificación Sucesoral",
+    ],
+  },
+  {
+    id: "vehicular-due-diligence",
+    icon: FileCheck,
+    title: "Debida Diligencia Vehicular",
+    subtitle: "Conduciendo sin Preocupaciones",
+    description:
+      "Verificamos historial, impuestos, matrícula y estado legal de vehículos nuevos y usados, asegurando una compra sin sorpresas.",
+    features: [
+      "Verificación de Historial (Carfax)",
+      "Revisión de Impuestos y Matrícula",
+      "Validación en Plan Piloto",
+    ],
+  },
+  {
+    id: "contract-review",
+    icon: Gavel,
+    title: "Estudio y Revisión de Contratos",
+    subtitle: "Su Seguridad Legal",
+    description:
+      "Analizamos sus contratos, detectamos cláusulas abusivas y proponemos ajustes para proteger sus intereses antes de firmar.",
+    features: [
+      "Análisis de Cláusulas Abusivas",
+      "Informe Legal Detallado",
+      "Acompañamiento en Negociación",
+    ],
+  },
+  {
+    id: "document-management",
+    icon: FileText,
+    title: "Gestión de Documentos",
+    subtitle: "Eficiencia Sin Fronteras",
+    description:
+      "Nos encargamos de todo: notarización, legalización, apostilla, traducción y homologación de documentos para uso local o internacional.",
+    features: [
+      "Legalización y Apostilla",
+      "Traducción Oficial",
+      "Homologación de Documentos",
+    ],
+  },
+  {
+    id: "legal-training",
+    icon: Briefcase,
+    title: "Capacitación Jurídica",
+    subtitle: "Impulsando la Profesión",
+    description:
+      "Formamos a nuevos abogados y estudiantes con talleres, recursos prácticos y mentoría para un inicio sólido en la carrera jurídica.",
+    features: [
+      "Talleres y Charlas Especializadas",
+      "Desarrollo de Habilidades Profesionales",
+      "Mentoría para Nuevos Abogados",
+    ],
+  },
+];
 
 export function ServicesSection() {
   const { t } = useLanguage()
