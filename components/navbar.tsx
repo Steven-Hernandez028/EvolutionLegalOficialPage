@@ -17,8 +17,6 @@ export function Navbar() {
 
   const { t } = useLanguage()
 
-  const whatsappNumber = "18092611453"
-  const whatsappMessage = "Hola, me gustaría agendar una consulta legal"
 
   return (
     <motion.nav
@@ -121,30 +119,15 @@ export function Navbar() {
             </Link>
           </div>
 
-          {/* CTA Buttons */}
           <div className="hidden lg:block">
             <LanguageSwitcher />
           </div>
-          {/* <div className="hidden lg:block">
-            <Button asChild className="bg-accent hover:bg-accent/90 text-primary font-semibold">
-              <Link
-                href={`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`}
-                target="_blank"
-                className="flex items-center space-x-2"
-              >
-                <Phone className="h-4 w-4" />
-                <span>{t("common.contact")}</span>
-              </Link>
-            </Button>
-          </div> */}
-
-          {/* Mobile Menu Button */}
+         
           <button onClick={() => setIsOpen(!isOpen)} className="lg:hidden text-white">
             {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
           </button>
         </div>
 
-        {/* Mobile Navigation */}
         <AnimatePresence>
           {isOpen && (
             <motion.div

@@ -4,10 +4,11 @@ import { useLanguage } from "@/contexts/language-context"
 import { motion } from "framer-motion"
 import { Scale, MapPin, Phone, Mail, Instagram, Facebook, Linkedin, Clock } from "lucide-react"
 import Link from "next/link"
+import Image from "next/image"
+
 
 export function Footer() {
   const { t } = useLanguage()
-  // Actualizar las variables de contacto
   const whatsappNumber = "18092611453"
   const whatsappNumberToShow = "+1 (809) 261-1453"
   const email = "contact@evolutionlegaladvantage.com"
@@ -16,10 +17,8 @@ export function Footer() {
   return (
     <footer className="bg-primary border-t border-white/10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Main Footer */}
         <div className="py-16">
           <div className="grid lg:grid-cols-4 gap-12">
-            {/* Brand */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -27,16 +26,20 @@ export function Footer() {
               viewport={{ once: true }}
               className="lg:col-span-1 space-y-6"
             >
-              {/* Actualizar el nombre de la empresa */}
               <div className="flex items-center space-x-2">
-                <Scale className="h-8 w-8 text-accent" />
+                   <Image
+                              src="/logo.png"
+                              alt="Evolution Legal Advantage Logo"
+                              width={32}
+                              height={32}
+                              className="rounded-full"
+                            />
                 <span className="text-2xl font-bold text-white">{t("company.name")}</span>
               </div>
               <p className="text-white/80 leading-relaxed">
                 {t("company.slogan")} {t("company.tagline")}
               </p>
 
-              {/* Social Links */}
               <div className="flex space-x-4">
                 <Link
                   href="https://instagram.com/legalstudio_oficial"
