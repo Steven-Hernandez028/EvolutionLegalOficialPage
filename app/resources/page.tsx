@@ -21,7 +21,7 @@ export default function ResourcesPage() {
   const { t } = useLanguage()
 
 
-  const [resources, setResources] = useState<Resource[]>();
+  const [resources, setResources] = useState < Resource[] > ();
 
   const fetchData = async () => {
     try {
@@ -50,6 +50,27 @@ export default function ResourcesPage() {
   useEffect(() => {
     fetchData();
   }, [])
+  const DownloadAndLink = async (resource: Resource) => {
+    fetch('/api/resources/view', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ id: resource.id }),
+    })
+      .then((res) => {
+        if (res.ok) {
+          window.open(resource.downloadUrl, '_blank');
+        } else {
+          console.error('Error al registrar la vista del recurso.');
+        }
+      })
+      .catch((error) => {
+        console.error('Error al conectar con el servidor:', error);
+      });
+  }
+
+
   return (
     <div className="min-h-screen bg-secondary">
       <Navbar />
@@ -116,12 +137,14 @@ export default function ResourcesPage() {
                 </h3>
                 <p className="text-primary/80 text-sm mb-4">{resource.description}</p>
 
-                <Button asChild size="sm" variant="outline" className="w-full">
-                  <Link href={resource.downloadUrl} className="flex items-center justify-center space-x-2">
+                <Button onClick={() => DownloadAndLink(resource)} asChild size="sm" variant="outline" className="w-full">
+                  <div className="flex items-center justify-center space-x-2">
                     <Download className="h-4 w-4" />
                     <span>Descargar</span>
-                  </Link>
+                  </div>
                 </Button>
+
+
               </motion.div>
             ))}
           </div>
