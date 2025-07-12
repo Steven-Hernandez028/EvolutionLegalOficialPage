@@ -2,20 +2,59 @@
 
 import type React from "react"
 
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { motion } from "framer-motion"
 import { Calendar, Clock, User, Tag, MessageSquare, ArrowLeft, Facebook, Twitter, Linkedin } from "lucide-react"
 import { Navbar } from "@/components/navbar"
 import { Footer } from "@/components/footer"
 import { useLanguage } from "@/contexts/language-context"
-import { blogPosts, blogComments, type BlogComment } from "@/lib/blog-data"
+import { blogPosts, blogComments } from "@/lib/blog-data"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import Link from "next/link"
 import Image from "next/image"
 import { useParams } from "next/navigation"
+import { marked } from "marked"
 
+
+export interface BlogPost {
+  id: string
+  title: string
+  content: string
+  excerpt: string
+  image?: string
+  date: string // formato ISO, e.g. "2025-02-02"
+  readTime: number // minutos de lectura
+  author: string
+  category: string
+  tags: string[]
+}
+
+
+export interface BlogComment {
+  id: string
+  postId: string
+  author: string
+  email: string
+  content: string
+  date: string // formato ISO, e.g. "2025-07-11"
+}
+
+export interface NewCommentInput {
+  author: string
+  email: string
+  content: string
+}
+export interface CreateCommentDto {
+  authorName: string
+  authorEmail: string
+  content: string
+  blogId?: string
+  newsId?: string
+  ipAddress?: string
+  userAgent?: string
+}
 export default function BlogPostPage() {
   const { t } = useLanguage()
   const params = useParams()
@@ -26,17 +65,100 @@ export default function BlogPostPage() {
     email: "",
     content: "",
   })
-  const [comments, setComments] = useState<BlogComment[]>(blogComments)
+  const [postComments, setPostComments] = useState<BlogComment[]>([])
+  const [blog, setBlog] = useState<BlogPost>()
 
-  const post = blogPosts.find((p) => p.id === postId)
-  const postComments = comments.filter((c) => c.postId === postId)
-  const relatedPosts = blogPosts.filter((p) => p.id !== postId && p.category === post?.category).slice(0, 3)
 
-  if (!post) {
+  async function IncrementView() {
+    try {
+      const res = await fetch(`/api/blogs/${postId}/view`, {method:'POST'})
+      console.log(res.ok)
+    } catch (error) {
+
+    }
+  }
+
+
+  const handleCommentSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+
+
+    if (newComment.author && newComment.email && newComment.content) {
+      try {
+        const comment: CreateCommentDto = {
+          authorName: newComment.author,
+          authorEmail: newComment.email,
+          content: newComment.content,
+          blogId: postId
+        }
+        const res = await fetch(`/api/blogs/${postId}/comments`, {
+          method: 'POST',
+          body: JSON.stringify(comment)
+        })
+
+        if (res.ok) {
+        } else {
+
+        }
+
+      } catch (error) {
+        console.log(error)
+      }
+
+
+      setNewComment({ author: "", email: "", content: "" })
+    }
+  }
+
+
+
+  function convertirMarkdownAHtml(markdown: string): string {
+
+    if (!markdown) return ""
+    const value = marked(markdown)
+    return value as string
+  }
+  const getCommentBlogs = async () => {
+    try {
+      const res = await fetch(`/api/blogs/${postId}/comments`, { method: 'GET' })
+      if (res.ok) {
+        const data: BlogComment[] = await res.json()
+
+        if (data && data.length > 0)
+          setPostComments([...postComments, ...data])
+
+
+      }
+
+    } catch (error) {
+      console.log(error)
+    }
+  }
+  const getBlogs = async () => {
+    try {
+      const res = await fetch(`/api/blogs/${postId}`, { method: 'GET' })
+      if (res.ok) {
+        const data: BlogPost = await res.json()
+        setBlog(data)
+
+      }
+
+    } catch (error) {
+      console.log(error)
+    }
+  }
+  useEffect(() => {
+    IncrementView();
+    getBlogs();
+    getCommentBlogs();
+  }, [])
+  const relatedPosts = blogPosts.filter((p: any) => p.id !== postId && p.category === blog?.category).slice(0, 3)
+
+  if (!blog) {
     return (
       <div className="min-h-screen bg-secondary flex items-center justify-center">
         <div className="text-center">
-          <h1 className="text-2xl font-bold text-primary mb-4">Artículo no encontrado</h1>
+          <h1 className="text-2xl font-bold text-primary mb-4">Cargando articulo...</h1>
           <Button asChild>
             <Link href="/blog">Volver al Blog</Link>
           </Button>
@@ -45,21 +167,6 @@ export default function BlogPostPage() {
     )
   }
 
-  const handleCommentSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    if (newComment.author && newComment.email && newComment.content) {
-      const comment: BlogComment = {
-        id: Date.now().toString(),
-        postId: postId,
-        author: newComment.author,
-        email: newComment.email,
-        content: newComment.content,
-        date: new Date().toISOString().split("T")[0],
-      }
-      setComments([...comments, comment])
-      setNewComment({ author: "", email: "", content: "" })
-    }
-  }
 
   const shareUrl = typeof window !== "undefined" ? window.location.href : ""
 
@@ -81,11 +188,11 @@ export default function BlogPostPage() {
             <div className="bg-white rounded-2xl overflow-hidden shadow-lg">
               {/* Featured Image */}
               <div className="relative h-64 md:h-96 overflow-hidden">
-                <Image src={post.image || "/placeholder.svg"} alt={post.title} fill className="object-cover" />
+                <Image src={blog.image || "/placeholder.svg"} alt={blog.title} fill className="object-cover" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
                 <div className="absolute bottom-6 left-6">
                   <span className="bg-accent text-primary px-3 py-1 rounded-full text-sm font-semibold">
-                    {post.category}
+                    {blog.category}
                   </span>
                 </div>
               </div>
@@ -96,20 +203,20 @@ export default function BlogPostPage() {
                 <div className="flex flex-wrap items-center gap-4 text-sm text-primary/60 mb-6">
                   <div className="flex items-center space-x-1">
                     <Calendar className="h-4 w-4" />
-                    <span>{new Date(post.date).toLocaleDateString("es-ES")}</span>
+                    <span>{new Date(blog.date).toLocaleDateString("es-ES")}</span>
                   </div>
                   <div className="flex items-center space-x-1">
                     <Clock className="h-4 w-4" />
-                    <span>{post.readTime} min de lectura</span>
+                    <span>{blog.readTime} min de lectura</span>
                   </div>
                   <div className="flex items-center space-x-1">
                     <User className="h-4 w-4" />
-                    <span>{post.author}</span>
+                    <span>{blog.author}</span>
                   </div>
                 </div>
 
                 {/* Title */}
-                <h1 className="text-3xl md:text-4xl font-bold text-primary mb-6">{post.title}</h1>
+                <h1 className="text-3xl md:text-4xl font-bold text-primary mb-6">{blog.title}</h1>
 
                 {/* Share Buttons */}
                 <div className="flex items-center space-x-4 mb-8 pb-8 border-b border-gray-200">
@@ -128,7 +235,7 @@ export default function BlogPostPage() {
                     </Button>
                     <Button size="sm" variant="outline" asChild>
                       <a
-                        href={`https://twitter.com/intent/tweet?url=${encodeURIComponent(shareUrl)}&text=${encodeURIComponent(post.title)}`}
+                        href={`https://twitter.com/intent/tweet?url=${encodeURIComponent(shareUrl)}&text=${encodeURIComponent(blog.title)}`}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="flex items-center space-x-1"
@@ -154,14 +261,14 @@ export default function BlogPostPage() {
                 {/* Article Content */}
                 <div
                   className="prose prose-lg max-w-none text-primary/80 mb-8"
-                  dangerouslySetInnerHTML={{ __html: post.content }}
+                  dangerouslySetInnerHTML={{ __html: convertirMarkdownAHtml(blog.content) }}
                 />
 
                 {/* Tags */}
                 <div className="flex items-center space-x-2 mb-8">
                   <Tag className="h-4 w-4 text-accent" />
                   <div className="flex flex-wrap gap-2">
-                    {post.tags.map((tag) => (
+                    {blog.tags.map((tag: any) => (
                       <span key={tag} className="bg-accent/10 text-accent px-2 py-1 rounded text-sm">
                         {tag}
                       </span>
@@ -187,18 +294,18 @@ export default function BlogPostPage() {
             <h2 className="text-2xl font-bold text-primary mb-6 flex items-center space-x-2">
               <MessageSquare className="h-6 w-6" />
               <span>
-                {t("blog.comments")} ({postComments.length})
+                {t("blog.comments")} ({postComments?.length ?? "0"})
               </span>
             </h2>
 
             {/* Existing Comments */}
             <div className="space-y-6 mb-8">
-              {postComments.map((comment) => (
-                <div key={comment.id} className="border-b border-gray-200 pb-6 last:border-b-0">
+              {postComments.length > 0 && postComments.map((comment, i) => (
+                <div key={comment.id ?? i} className="border-b border-gray-200 pb-6 last:border-b-0">
                   <div className="flex items-center space-x-3 mb-3">
                     <div className="w-10 h-10 bg-accent/10 rounded-full flex items-center justify-center">
                       <span className="text-accent font-semibold text-sm">
-                        {comment.author.charAt(0).toUpperCase()}
+                        {comment?.author?.charAt(0).toUpperCase()}
                       </span>
                     </div>
                     <div>
@@ -274,7 +381,7 @@ export default function BlogPostPage() {
             >
               <h2 className="text-3xl font-bold text-white mb-4">{t("blog.relatedPosts")}</h2>
               <p className="text-white/80 max-w-2xl mx-auto">
-                Otros artículos que podrían interesarte sobre {post.category}.
+                Otros artículos que podrían interesarte sobre {blog.category}.
               </p>
             </motion.div>
 
@@ -330,3 +437,4 @@ export default function BlogPostPage() {
     </div>
   )
 }
+

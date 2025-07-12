@@ -1,0 +1,256 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+model User {
+  id          String    @id @default(cuid())
+  name        String
+  email       String    @unique
+  password    String
+  role        String    @default("admin")
+  avatar      String?
+  isActive    Boolean   @default(true)
+  lastLoginAt DateTime?
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+
+  // Relations
+  blogs     Blog[]
+  news      News[]
+  resources Resource[]
+  events    Event[]
+
+  @@map("users")
+}
+
+model Category {
+  id          String   @id @default(cuid())
+  name        String   @unique
+  slug        String   @unique
+  description String?
+  color       String   @default("#D1A75D")
+  isActive    Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  // Relations
+  blogs Blog[]
+  news  News[]
+
+  @@map("categories")
+}
+
+enum BlogStatus {
+  DRAFT
+  PUBLISHED
+  ARCHIVED
+}
+
+model Blog {
+  id              String     @id @default(cuid())
+  title           String
+  slug            String     @unique
+  excerpt         String?
+  content         String
+  featuredImage   String?
+  featuredImageKey String?
+  tags            String[]
+  status          BlogStatus @default(DRAFT)
+  isFeatured      Boolean    @default(false)
+  views           Int        @default(0)
+  publishedAt     DateTime?
+  metaDescription String?
+  metaKeywords    String[]
+  createdAt       DateTime   @default(now())
+  updatedAt       DateTime   @updatedAt
+
+  // Relations
+  author     User      @relation(fields: [authorId], references: [id], onDelete: Cascade)
+  authorId   String
+  category   Category? @relation(fields: [categoryId], references: [id], onDelete: SetNull)
+  categoryId String?
+  comments   Comment[]
+
+  @@map("blogs")
+}
+
+enum NewsStatus {
+  DRAFT
+  PUBLISHED
+  ARCHIVED
+}
+
+model News {
+  id              String     @id @default(cuid())
+  title           String
+  slug            String     @unique
+  excerpt         String
+  content         String?
+  featuredImage   String?
+  tags            String[]
+  status          NewsStatus @default(DRAFT)
+  isRelevant      Boolean    @default(false)
+  views           Int        @default(0)
+  publishedAt     DateTime?
+  metaDescription String?
+  metaKeywords    String[]
+  createdAt       DateTime   @default(now())
+  updatedAt       DateTime   @updatedAt
+
+  // Relations
+  author     User      @relation(fields: [authorId], references: [id], onDelete: Cascade)
+  authorId   String
+  category   Category? @relation(fields: [categoryId], references: [id], onDelete: SetNull)
+  categoryId String?
+  comments   Comment[]
+
+  @@map("news")
+}
+
+enum CommentStatus {
+  PENDING
+  APPROVED
+  REJECTED
+}
+
+model Comment {
+  id          String        @id @default(cuid())
+  authorName  String
+  authorEmail String
+  content     String
+  status      CommentStatus @default(PENDING)
+  ipAddress   String?
+  userAgent   String?
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+
+  // Relations
+  blog   Blog?   @relation(fields: [blogId], references: [id], onDelete: Cascade)
+  blogId String?
+  news   News?   @relation(fields: [newsId], references: [id], onDelete: Cascade)
+  newsId String?
+
+  @@map("comments")
+}
+
+enum ResourceType {
+  PDF
+  ZIP
+  VIDEO
+  DOCUMENT
+  OTHER
+}
+
+model Resource {
+  id          String       @id @default(cuid())
+  title       String
+  slug        String       @unique
+  description String?
+  type        ResourceType
+  downloadUrl String
+  fileName    String?
+  fileSize    BigInt?
+  mimeType    String?
+  downloads   Int          @default(0)
+  isActive    Boolean      @default(true)
+  tags        String[]
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
+
+  // Relations
+  author   User   @relation(fields: [authorId], references: [id], onDelete: Cascade)
+  authorId String
+
+  @@map("resources")
+  
+}
+
+model BlogConfiguration { 
+  id          String   @id @default(cuid())
+  MinViews    Int
+  MinComments Int
+  Duration    Int
+  createdAt   DateTime @default(now())
+  
+} 
+model NewsConfiguration { 
+  id          String   @id @default(cuid())
+  MinViews    Int
+  MinComments Int
+  Duration    Int
+  createdAt   DateTime @default(now())
+  
+} 
+enum EventType {
+  PRESENCIAL
+  ONLINE
+  HYBRID
+}
+
+enum EventStatus {
+  SCHEDULED
+  ACTIVE
+  COMPLETED
+  CANCELLED
+}
+
+model Event {
+  id            String        @id @default(cuid())
+  title         String
+  slug          String        @unique
+  description   String?
+  startDate     DateTime
+  endDate       DateTime?
+  location      String?
+  type          EventType
+  virtualLink   String?
+  status        EventStatus   @default(SCHEDULED)
+  maxAttendees  Int?
+  featuredImage String?
+  price         Decimal?
+  isFree        Boolean       @default(false)
+  isPublic      Boolean       @default(true)
+  tags          String[]
+  createdAt     DateTime      @default(now())
+  updatedAt     DateTime      @updatedAt
+
+  // Relations
+  author        User                @relation(fields: [authorId], references: [id], onDelete: Cascade)
+  authorId      String
+  registrations EventRegistration[]
+
+  @@map("events")
+}
+
+enum RegistrationStatus {
+  PENDING
+  CONFIRMED
+  CANCELLED
+  ATTENDED
+}
+
+model EventRegistration {
+  id            String             @id @default(cuid())
+  attendeeName  String
+  attendeeEmail String
+  attendeePhone String?
+  company       String?
+  status        RegistrationStatus @default(PENDING)
+  notes         String?
+  confirmedAt   DateTime?
+  createdAt     DateTime           @default(now())
+  updatedAt     DateTime           @updatedAt
+
+  // Relations
+  event   Event  @relation(fields: [eventId], references: [id], onDelete: Cascade)
+  eventId String
+
+  @@map("event_registrations")
+}
