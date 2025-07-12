@@ -77,6 +77,9 @@ interface AuthorDTO {
     updatedAt: string
 }
 
+interface Count {
+    comments: number
+}
 interface CategoryDTO {
     id: string
     name: string
@@ -93,9 +96,6 @@ export interface NewCommentInput {
     content: string
 }
 
-interface Count {
-    comments: number
-}
 export interface BlogResponse {
     id: string
     slug: string;
@@ -291,7 +291,7 @@ export class BlogService extends BaseService<Blog> {
 
         return response
     }
-    async searchBlogs(searchOptions: BlogSearchOptions, paginationOptions: PaginationOptions): Promise<SearchBlogsDTORequest> {
+    async searchBlogs( searchOptions : BlogSearchOptions,paginationOptions: PaginationOptions): Promise<SearchBlogsDTORequest> {
         const { search, tag, category } = searchOptions
 
         const where: Prisma.BlogWhereInput = {}
@@ -381,6 +381,7 @@ export class BlogService extends BaseService<Blog> {
 
         return reponseSearchBlogs;
     }
+
     IsBlogFeatured(configuration: BlogConfiguration | null, Blog: BlogDTO): boolean {
         if (!configuration) return false;
 
@@ -403,6 +404,7 @@ export class BlogService extends BaseService<Blog> {
         const diferenciaDias = Math.floor(diferenciaMs / (1000 * 60 * 60 * 24));
         return diferenciaDias <= dias;
     }
+    
     calcularTiempoLectura(texto: string, palabrasPorMinuto: number = 200): number {
         if (!texto || typeof texto !== 'string') {
             return 0
@@ -443,9 +445,9 @@ export class BlogService extends BaseService<Blog> {
         return dataParsed
     }
 
-    async incrementViews(id: string): Promise<void> {
+    async incrementViews(slug: string): Promise<void> {
         await this.prisma.blog.update({
-            where: { id },
+            where: { slug },
             data: {
                 views: {
                     increment: 1,
@@ -454,41 +456,6 @@ export class BlogService extends BaseService<Blog> {
         })
     }
 
-    async etFeaturedBlogs(limit = 5): Promise<Blog[]> {
-        return this.prisma.blog.findMany({
-            where: { isFeatured: true, status: "PUBLISHED" },
-            include: {
-                author: true,
-                category: true,
-            },
-            orderBy: { createdAt: "desc" },
-            take: limit,
-        })
-    }
-
-    async getPopularBlogs(limit = 5): Promise<Blog[]> {
-        return this.prisma.blog.findMany({
-            where: { status: "PUBLISHED" },
-            include: {
-                author: true,
-                category: true,
-            },
-            orderBy: { views: "desc" },
-            take: limit,
-        })
-    }
-
-    async getRecentBlogs(limit = 5): Promise<Blog[]> {
-        return this.prisma.blog.findMany({
-            where: { status: "PUBLISHED" },
-            include: {
-                author: true,
-                category: true,
-            },
-            orderBy: { publishedAt: "desc" },
-            take: limit,
-        })
-    }
 
     eliminarDuplicados(estructura: { tags: string[] }[]): string[] {
         const conjuntoUnico = new Set<string>();
@@ -517,16 +484,7 @@ export class BlogService extends BaseService<Blog> {
         return this.prisma.category.findMany({ where: { isActive: true } })
     }
 
-    async getBlogStats(): Promise<any> {
-        const [total, published, draft, featured] = await Promise.all([
-            this.prisma.blog.count(),
-            this.prisma.blog.count({ where: { status: "PUBLISHED" } }),
-            this.prisma.blog.count({ where: { status: "DRAFT" } }),
-            this.prisma.blog.count({ where: { isFeatured: true } }),
-        ])
 
-        return { total, published, draft, featured }
-    }
 }
 
 export const blogService = new BlogService()

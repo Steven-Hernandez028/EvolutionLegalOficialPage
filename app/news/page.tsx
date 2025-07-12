@@ -1,44 +1,56 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { Calendar, Clock, ExternalLink, Bell } from "lucide-react"
+import { Calendar, Clock, ExternalLink, Bell, Tag, Link } from "lucide-react"
 import { Navbar } from "@/components/navbar"
 import { Footer } from "@/components/footer"
 import { useLanguage } from "@/contexts/language-context"
 import Image from "next/image"
+import { useEffect, useState } from "react"
+import { useRouter } from "next/navigation"
 
+interface BlogResponse {
+  id: string
+  slug: string;
+  title: string
+  excerpt: string
+  author: string
+  date: string
+  category: string
+  status: string
+  views: number
+  comments: number,
+  image?: string | null;
+  readTime: number
+  featured: boolean
+}
 export default function NewsPage() {
-  const { t } = useLanguage()
+  const router = useRouter();
+  const [news, setNews] = useState<BlogResponse[]>([]);
 
-  const news = [
-    {
-      id: 1,
-      title: "Nuevas Regulaciones Inmobiliarias en República Dominicana 2024",
-      excerpt: "Cambios importantes en la legislación que afectan a inversionistas extranjeros.",
-      date: "2024-01-15",
-      category: "Legislación",
-      image: "/placeholder.svg?height=300&width=400",
-      featured: true,
-    },
-    {
-      id: 2,
-      title: "Evolution Legal se Expande a Estados Unidos",
-      excerpt: "Apertura de nueva oficina para mejor servicio a clientes internacionales.",
-      date: "2024-01-10",
-      category: "Empresa",
-      image: "/placeholder.svg?height=300&width=400",
-      featured: false,
-    },
-    {
-      id: 3,
-      title: "Seminario: Inversión Inmobiliaria Segura en RD",
-      excerpt: "Evento educativo para inversionistas extranjeros el próximo mes.",
-      date: "2024-01-05",
-      category: "Eventos",
-      image: "/placeholder.svg?height=300&width=400",
-      featured: false,
-    },
-  ]
+
+  async function FetchData() {
+    try {
+      const res = await fetch('/api/news', { method: 'GET' })
+      if (res.ok) {
+        const data = await res.json();
+        setNews(data.data)
+      }
+
+    } catch (error) {
+      console.log(error)
+    }
+
+  }
+  useEffect(() => {
+    FetchData();
+  }, [])
+
+  function GoToPage(id: string) {
+    console.log(id)
+    router.push(`news/${id}`)
+  }
+  const { t } = useLanguage()
 
   const events = [
     {
@@ -106,8 +118,8 @@ export default function NewsPage() {
           </motion.div>
 
           <div className="grid lg:grid-cols-2 gap-8">
-            {news
-              .filter((item) => item.featured)
+            {news?.filter((item) => item.featured)
+
               .map((item, index) => (
                 <motion.article
                   key={item.id}
@@ -115,7 +127,9 @@ export default function NewsPage() {
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8, delay: index * 0.1 }}
                   viewport={{ once: true }}
-                  className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow"
+                  onClick={() => GoToPage(item.slug)}
+
+                  className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow cursor-pointer"
                 >
                   <div className="relative h-64 overflow-hidden">
                     <Image src={item.image || "/placeholder.svg"} alt={item.title} fill className="object-cover" />
@@ -161,10 +175,11 @@ export default function NewsPage() {
               <motion.article
                 key={item.id}
                 initial={{ opacity: 0, y: 20 }}
+                onClick={() => GoToPage(item.slug)}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: index * 0.1 }}
                 viewport={{ once: true }}
-                className="bg-secondary rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow"
+                className="bg-secondary rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow cursor-pointer"
               >
                 <div className="relative h-48 overflow-hidden">
                   <Image src={item.image || "/placeholder.svg"} alt={item.title} fill className="object-cover" />
@@ -182,6 +197,7 @@ export default function NewsPage() {
                   <h3 className="text-lg font-bold text-primary mb-2">{item.title}</h3>
                   <p className="text-primary/80 text-sm mb-4">{item.excerpt}</p>
                 </div>
+
               </motion.article>
             ))}
           </div>
@@ -219,9 +235,8 @@ export default function NewsPage() {
                     <Bell className="h-6 w-6 text-accent" />
                   </div>
                   <div
-                    className={`px-3 py-1 rounded-full text-sm font-semibold ${
-                      event.type === "Online" ? "bg-blue-100 text-blue-600" : "bg-green-100 text-green-600"
-                    }`}
+                    className={`px-3 py-1 rounded-full text-sm font-semibold ${event.type === "Online" ? "bg-blue-100 text-blue-600" : "bg-green-100 text-green-600"
+                      }`}
                   >
                     {event.type}
                   </div>
