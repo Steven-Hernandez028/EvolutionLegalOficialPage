@@ -291,7 +291,7 @@ export class BlogService extends BaseService<Blog> {
 
         return response
     }
-    async searchBlogs( searchOptions : BlogSearchOptions,paginationOptions: PaginationOptions): Promise<SearchBlogsDTORequest> {
+    async searchBlogs(searchOptions: BlogSearchOptions, paginationOptions: PaginationOptions): Promise<SearchBlogsDTORequest> {
         const { search, tag, category } = searchOptions
 
         const where: Prisma.BlogWhereInput = {}
@@ -311,10 +311,8 @@ export class BlogService extends BaseService<Blog> {
             }
         }
 
-        if(category)
-        {
-            if(where.category)
-            {
+        if (category) {
+            if (where.category) {
                 where.category.slug = category
             }
         }
@@ -404,7 +402,7 @@ export class BlogService extends BaseService<Blog> {
         const diferenciaDias = Math.floor(diferenciaMs / (1000 * 60 * 60 * 24));
         return diferenciaDias <= dias;
     }
-    
+
     calcularTiempoLectura(texto: string, palabrasPorMinuto: number = 200): number {
         if (!texto || typeof texto !== 'string') {
             return 0
@@ -418,17 +416,26 @@ export class BlogService extends BaseService<Blog> {
 
     }
     async addCommentToBlog(data: CreateCommentDto, id: string): Promise<any> {
+        const blog = await this.prisma.blog.findFirst({
+            where: { slug: id }
+        })
+        if (!blog) return null;
         const Comment: CreateCommentDto = {
             content: data.content,
             authorName: data.authorName,
             authorEmail: data.authorEmail,
-            blogId: id,
+            blogId: blog.id,
         }
         await this.prisma.comment.create({ data: Comment })
     }
     async GetCommentsByBlogId(blogId: string): Promise<BlogComment[] | null> {
+        const blog = await this.prisma.blog.findFirst({
+            where: { slug: blogId }
+        })
+        if (!blog) return null;
+
         const results = await this.prisma.comment.findMany({
-            where: { blogId: blogId, status: 'APPROVED' }
+            where: { blogId: blog.id, status: 'APPROVED' }
         })
         const dataParsed = results.map((value: Comment) => {
             const data: BlogComment = {

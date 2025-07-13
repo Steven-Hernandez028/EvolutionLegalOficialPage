@@ -8,6 +8,8 @@ import { useLanguage } from "@/contexts/language-context"
 import Image from "next/image"
 import { useEffect, useState } from "react"
 import { useRouter } from "next/navigation"
+import { EventRegistrationModal } from "@/components/EventRegistrationModal"
+import NewsEvents, { EventDTO } from "@/components/Events"
 
 interface BlogResponse {
   id: string
@@ -27,6 +29,8 @@ interface BlogResponse {
 export default function NewsPage() {
   const router = useRouter();
   const [news, setNews] = useState<BlogResponse[]>([]);
+  const [selectedEvent, setSelectedEvent] = useState<EventDTO | null>(null)
+
 
 
   async function FetchData() {
@@ -46,38 +50,15 @@ export default function NewsPage() {
     FetchData();
   }, [])
 
+
   function GoToPage(id: string) {
     console.log(id)
     router.push(`news/${id}`)
   }
   const { t } = useLanguage()
 
-  const events = [
-    {
-      id: 1,
-      title: "Taller: Due Diligence Inmobiliaria",
-      date: "2024-02-15",
-      time: "10:00 AM",
-      location: "Puerto Plata, RD",
-      type: "Presencial",
-    },
-    {
-      id: 2,
-      title: "Webinar: Residencia en República Dominicana",
-      date: "2024-02-20",
-      time: "3:00 PM",
-      location: "Virtual",
-      type: "Online",
-    },
-    {
-      id: 3,
-      title: "Conferencia: Derecho Migratorio",
-      date: "2024-03-01",
-      time: "9:00 AM",
-      location: "Santo Domingo, RD",
-      type: "Presencial",
-    },
-  ]
+
+
 
   return (
     <div className="min-h-screen bg-secondary">
@@ -105,7 +86,7 @@ export default function NewsPage() {
         </div>
       </section>
 
-      <section className="py-16">
+      {news?.filter((item) => item.featured).length > 0 && <section className="py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -157,7 +138,7 @@ export default function NewsPage() {
           </div>
         </div>
       </section>
-
+      }
       <section className="py-16 bg-primary">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
@@ -205,66 +186,18 @@ export default function NewsPage() {
       </section>
 
 
-      <section className="py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="text-center mb-12"
-          >
-            <h2 className="text-3xl font-bold text-primary mb-4">Próximos Eventos</h2>
-            <p className="text-primary/80 max-w-2xl mx-auto">
-              Únete a nuestros eventos educativos y talleres especializados.
-            </p>
-          </motion.div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {events.map((event, index) => (
-              <motion.div
-                key={event.id}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: index * 0.1 }}
-                viewport={{ once: true }}
-                className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow"
-              >
-                <div className="flex items-center space-x-3 mb-4">
-                  <div className="w-12 h-12 bg-accent/10 rounded-xl flex items-center justify-center">
-                    <Bell className="h-6 w-6 text-accent" />
-                  </div>
-                  <div
-                    className={`px-3 py-1 rounded-full text-sm font-semibold ${event.type === "Online" ? "bg-blue-100 text-blue-600" : "bg-green-100 text-green-600"
-                      }`}
-                  >
-                    {event.type}
-                  </div>
-                </div>
-
-                <h3 className="text-lg font-bold text-primary mb-3">{event.title}</h3>
-
-                <div className="space-y-2 text-sm text-primary/70">
-                  <div className="flex items-center space-x-2">
-                    <Calendar className="h-4 w-4" />
-                    <span>{new Date(event.date).toLocaleDateString("es-ES")}</span>
-                  </div>
-                  <div className="flex items-center space-x-2">
-                    <Clock className="h-4 w-4" />
-                    <span>{event.time}</span>
-                  </div>
-                  <div className="flex items-center space-x-2">
-                    <ExternalLink className="h-4 w-4" />
-                    <span>{event.location}</span>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
+      <NewsEvents setSelectedEvent={setSelectedEvent} selectedEvent={selectedEvent} />
       <Footer />
+      {selectedEvent?.title && selectedEvent?.date && selectedEvent?.id && (
+        <EventRegistrationModal
+          isOpen={!!selectedEvent}
+          onClose={() => setSelectedEvent(null)}
+          eventTitle={String(selectedEvent.title)}
+          eventDate={String(selectedEvent.date)}
+          eventId={String(selectedEvent.id)}
+        />
+      )}
+
     </div>
   )
 }

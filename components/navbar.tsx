@@ -119,7 +119,7 @@ export function Navbar() {
             </Link>
           </div>
 
-          <div className="hidden lg:block">
+          <div className= "hidden lg:block">
             <LanguageSwitcher />
           </div>
          

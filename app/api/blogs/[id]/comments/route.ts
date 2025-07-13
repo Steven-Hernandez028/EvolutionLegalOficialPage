@@ -8,6 +8,7 @@ export async function GET(request: NextRequest, props: { params: Promise<{ id: s
     const { id } = await props.params;
 
     try {
+
         const blog = await blogService.GetCommentsByBlogId(id);
         if (!blog) {
             return NextResponse.json({ error: "Resource not found" }, { status: 404 });

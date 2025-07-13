@@ -13,6 +13,33 @@ import { Navbar } from "@/components/navbar"
 import { Footer } from "@/components/footer"
 import Image from "next/image"
 
+// Representa la información del formulario de agendamiento
+export interface AppointmentFormData {
+  name: string
+  email: string
+  phone: string
+  date: string
+  time: string
+  legalArea: string
+  description: string
+  consultationType: 'presencial' | 'virtual'
+}
+
+export type TimeSlot =
+  | "09:00" | "09:30" | "10:00" | "10:30"
+  | "11:00" | "11:30" | "14:00" | "14:30"
+  | "15:00" | "15:30" | "16:00" | "16:30"
+  | "17:00"
+
+export type LegalArea =
+  | "Derecho Civil"
+  | "Derecho Penal"
+  | "Derecho Corporativo"
+  | "Derecho Familiar"
+  | "Derecho Laboral"
+  | "Mediación"
+  | "Consulta General"
+
 const timeSlots = [
   "09:00",
   "09:30",
@@ -29,17 +56,27 @@ const timeSlots = [
   "17:00",
 ]
 
+
 const legalAreas = [
-  "Derecho Civil",
-  "Derecho Penal",
-  "Derecho Corporativo",
-  "Derecho Familiar",
-  "Derecho Laboral",
-  "Mediación",
-  "Consulta General",
+  { key: "due-diligence", value: "Investigación Jurídica Inmobiliaria (Due Diligence)" },
+  { key: "relocation", value: "Reubicación Integral para Extranjeros" },
+  { key: "real-estate", value: "Asesoría y Gestión de Bienes Inmuebles" },
+  { key: "rural-lands", value: "Tierras Vírgenes del Norte" },
+  { key: "immigration", value: "Extranjería: Residencia y Ciudadanía" },
+  { key: "consular", value: "Derecho Migratorio y Consular" },
+  { key: "corporate", value: "Derecho Societario" },
+  { key: "family-law", value: "Derecho de Familia" },
+  { key: "vehicular-due-diligence", value: "Debida Diligencia Vehicular" },
+  { key: "contract-review", value: "Estudio y Revisión de Contratos" },
+  { key: "document-management", value: "Gestión de Documentos" },
+  { key: "legal-training", value: "Capacitación Jurídica" }
 ]
 
+
 export default function SchedulePage() {
+  const whatsappNumberToShow = "+1 (809) 261-1453"
+  const whatsappNumber = "18092611453"
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -71,7 +108,7 @@ export default function SchedulePage() {
   if (isSubmitted) {
     return (
       <div className="min-h-screen bg-secondary">
-        <Navbar />
+         <Navbar />
         <div className="pt-20 pb-16">
           <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <motion.div
@@ -184,7 +221,7 @@ export default function SchedulePage() {
                         required
                         value={formData.phone}
                         onChange={(e) => handleInputChange("phone", e.target.value)}
-                        placeholder="+57 300 123 4567"
+                        placeholder="+1 809 123 4567"
                       />
                     </div>
                   </div>
@@ -206,19 +243,7 @@ export default function SchedulePage() {
                       />
                     </div>
                     <div>
-                      <label className="block text-sm font-medium text-primary/80 mb-2">Hora Preferida *</label>
-                      <Select value={formData.time} onValueChange={(value) => handleInputChange("time", value)}>
-                        <SelectTrigger>
-                          <SelectValue placeholder="Seleccionar hora" />
-                        </SelectTrigger>
-                        <SelectContent>
-                          {timeSlots.map((time) => (
-                            <SelectItem key={time} value={time}>
-                              {time}
-                            </SelectItem>
-                          ))}
-                        </SelectContent>
-                      </Select>
+
                     </div>
                   </div>
 
@@ -230,8 +255,8 @@ export default function SchedulePage() {
                       </SelectTrigger>
                       <SelectContent>
                         {legalAreas.map((area) => (
-                          <SelectItem key={area} value={area}>
-                            {area}
+                          <SelectItem key={area.key} value={area.key}>
+                            {area.value}
                           </SelectItem>
                         ))}
                       </SelectContent>
@@ -283,11 +308,11 @@ export default function SchedulePage() {
                 <div className="space-y-4">
                   <div className="flex items-center space-x-3">
                     <Phone className="h-5 w-5 text-accent" />
-                    <span className="text-primary/80">+57 300 123 4567</span>
+                    <span className="text-primary/80">+1 809 123 4567</span>
                   </div>
                   <div className="flex items-center space-x-3">
                     <Mail className="h-5 w-5 text-accent" />
-                    <span className="text-primary/80">contacto@legalstudio.com</span>
+                    <span className="text-primary/80">contact@evolut9ionlegaladvantage.com</span>
                   </div>
                   <div className="flex items-start space-x-3">
                     <Clock className="h-5 w-5 text-accent mt-1" />
@@ -338,7 +363,7 @@ export default function SchedulePage() {
                 </p>
                 <Button asChild className="w-full bg-accent hover:bg-accent/90 text-primary">
                   <a
-                    href="https://wa.me/573001234567?text=Necesito%20ayuda%20legal%20urgente"
+                    href={`https://wa.me/${whatsappNumber}?text=${encodeURIComponent("Necesito ayuda legal")}`}
                     target="_blank"
                     className="flex items-center justify-center space-x-2"
                     rel="noreferrer"
@@ -352,8 +377,7 @@ export default function SchedulePage() {
           </div>
         </div>
       </section>
-
-      <Footer />
+ <Footer />  
     </div>
   )
 }
