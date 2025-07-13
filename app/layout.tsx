@@ -10,8 +10,7 @@ const inter = Inter({ subsets: ["latin"] })
 export const metadata: Metadata = {
   title: "LegalStudio - Servicios Legales Profesionales",
   description:
-    "Defendemos tus derechos con experiencia, dedicación y resultados comprobados. Tu caso merece la mejor representación legal.",
-  generator: 'v0.dev'
+    "Defendemos tus derechos con experiencia, dedicación y resultados comprobados. Tu caso merece la mejor representación legal."
 }
 
 export default function RootLayout({
