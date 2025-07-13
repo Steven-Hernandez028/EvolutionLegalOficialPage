@@ -155,12 +155,12 @@ export function Footer() {
                     {whatsappNumberToShow}
                   </Link>
                 </div>
-                <div className="flex items-center space-x-3">
+                {/* <div className="flex items-center space-x-3">
                   <Mail className="h-5 w-5 text-accent flex-shrink-0" />
                   <Link href={`mailto:${email}`} className="text-white/80 hover:text-accent transition-colors">
                     {email}
                   </Link>
-                </div>
+                </div> */}
                 <div className="flex items-start space-x-3">
                   <Clock className="h-5 w-5 text-accent flex-shrink-0 mt-1" />
                   {/* Actualizar la información de contacto */}

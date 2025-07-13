@@ -1,36 +1,100 @@
 "use client"
 
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { motion } from "framer-motion"
 import { Search, Calendar, Clock, User, Tag } from "lucide-react"
 import { Navbar } from "@/components/navbar"
 import { Footer } from "@/components/footer"
 import { useLanguage } from "@/contexts/language-context"
-import { blogPosts, blogCategories, blogTags } from "@/lib/blog-data"
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import Link from "next/link"
 import Image from "next/image"
+export interface Blog {
+  id: string
+  title: string
+  excerpt: string
+  author: string
+  date: string
+  category: string
+  status: string
+  views: number
+  comments: number
+  featured: boolean
+  slug: string;
+  readTime: number
+  image: string;
+}
 
 export default function BlogPage() {
   const { t } = useLanguage()
   const [searchTerm, setSearchTerm] = useState("")
   const [selectedCategory, setSelectedCategory] = useState("all")
   const [selectedTag, setSelectedTag] = useState("all")
+  const [blogs, setBlogs] = useState<Blog[]>([])
+  const featuredPosts = blogs.filter((post) => post.featured)
+  const [limit, setLimit] = useState(10);
+  const [blogTags, setBlogTags] = useState<string[]>([])
+  const [blogCategories, setBlogCategories] = useState<{ name: string, slug: string }[]>([]);
 
-  const featuredPosts = blogPosts.filter((post) => post.featured)
-  const regularPosts = blogPosts.filter((post) => !post.featured)
 
-  const filteredPosts = blogPosts.filter((post) => {
-    const matchesSearch =
-      post.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      post.excerpt.toLowerCase().includes(searchTerm.toLowerCase())
-    const matchesCategory = selectedCategory === "all" || post.category === selectedCategory
-    const matchesTag = selectedTag === "all" || post.tags.includes(selectedTag)
+  const fetchData = async () => {
+    try {
+      const params = new URLSearchParams({
+        limit: limit.toString(),
+        search: searchTerm,
+        tag: selectedTag,
+        category: selectedCategory
+      })
+      const res = await fetch(`/api/blogs?${params.toString()}`)
+      const data = await res.json();
+      setBlogs(data.data)
 
-    return matchesSearch && matchesCategory && matchesTag
-  })
+
+    } catch (error) {
+    }
+  }
+  useEffect(() => {
+    fetchData();
+
+
+  }, [selectedCategory, searchTerm, selectedTag])
+
+
+  const fetchBlogCategories = async () => {
+    try {
+      const res = await fetch('/api/blogs/category', { method: 'GET' })
+      if (res.ok) {
+        const data = await res.json();
+        setBlogCategories(data)
+
+      }
+
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  const fetchDataTags = async () => {
+    try {
+      const res = await fetch('/api/blogs/tags', { method: 'GET' })
+      if (res.ok) {
+        const data = await res.json();
+        setBlogTags(data)
+      }
+
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  useEffect(() => {
+    fetchData();
+    fetchDataTags();
+    fetchBlogCategories();
+  },
+    [])
 
   return (
     <div className="min-h-screen bg-secondary">
@@ -75,8 +139,8 @@ export default function BlogPage() {
                 <SelectContent>
                   <SelectItem value="all">Todas las categorías</SelectItem>
                   {blogCategories.map((category) => (
-                    <SelectItem key={category} value={category}>
-                      {category}
+                    <SelectItem key={category.slug} value={category.slug}>
+                      {category.name}
                     </SelectItem>
                   ))}
                 </SelectContent>
@@ -88,8 +152,8 @@ export default function BlogPage() {
                 </SelectTrigger>
                 <SelectContent>
                   <SelectItem value="all">Todas las etiquetas</SelectItem>
-                  {blogTags.map((tag) => (
-                    <SelectItem key={tag} value={tag}>
+                  {blogTags.map((tag, i) => (
+                    <SelectItem key={i} value={tag}>
                       {tag}
                     </SelectItem>
                   ))}
@@ -158,7 +222,7 @@ export default function BlogPage() {
                     </div>
 
                     <h3 className="text-xl font-bold text-primary mb-3 group-hover:text-accent transition-colors">
-                      <Link href={`/blog/${post.id}`}>{post.title}</Link>
+                      <Link href={`/blog/${post.slug}`}>{post.title}</Link>
                     </h3>
 
                     <p className="text-primary/80 mb-4 line-clamp-3">{post.excerpt}</p>
@@ -169,7 +233,7 @@ export default function BlogPage() {
                         <span className="text-sm text-accent font-medium">{post.category}</span>
                       </div>
                       <Button asChild variant="outline" size="sm">
-                        <Link href={`/blog/${post.id}`}>{t("blog.readMore")}</Link>
+                        <Link href={`/blog/${post.slug}`}>{t("blog.readMore")}</Link>
                       </Button>
                     </div>
                   </div>
@@ -197,7 +261,7 @@ export default function BlogPage() {
           </motion.div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {filteredPosts.map((post, index) => (
+            {blogs.map((post, index) => (
               <motion.article
                 key={post.id}
                 initial={{ opacity: 0, y: 20 }}
@@ -235,7 +299,7 @@ export default function BlogPage() {
                   </div>
 
                   <h3 className="text-lg font-bold text-primary mb-2 group-hover:text-accent transition-colors line-clamp-2">
-                    <Link href={`/blog/${post.id}`}>{post.title}</Link>
+                    <Link href={`/blog/${post.slug}`}>{post.title}</Link>
                   </h3>
 
                   <p className="text-primary/80 text-sm mb-4 line-clamp-3">{post.excerpt}</p>
@@ -245,7 +309,7 @@ export default function BlogPage() {
                       {post.category}
                     </span>
                     <Button asChild variant="outline" size="sm">
-                      <Link href={`/blog/${post.id}`}>{t("blog.readMore")}</Link>
+                      <Link href={`/blog/${post.slug}`}>{t("blog.readMore")}</Link>
                     </Button>
                   </div>
                 </div>
@@ -253,7 +317,7 @@ export default function BlogPage() {
             ))}
           </div>
 
-          {filteredPosts.length === 0 && (
+          {blogs.filter(a => a.featured).length === 0 && (
             <div className="text-center py-12">
               <p className="text-white/80 text-lg">No se encontraron artículos que coincidan con tu búsqueda.</p>
             </div>
@@ -265,7 +329,6 @@ export default function BlogPage() {
       <section className="py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-3 gap-8">
-            {/* Categories */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -277,15 +340,14 @@ export default function BlogPage() {
               <div className="space-y-2">
                 {blogCategories.map((category) => (
                   <button
-                    key={category}
-                    onClick={() => setSelectedCategory(category)}
-                    className={`block w-full text-left px-3 py-2 rounded-lg transition-colors ${
-                      selectedCategory === category
-                        ? "bg-accent text-primary font-semibold"
-                        : "text-primary/80 hover:bg-accent/10"
-                    }`}
+                    key={category.name}
+                    onClick={() => setSelectedCategory(category.name)}
+                    className={`block w-full text-left px-3 py-2 rounded-lg transition-colors ${selectedCategory === category.name
+                      ? "bg-accent text-primary font-semibold"
+                      : "text-primary/80 hover:bg-accent/10"
+                      }`}
                   >
-                    {category}
+                    {category.name}
                   </button>
                 ))}
               </div>
@@ -301,8 +363,8 @@ export default function BlogPage() {
             >
               <h3 className="text-xl font-bold text-primary mb-4">{t("blog.recentPosts")}</h3>
               <div className="space-y-4">
-                {blogPosts.slice(0, 5).map((post) => (
-                  <Link key={post.id} href={`/blog/${post.id}`} className="block group">
+                {blogs.slice(0, 5).map((post) => (
+                  <Link key={post.id} href={`/blog/${post.slug}`} className="block group">
                     <h4 className="text-sm font-medium text-primary group-hover:text-accent transition-colors line-clamp-2 mb-1">
                       {post.title}
                     </h4>
@@ -325,15 +387,14 @@ export default function BlogPage() {
             >
               <h3 className="text-xl font-bold text-primary mb-4">{t("blog.tags")}</h3>
               <div className="flex flex-wrap gap-2">
-                {blogTags.map((tag) => (
+                {blogTags.map((tag, i) => (
                   <button
                     key={tag}
                     onClick={() => setSelectedTag(tag)}
-                    className={`px-3 py-1 rounded-full text-sm transition-colors ${
-                      selectedTag === tag
-                        ? "bg-accent text-primary font-semibold"
-                        : "bg-accent/10 text-primary/80 hover:bg-accent/20"
-                    }`}
+                    className={`px-3 py-1 rounded-full text-sm transition-colors ${selectedTag === tag
+                      ? "bg-accent text-primary font-semibold"
+                      : "bg-accent/10 text-primary/80 hover:bg-accent/20"
+                      }`}
                   >
                     {tag}
                   </button>

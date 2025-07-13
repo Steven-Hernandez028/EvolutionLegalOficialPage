@@ -55,7 +55,7 @@ export interface CreateCommentDto {
   ipAddress?: string
   userAgent?: string
 }
-export default function BlogPostPage() {
+export default function NewPostDetailsPage() {
   const { t } = useLanguage()
   const params = useParams()
   const postId = params.id as string
@@ -71,7 +71,7 @@ export default function BlogPostPage() {
 
   async function IncrementView() {
     try {
-      const res = await fetch(`/api/blogs/${postId}/view`, {method:'POST'})
+      const res = await fetch(`/api/news/${postId}/view`, {method:'POST'})
       console.log(res.ok)
     } catch (error) {
 
@@ -91,7 +91,7 @@ export default function BlogPostPage() {
           content: newComment.content,
           blogId: postId
         }
-        const res = await fetch(`/api/blogs/${postId}/comments`, {
+        const res = await fetch(`/api/news/${postId}/comments`, {
           method: 'POST',
           body: JSON.stringify(comment)
         })
@@ -120,7 +120,7 @@ export default function BlogPostPage() {
   }
   const getCommentBlogs = async () => {
     try {
-      const res = await fetch(`/api/blogs/${postId}/comments`, { method: 'GET' })
+      const res = await fetch(`/api/news/${postId}/comments`, { method: 'GET' })
       if (res.ok) {
         const data: BlogComment[] = await res.json()
 
@@ -136,7 +136,7 @@ export default function BlogPostPage() {
   }
   const getBlogs = async () => {
     try {
-      const res = await fetch(`/api/blogs/${postId}`, { method: 'GET' })
+      const res = await fetch(`/api/news/${postId}`, { method: 'GET' })
       if (res.ok) {
         const data: BlogPost = await res.json()
         setBlog(data)
@@ -160,7 +160,7 @@ export default function BlogPostPage() {
         <div className="text-center">
           <h1 className="text-2xl font-bold text-primary mb-4">Cargando articulo...</h1>
           <Button asChild>
-            <Link href="/blog">Volver al Blog</Link>
+            <Link href="/news">Volver a la lista de Noticias</Link>
           </Button>
         </div>
       </div>
@@ -179,9 +179,9 @@ export default function BlogPostPage() {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
             <Button asChild variant="outline" className="mb-6">
-              <Link href="/blog" className="flex items-center space-x-2">
+              <Link href="/news" className="flex items-center space-x-2">
                 <ArrowLeft className="h-4 w-4" />
-                <span>Volver al Blog</span>
+                <span>Volver a la lista de Noticias</span>
               </Link>
             </Button>
 
@@ -417,13 +417,13 @@ export default function BlogPostPage() {
                     </div>
 
                     <h3 className="text-lg font-bold text-primary mb-2 group-hover:text-accent transition-colors line-clamp-2">
-                      <Link href={`/blog/${relatedPost.id}`}>{relatedPost.title}</Link>
+                      <Link href={`/news/${relatedPost.id}`}>{relatedPost.title}</Link>
                     </h3>
 
                     <p className="text-primary/80 text-sm mb-4 line-clamp-3">{relatedPost.excerpt}</p>
 
                     <Button asChild variant="outline" size="sm" className="w-full">
-                      <Link href={`/blog/${relatedPost.id}`}>{t("blog.readMore")}</Link>
+                      <Link href={`/news/${relatedPost.id}`}>{t("blog.readMore")}</Link>
                     </Button>
                   </div>
                 </motion.article>
