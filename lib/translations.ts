@@ -19,6 +19,13 @@ export const translations = {
       contact: "Contacto",
       links: "Enlaces",
     },
+    bottomBar: {
+      home: "Inicio",
+      appointment: "Cita",
+      blog: "Blog",
+      news: "Noticias",
+      contact: "Contacto",
+    },
     // Company Info
     company: {
       name: "Evolution Legal Advantage",
@@ -298,11 +305,19 @@ export const translations = {
         schedule: "Schedule your Appointment",
         services: "Our Services"
       },
+
       stats: {
         experience: "Decade of Experience",
         countries: "Countries Presence",
         satisfaction: "Satisfaction",
       },
+    },
+    bottomBar: {
+      home: "Home",
+      appointment: "Appointment",
+      blog: "Blog",
+      news: "News",
+      contact: "Contact",
     },
     // About Page
     about: {
@@ -563,6 +578,14 @@ export const translations = {
         countries: "Pays de Présence",
         satisfaction: "Satisfaction",
       },
+    },
+    // Bottom Bar
+    bottomBar: {
+      home: "Accueil",
+      appointment: "Rendez-vous",
+      blog: "Blog",
+      news: "Actualités",
+      contact: "Contact",
     },
     // About Page
     about: {
