@@ -48,7 +48,7 @@ export function TopBar() {
             >
               <div className="relative">
                 <Image
-                  src="/logo.png"
+                  src="/logo.avif"
                   alt="Evolution Legal Advantage Logo"
                   width={36}
                   height={36}

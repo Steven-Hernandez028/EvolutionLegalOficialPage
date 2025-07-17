@@ -107,7 +107,7 @@ export default function ExclusiveHomePage() {
         <div className="flex justify-center mb-6">
           <div className="relative">
             <Image
-              src="/logo.png"
+              src="/logo.avif"
               alt="Evolution Legal Advantage"
               width={100}
               height={100}

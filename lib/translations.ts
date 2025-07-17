@@ -1,6 +1,21 @@
 export const translations = {
   es: {
     // Navigation
+    lawyer: {
+      title: [
+        "Fundadora",
+        "Co-Fundador"
+      ],
+      description: [
+        "Abogada fundadora y CEO de Evolution Legal con más de 15 años de experiencia en derecho civil y penal.",
+        "Especialista en derecho corporativo y comercial con amplia experiencia en litigios complejos."
+      ],
+      section: {
+        title: "Nuestro Equipo",
+        subtitle: "Conoce a Nuestros Fundadores",
+        description: "Profesionales comprometidos con la excelencia legal y la satisfacción del cliente"
+      }
+    },
     founder: {
       education: 'Carrera',
       specializations: 'Especializaciones',
@@ -248,6 +263,7 @@ export const translations = {
     },
     // Common
     common: {
+      showMore: "Ver más",
       readMore: "Leer más",
       contact: "Contactar",
       schedule: "Agendar Cita",
@@ -267,6 +283,21 @@ export const translations = {
   },
   en: {
     // Navigation
+    lawyer: {
+      title: [
+        "Founder",
+        "Co-Founder"
+      ],
+      description: [
+        "Founding attorney and CEO of Evolution Legal with over 15 years of experience in civil and criminal law.",
+        "Specialist in corporate and commercial law with extensive experience in complex litigation."
+      ],
+      section: {
+        title: "Our Team",
+        subtitle: "Meet Our Founders",
+        description: "Professionals committed to legal excellence and client satisfaction"
+      }
+    },
     nav: {
       home: "Home",
       about: "About Us",
@@ -516,6 +547,7 @@ export const translations = {
     },
     // Common
     common: {
+      showMore: "See more",
       readMore: "Read more",
       contact: "Contact",
       schedule: "Schedule Appointment",
@@ -534,6 +566,21 @@ export const translations = {
     },
   },
   fr: {
+    lawyer: {
+  title: [
+    "Fondatrice",
+    "Co-Fondateur"
+  ],
+  description: [
+    "Avocate fondatrice et PDG de Evolution Legal, avec plus de 15 ans d’expérience en droit civil et pénal.",
+    "Spécialiste en droit des affaires et droit commercial, avec une vaste expérience en contentieux complexes."
+  ],
+  section: {
+    title: "Notre Équipe",
+    subtitle: "Rencontrez Nos Fondateurs",
+    description: "Des professionnels engagés pour l’excellence juridique et la satisfaction du client"
+  }
+},
     // Navigation
     nav: {
       home: "Accueil",
@@ -785,6 +832,7 @@ export const translations = {
     },
     // Common
     common: {
+      showMore: "En savoir plus",
       readMore: "Lire plus",
       contact: "Contact",
       schedule: "Prendre Rendez-vous",

@@ -1,14 +1,14 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { BookOpen, Download, Video, FileText, Users, Award, Archive } from "lucide-react"
-import { Navbar } from "@/components/navbar"
+import { Download, Video, FileText, Archive } from "lucide-react"
 import { Footer } from "@/components/footer"
 import { useLanguage } from "@/contexts/language-context"
 import { Button } from "@/components/ui/button"
 import Image from "next/image"
-import Link from "next/link"
+
 import { useEffect, useState } from "react"
+import { NavbarAndTopBar } from "@/components/TopBarAndNavbar"
 interface Resource {
   id: string;
   title: string;
@@ -73,7 +73,7 @@ export default function ResourcesPage() {
 
   return (
     <div className="min-h-screen bg-secondary">
-      <Navbar />
+      <NavbarAndTopBar />
 
       {/* Header */}
       <section className="pt-20 pb-12 bg-gradient-to-br from-primary via-primary to-primary/90">
@@ -81,7 +81,7 @@ export default function ResourcesPage() {
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="text-center space-y-4">
             <div className="flex justify-center mb-6">
               <Image
-                src="/logo.png"
+                src="/logo.avif"
                 alt="Evolution Legal Advantage Logo"
                 width={80}
                 height={80}

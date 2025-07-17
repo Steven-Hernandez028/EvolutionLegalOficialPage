@@ -1,7 +1,6 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { Navbar } from "@/components/navbar"
 import { Footer } from "@/components/footer"
 import { useLanguage } from "@/contexts/language-context"
 import Image from "next/image"
@@ -9,6 +8,7 @@ import { MainProfile } from "@/components/MainProfile"
 import { Education } from "@/components/Education"
 import { Specializations } from "@/components/Specializations"
 import { Timeline } from "@/components/Timeline"
+import { NavbarAndTopBar } from "@/components/TopBarAndNavbar"
 
 export default function FounderPage() {
   const { t } = useLanguage()
@@ -16,14 +16,14 @@ export default function FounderPage() {
 
   return (
     <div className="min-h-screen bg-secondary">
-      <Navbar />
+     <NavbarAndTopBar />
 
-      {/* Header */}
+
       <section className="pt-20 pb-12 bg-gradient-to-br from-primary via-primary to-primary/90">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="text-center space-y-4">
             <div className="flex justify-center mb-6">
-              <Image src="/logo.png" alt="LegalStudio Logo" width={80} height={80} className="rounded-full" />
+              <Image src="/logo.avif" alt="LegalStudio Logo" width={80} height={80} className="rounded-full" />
             </div>
             <h1 className="text-4xl lg:text-5xl font-bold text-white">{t("ceo.title")}</h1>
             <div className="text-2xl text-accent font-semibold">{t("ceo.name")}</div>
@@ -36,7 +36,7 @@ export default function FounderPage() {
       <MainProfile />
       <Education />
       <Specializations />
-      <Timeline />
+      {/* <Timeline /> */}
       <Footer />
 
     </div>

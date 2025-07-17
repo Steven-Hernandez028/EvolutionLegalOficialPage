@@ -53,7 +53,7 @@ export default function ExclusiveFounderPage() {
         {/* Header */}
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="text-center mb-12">
           <div className="flex justify-center mb-6">
-            <Image src="/logo.png" alt="LegalStudio Logo" width={80} height={80} className="rounded-full" />
+            <Image src="/logo.avif" alt="LegalStudio Logo" width={80} height={80} className="rounded-full" />
           </div>
           <h1 className="text-4xl font-bold text-white mb-2">Abogada Fundadora</h1>
           <div className="text-2xl text-accent font-semibold">Dra. María González</div>

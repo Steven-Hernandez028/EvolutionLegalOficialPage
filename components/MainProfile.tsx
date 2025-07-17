@@ -21,13 +21,13 @@ export function MainProfile() {
                         className="mb-6 md:mb-0 md:w-[300px] md:flex-shrink-0"
                     >
                         <div className="w-full h-[300px] md:h-[400px] rounded-3xl overflow-hidden bg-gradient-to-br from-accent/20 to-accent/5">
-                            {/* <Image
-                                src="/placeholder.svg?height=400&width=300"
-                                alt="Dra. María González"
+                            <Image
+                                src="/person.avif"
+                                alt="Abigail Santos de Thibodeau"
                                 width={300}
                                 height={400}
                                 className="object-cover w-full h-full"
-                            /> */}
+                            />
                             <div className="w-full h-full bg-gray-300"></div>
                         </div>
                     </motion.div>

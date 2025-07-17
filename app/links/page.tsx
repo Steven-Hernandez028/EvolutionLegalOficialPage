@@ -7,18 +7,16 @@ import {
   Mail,
   Instagram,
   Facebook,
-  Linkedin,
   Calendar,
   FileText,
   Users,
   Scale,
   ExternalLink,
 } from "lucide-react"
-import { Navbar } from "@/components/navbar"
 import { Footer } from "@/components/footer"
 import { useLanguage } from "@/contexts/language-context"
-import Image from "next/image"
 import Link from "next/link"
+import { NavbarAndTopBar } from "@/components/TopBarAndNavbar"
 
 export default function LinksPage() {
   const { t } = useLanguage()
@@ -101,15 +99,14 @@ export default function LinksPage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-primary via-primary to-primary/90">
-      <Navbar />
-
+      <NavbarAndTopBar />
       <div className="pt-20 pb-16">
         <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="text-center mb-12">
             {/* <div className="flex justify-center mb-6">
               <div className="relative">
                 <Image
-                  src="/logo.png"
+                  src="/logo.avif"
                   alt="LegalStudio Logo"
                   width={120}
                   height={120}

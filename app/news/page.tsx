@@ -2,7 +2,6 @@
 
 import { motion } from "framer-motion"
 import { Calendar, Clock, ExternalLink, Bell, Tag, Link } from "lucide-react"
-import { Navbar } from "@/components/navbar"
 import { Footer } from "@/components/footer"
 import { useLanguage } from "@/contexts/language-context"
 import Image from "next/image"
@@ -10,6 +9,7 @@ import { useEffect, useState } from "react"
 import { useRouter } from "next/navigation"
 import { EventRegistrationModal } from "@/components/EventRegistrationModal"
 import NewsEvents, { EventDTO } from "@/components/Events"
+import { NavbarAndTopBar } from "@/components/TopBarAndNavbar"
 
 interface BlogResponse {
   id: string
@@ -62,7 +62,7 @@ export default function NewsPage() {
 
   return (
     <div className="min-h-screen bg-secondary">
-      <Navbar />
+      <NavbarAndTopBar />
 
 
       <section className="pt-20 pb-12 bg-gradient-to-br from-primary via-primary to-primary/90">
@@ -70,7 +70,7 @@ export default function NewsPage() {
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="text-center space-y-4">
             <div className="flex justify-center mb-6">
               <Image
-                src="/logo.png"
+                src="/logo.avif"
                 alt="Evolution Legal Advantage Logo"
                 width={80}
                 height={80}

@@ -28,7 +28,7 @@ export function Footer() {
             >
               <div className="flex items-center space-x-2">
                    <Image
-                              src="/logo.png"
+                              src="/logo.avif"
                               alt="Evolution Legal Advantage Logo"
                               width={32}
                               height={32}

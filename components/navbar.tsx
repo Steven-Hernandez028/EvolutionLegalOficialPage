@@ -33,7 +33,7 @@ export function Navbar() {
             >
               <div className="relative">
                 <Image
-                  src="/logo.png"
+                  src="/logo.avif"
                   alt="Evolution Legal Advantage Logo"
                   width={32}
                   height={32}

@@ -4,8 +4,7 @@ import type React from "react"
 
 import { useState } from "react"
 import { motion } from "framer-motion"
-import { MapPin, Phone, Mail, Clock, MessageSquare, Send, CheckCircle } from "lucide-react"
-import { Navbar } from "@/components/navbar"
+import { MapPin, Phone, Mail, Clock, Send, CheckCircle } from "lucide-react"
 import { Footer } from "@/components/footer"
 import { useLanguage } from "@/contexts/language-context"
 import { Button } from "@/components/ui/button"
@@ -14,6 +13,7 @@ import { Textarea } from "@/components/ui/textarea"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import Image from "next/image"
 import Link from "next/link"
+import { NavbarAndTopBar } from "@/components/TopBarAndNavbar"
 
 export default function ContactPage() {
   const { t } = useLanguage()
@@ -49,7 +49,8 @@ export default function ContactPage() {
   if (isSubmitted) {
     return (
       <div className="min-h-screen bg-secondary">
-        <Navbar />
+      <NavbarAndTopBar />
+
         <div className="pt-20 pb-16">
           <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <motion.div
@@ -78,14 +79,14 @@ export default function ContactPage() {
 
   return (
     <div className="min-h-screen bg-secondary">
-      <Navbar />
+      <NavbarAndTopBar />
 
       {/* Header */}
       <section className="pt-20 pb-12 bg-gradient-to-br from-primary via-primary to-primary/90">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="text-center space-y-4">
             <div className="flex justify-center mb-6">
-              <Image src="/logo.png" alt="LegalStudio Logo" width={80} height={80} className="rounded-full" />
+              <Image src="/logo.avif" alt="LegalStudio Logo" width={80} height={80} className="rounded-full" />
             </div>
             <h1 className="text-4xl lg:text-5xl font-bold text-white">{t("contact.title")}</h1>
             <div className="text-2xl text-accent font-semibold">{t("contact.subtitle")}</div>

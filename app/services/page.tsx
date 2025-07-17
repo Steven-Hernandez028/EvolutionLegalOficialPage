@@ -1,7 +1,7 @@
 "use client"
 
 import { Footer } from "@/components/footer";
-import { Navbar } from "@/components/navbar";
+import { NavbarAndTopBar } from "@/components/TopBarAndNavbar";
 import { motion } from "framer-motion";
 import {
   Scale,
@@ -259,7 +259,7 @@ export default function Services() {
 
   return (
     <div className="min-h-screen bg-secondary">
-      <Navbar />
+      <NavbarAndTopBar />
 
       {/* Hero Section */}
       <section className="pt-24 pb-12 bg-primary">
