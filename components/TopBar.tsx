@@ -39,7 +39,8 @@ export function TopBar() {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-14 relative">
-          <div className="flex-1 z-10">
+          {/* Logo - Solo visible en desktop */}
+          <div className="flex-1 z-10 hidden lg:block">
             <LinkMotion 
               href="/" 
               whileHover={{ scale: 1.02 }} 
@@ -63,7 +64,8 @@ export function TopBar() {
             </LinkMotion>
           </div>
 
-          <div className="flex h-8 ml-4 gap-2">
+          {/* Banderas - Centradas en móvil, a la derecha en desktop */}
+          <div className="flex h-8 gap-2 lg:ml-4 lg:justify-end lg:flex-1 justify-center flex-1">
             {countries.map((country, index) => (
               <motion.div
                 key={country.code}

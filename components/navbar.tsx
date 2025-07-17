@@ -4,8 +4,11 @@ import { useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { ChevronDown, Menu, X } from "lucide-react"
 import Link from "next/link"
+import Image from "next/image"
 import { LanguageSwitcher } from "@/components/language-switcher"
 import { useLanguage } from "@/contexts/language-context"
+
+const LinkMotion = motion.create(Link)
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
@@ -21,9 +24,29 @@ export function Navbar() {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
-          {/* Navigation Items - Desktop */}
+          {/* Logo - Solo visible en móvil */}
+          <div className="lg:hidden">
+            <LinkMotion 
+              href="/" 
+              whileHover={{ scale: 1.02 }} 
+              className="flex items-center space-x-3 group"
+            >
+              <div className="relative">
+                <Image
+                  src="/logo.png"
+                  alt="Evolution Legal Advantage Logo"
+                  width={32}
+                  height={32}
+                  className="rounded-full ring-2 ring-white/20 group-hover:ring-accent/50 transition-all duration-300"
+                />
+              </div>
+              <span className="text-base font-bold text-white group-hover:text-accent transition-colors duration-300">
+                Evolution Legal
+              </span>
+            </LinkMotion>
+          </div>
+
           <div className="hidden lg:flex items-center space-x-8 flex-1">
-            {/* Nosotros Dropdown */}
             <div
               className="relative"
               onMouseEnter={() => setIsDropdownOpen("about")}
@@ -59,7 +82,7 @@ export function Navbar() {
               {t("nav.testimonials")}
             </Link>
 
-            {/* Recursos Dropdown */}
+          
             <div
               className="relative"
               onMouseEnter={() => setIsDropdownOpen("resources")}
@@ -104,13 +127,12 @@ export function Navbar() {
             <LanguageSwitcher />
           </div>
 
-          {/* Mobile Menu Button */}
           <button onClick={() => setIsOpen(!isOpen)} className="lg:hidden text-white">
             {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
           </button>
         </div>
 
-        {/* Mobile Navigation */}
+
         <AnimatePresence>
           {isOpen && (
             <motion.div
