@@ -13,7 +13,7 @@ import { NavbarAndTopBar } from "@/components/TopBarAndNavbar"
 export default function FounderPage() {
   const { t } = useLanguage()
 
-
+  
   return (
     <div className="min-h-screen bg-secondary">
      <NavbarAndTopBar />
