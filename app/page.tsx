@@ -6,11 +6,13 @@ import { CTASection } from "@/components/cta-section"
 import { TestimonialsSection } from "@/components/testimonials-section"
 import { InstagramSection } from "@/components/instagram-section"
 import { Footer } from "@/components/footer"
+import { TopBar } from "@/components/TopBar"
 
 export default function Home() {
   return (
     <main className="min-h-screen bg-primary">
-       <Navbar />
+      <TopBar />
+      <Navbar />
       <HeroSection />
       <LawyerSection />
       <ServicesSection />

@@ -2,14 +2,10 @@
 
 import { useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
-import { ChevronDown, Menu, X, Phone } from "lucide-react"
+import { ChevronDown, Menu, X } from "lucide-react"
 import Link from "next/link"
-import { Button } from "@/components/ui/button"
 import { LanguageSwitcher } from "@/components/language-switcher"
-import Image from "next/image"
 import { useLanguage } from "@/contexts/language-context"
-
-const LinkMotion = motion.create(Link)
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
@@ -17,29 +13,16 @@ export function Navbar() {
 
   const { t } = useLanguage()
 
-
   return (
     <motion.nav
       initial={{ y: -100 }}
       animate={{ y: 0 }}
-      className="fixed top-0 w-full z-50 bg-primary/95 backdrop-blur-md border-b border-white/10"
+      className="sticky top-0 w-full z-50 bg-primary/95 backdrop-blur-md border-b border-white/10"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
-          {/* Logo */}
-          <LinkMotion href="/" whileHover={{ scale: 1.05 }} className="flex items-center space-x-2">
-            <Image
-              src="/logo.png"
-              alt="Evolution Legal Advantage Logo"
-              width={32}
-              height={32}
-              className="rounded-full"
-            />
-            <span className="text-xl font-bold text-white">{t("company.name")}</span>
-          </LinkMotion>
-
-          {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center space-x-8">
+          {/* Navigation Items - Desktop */}
+          <div className="hidden lg:flex items-center space-x-8 flex-1">
             {/* Nosotros Dropdown */}
             <div
               className="relative"
@@ -58,9 +41,6 @@ export function Navbar() {
                     exit={{ opacity: 0, y: 10 }}
                     className="absolute top-full left-0 mt-2 w-64 bg-secondary rounded-lg shadow-xl border border-white/10 overflow-hidden"
                   >
-                    {/* <Link href="/about" className="block px-4 py-3 text-primary hover:bg-accent/10 transition-colors">
-                      {t("nav.about")}
-                    </Link> */}
                     <Link href="/founder" className="block px-4 py-3 text-primary hover:bg-accent/10 transition-colors">
                       {t("nav.founder")}
                     </Link>
@@ -119,15 +99,18 @@ export function Navbar() {
             </Link>
           </div>
 
-          <div className= "hidden lg:block">
+          {/* Language Switcher - Desktop */}
+          <div className="hidden lg:block">
             <LanguageSwitcher />
           </div>
-         
+
+          {/* Mobile Menu Button */}
           <button onClick={() => setIsOpen(!isOpen)} className="lg:hidden text-white">
             {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
           </button>
         </div>
 
+        {/* Mobile Navigation */}
         <AnimatePresence>
           {isOpen && (
             <motion.div
@@ -137,9 +120,6 @@ export function Navbar() {
               className="lg:hidden bg-primary/95 backdrop-blur-md"
             >
               <div className="px-2 pt-2 pb-3 space-y-1">
-                {/* <Link href="/about" className="block px-3 py-2 text-white hover:text-accent">
-                  {t("nav.about")}
-                </Link> */}
                 <Link href="/founder" className="block px-3 py-2 text-white hover:text-accent">
                   {t("nav.founder")}
                 </Link>

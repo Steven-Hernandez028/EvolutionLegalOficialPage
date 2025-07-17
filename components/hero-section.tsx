@@ -101,8 +101,8 @@ export function HeroSection() {
       </div>
 
       {/* Main Content */}
-      <div className="flex-1 flex items-center justify-center relative z-30 mt-20 pt-16 pb-10">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="flex-1 flex items-center justify-center relative z-30">
+        <div className="max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="text-center space-y-8">
             {/* Main Title */}
             <motion.div
