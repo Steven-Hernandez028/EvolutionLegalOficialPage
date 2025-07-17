@@ -12,8 +12,14 @@ export function HeroSection() {
 
   const backgroundImages = [
     "https://images.unsplash.com/photo-1619771766980-368d32e44b82?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    "https://images.unsplash.com/photo-1417733403748-83bbc7c05140?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",  
+    "https://images.unsplash.com/photo-1417733403748-83bbc7c05140?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     "https://images.unsplash.com/photo-1568092806323-8ec13dfa9b92?q=80&w=1074&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  ]
+
+  const logotipo = [
+    { key: "logo1", image: "https://colegiodeabogados.org.do/wp-content/uploads/2024/05/log.fw-removebg-preview.png" },
+    { key: "logo2", image: "https://www.aeuropea.com/wp-content/uploads/2022/01/AEA-logo@2x.png" },
+    { key: "logo3", image: "/aei.png" }
   ]
 
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
@@ -28,7 +34,8 @@ export function HeroSection() {
   }, [backgroundImages.length])
 
   return (
-    <section className="min-h-screen flex items-center justify-center relative overflow-hidden pt-16">
+    <section className="min-h-screen flex flex-col relative overflow-hidden">
+      {/* Background */}
       <div className="absolute inset-0">
         {backgroundImages.map((image, index) => (
           <motion.div
@@ -48,6 +55,7 @@ export function HeroSection() {
 
         <div className="absolute inset-0 bg-gradient-to-br from-primary/90 via-primary/80 to-primary/90 z-10" />
 
+        {/* Animated circles */}
         <div className="absolute inset-0 z-20">
           <motion.div
             animate={{
@@ -77,53 +85,76 @@ export function HeroSection() {
         </div>
       </div>
 
+      {/* Image slider dots */}
       <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-30 flex space-x-2">
         {backgroundImages.map((_, index) => (
           <button
             key={index}
             onClick={() => setCurrentImageIndex(index)}
             className={`w-3 h-3 rounded-full transition-all duration-300 ${index === currentImageIndex
-                ? 'bg-accent shadow-lg'
-                : 'bg-white/30 hover:bg-white/50'
+              ? 'bg-accent shadow-lg'
+              : 'bg-white/30 hover:bg-white/50'
               }`}
             aria-label={`Ir a imagen ${index + 1}`}
           />
         ))}
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-30">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-            className="space-y-8"
-          >
-            <motion.h1
-              initial={{ opacity: 0, y: 20 }}
+      {/* Main Content */}
+      <div className="flex-1 flex items-center justify-center relative z-30 mt-20 pt-16 pb-10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center space-y-8">
+            {/* Main Title */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2, duration: 0.8 }}
-              className="text-5xl lg:text-7xl font-bold text-white leading-tight drop-shadow-lg"
+              transition={{ duration: 0.8 }}
+              className="space-y-4"
             >
-              {t("hero.title")}
-              <span className="block text-accent drop-shadow-lg">{t("hero.subtitle")}</span>
-              <span className="block text-3xl lg:text-4xl font-normal text-white/90 drop-shadow-md">{t("hero.description")}</span>
-            </motion.h1>
+              <motion.h1
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.2, duration: 0.8 }}
+                className="text-4xl sm:text-5xl lg:text-7xl font-bold text-white leading-tight drop-shadow-lg"
+              >
+                {t("hero.title")}
+              </motion.h1>
+              
+              <motion.h2
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.3, duration: 0.8 }}
+                className="text-3xl sm:text-4xl lg:text-5xl font-bold text-accent drop-shadow-lg"
+              >
+                {t("hero.subtitle")}
+              </motion.h2>
+              
+              <motion.h3
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.4, duration: 0.8 }}
+                className="text-xl sm:text-2xl lg:text-3xl font-normal text-white/90 drop-shadow-md"
+              >
+                {t("hero.description")}
+              </motion.h3>
+            </motion.div>
 
+            {/* Content Description */}
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.4, duration: 0.8 }}
-              className="text-xl text-white/95 max-w-lg leading-relaxed drop-shadow-md"
+              transition={{ delay: 0.5, duration: 0.8 }}
+              className="text-lg sm:text-xl text-white/95 max-w-3xl mx-auto leading-relaxed drop-shadow-md"
             >
               {t("hero.content")}
             </motion.p>
 
+            {/* Action Buttons */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.6, duration: 0.8 }}
-              className="flex flex-col sm:flex-row gap-4"
+              className="flex flex-col sm:flex-row gap-4 justify-center items-center"
             >
               <Button
                 asChild
@@ -149,44 +180,47 @@ export function HeroSection() {
                 <Link href="#services">{t("hero.buttons.services")}</Link>
               </Button>
             </motion.div>
-
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-            className="relative"
-          >
-            <div className="relative w-full h-96 lg:h-[500px] bg-gradient-to-br from-accent/20 to-accent/5 rounded-3xl backdrop-blur-lg border border-white/20 flex items-center justify-center shadow-2xl">
-              <div className="text-center space-y-4">
-                <motion.div
-                  animate={{
-                    rotate: [0, 5, -5, 0],
-                    scale: [1, 1.05, 1]
-                  }}
-                  transition={{
-                    duration: 6,
-                    repeat: Infinity,
-                    ease: "easeInOut"
-                  }}
-                  className="w-24 h-24 bg-accent rounded-full flex items-center justify-center mx-auto shadow-lg"
-                >
-                  <svg className="w-12 h-12 text-primary" fill="currentColor" viewBox="0 0 20 20">
-                    <path
-                      fillRule="evenodd"
-                      d="M3 6a3 3 0 013-3h10a1 1 0 01.8 1.6L14.25 8l2.55 3.4A1 1 0 0116 13H6a1 1 0 00-1 1v3a1 1 0 11-2 0V6z"
-                      clipRule="evenodd"
-                    />
-                  </svg>
-                </motion.div>
-                <h3 className="text-2xl font-bold text-white drop-shadow-md">Representación Legal</h3>
-                <p className="text-white/90 max-w-sm drop-shadow-sm">Comprometidos con la excelencia y la justicia en cada caso</p>
-              </div>
-            </div>
-          </motion.div>
+          </div>
         </div>
       </div>
+
+      {/* Logo Banner */}
+      <motion.div
+        initial={{ opacity: 0, y: 50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.8, duration: 0.8 }}
+        className="relative z-30 bg-white/10 backdrop-blur-md border-t border-white/20"
+      >
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+       
+          
+          {/* Logo Carousel */}
+          <div className="flex items-center justify-center">
+            <div className="flex space-x-8 sm:space-x-12 md:space-x-16 lg:space-x-20">
+              {logotipo.map((logo, index) => (
+                <motion.div
+                  key={logo.key}
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ delay: 0.9 + index * 0.1, duration: 0.5 }}
+                  className="group relative"
+                >
+                  <div className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 flex items-center justify-center bg-white/10 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110">
+                    <img
+                      src={logo.image}
+                      alt={logo.key}
+                      className="object-contain w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 filter grayscale group-hover:grayscale-0 transition-all duration-300"
+                    />
+                  </div>
+                  
+                  {/* Hover effect overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-accent/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl"></div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </motion.div>
     </section>
   )
 }
