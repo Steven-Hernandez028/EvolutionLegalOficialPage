@@ -37,7 +37,8 @@ export function Footer() {
                 <span className="text-2xl font-bold text-white">{t("company.name")}</span>
               </div>
               <p className="text-white/80 leading-relaxed">
-                {t("company.slogan")} {t("company.tagline")}
+                {t("company.slogan")} 
+                {/* {t("company.tagline")} */}
               </p>
 
               <div className="flex space-x-4">

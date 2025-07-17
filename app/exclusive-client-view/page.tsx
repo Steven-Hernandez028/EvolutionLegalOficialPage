@@ -3,7 +3,7 @@
 import { motion, useScroll, useTransform } from "framer-motion"
 import { HeroSection } from "@/components/hero-section"
 import { LawyerSection } from "@/components/lawyer-section"
-import { ServicesSection } from "@/components/services-section"
+import { ServicesSection } from "@/components/services-section_old"
 import { TestimonialsSection } from "@/components/testimonials-section"
 import { InstagramSection } from "@/components/instagram-section"
 import { CTASection } from "@/components/cta-section"

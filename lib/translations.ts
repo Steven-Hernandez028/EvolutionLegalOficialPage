@@ -44,7 +44,7 @@ export const translations = {
       subtitle: "Advantage",
       description: "Somos las ventajas, de la evolución legal",
       content:
-        "Tu éxito sin barreras de idioma: te atendemos en español, inglés y francés. Envíenos un mensaje y le atenderemos a la mayor brevedad para coordinar una cita virtual o presencial.",
+        "Envíenos un mensaje y le atenderemos a la mayor brevedad para coordinar una cita virtual o presencial.",
       cta: "Agendar Cita",
       services: "Nuestros Servicios",
       buttons: {
@@ -298,7 +298,7 @@ export const translations = {
       subtitle: "Advantage",
       description: "We are the advantages of legal evolution",
       content:
-        "Your success without language barriers: we serve you in Spanish, English and French. Send us a message and we will assist you as soon as possible to coordinate a virtual or in-person appointment.",
+        "Send us a message and we will assist you as soon as possible to coordinate a virtual or in-person appointment.",
       cta: "Schedule Appointment",
       services: "Our Services",
       buttons: {
@@ -566,7 +566,7 @@ export const translations = {
       subtitle: "Avantage",
       description: "Nous sommes les avantages de l'évolution juridique",
       content:
-        "Votre succès sans barrières linguistiques : nous vous servons en espagnol, anglais et français. Envoyez-nous un message et nous vous assisterons dans les plus brefs délais pour coordonner un rendez-vous virtuel ou en personne.",
+        "Envoyez-nous un message et nous vous assisterons dans les plus brefs délais pour coordonner un rendez-vous virtuel ou en personne.",
       cta: "Prendre Rendez-vous",
       services: "Nos Services",
       buttons: {
