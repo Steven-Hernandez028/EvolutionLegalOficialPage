@@ -11,7 +11,7 @@ export  interface FounderProps {
 }
 export function Specializations(  { url } : FounderProps ) {
 
-    const { t,getArrayObjects,getArrayStrings } = useLanguage();
+    const { t,getArrayObjects,getArrayStrings,language } = useLanguage();
     const [specializations, setSpecializations ] = useState<string[]>([]);
     const [achievements, setAchievements ] = useState<any>([]);
     
@@ -19,7 +19,7 @@ export function Specializations(  { url } : FounderProps ) {
           setSpecializations(getArrayStrings(`${url}.specializations`));
           setAchievements(getArrayObjects(`${url}.achievements`));
 
-    }, [])
+    }, [language])
 
 
 

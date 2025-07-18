@@ -354,7 +354,9 @@ export const translations = {
     },
   },
   en: {
-    // Navigation
+    founder: {  education: "Education",
+  specializations: "Specializations",
+  achievements: "Achievements"},
     lawyer: {
 
       section: {
@@ -444,20 +446,87 @@ export const translations = {
       },
     },
     // CEO Page
-    ceo: {
-      title: "Meet Our CEO",
-      name: "Abigail Santos de Thibodeau",
-      subtitle: "Founding Lawyer and CEO",
-      experience: "Over a decade of experience",
-      education: "International Training",
-      specializations: "Specializations",
-      achievements: "Achievements",
-      philosophy: "My Philosophy",
-      philosophyText:
-        "My commitment to the legal community and my insatiable thirst for learning have led me beyond borders, creating an environment where our clients truly feel at home.",
-      countries: "Countries Visited",
-      countriesList: "Cuba, Mexico, Peru, Colombia, United States, Canada, Dominican Republic",
+    ceo:[
+      {
+        lawyerTitle: "Founder",
+  lawyerDescription: "Founding attorney and CEO of Evolution Legal with over 15 years of experience in civil and criminal law.",
+  MainProfileTitle: "My Story: A Global Passion for Law",
+  MainProfileDescription: `
+    <h2 class="text-4xl font-bold text-primary">My Story: A Global Passion for Law</h2>
+
+    <br/>
+    <p class="text-xl text-primary/80 leading-relaxed">
+      My journey in the legal world began with a deep passion for learning and an unwavering desire to serve. From the start, I’ve had the privilege of working in various economic sectors, which has given me a broad vision and a solid foundation as a professional. These experiences have helped me deeply understand each client’s unique needs, empowering me to deliver effective and truly personalized legal solutions.
+    </p>
+    <br/>
+    <p class="text-xl text-primary/80 leading-relaxed">
+      Throughout my career, I’ve collaborated with a wide range of companies and individuals, gaining valuable insights and skills that I apply daily at Evolution Legal. My commitment to the legal community and my thirst for continuous learning have led me beyond borders. I’ve had the fortune to travel to more than seven countries, including Cuba, Mexico, Peru, Colombia, the United States, Canada, and, of course, my beloved Dominican Republic. Each legal culture I’ve explored has brought new perspectives and innovative ideas that I’ve integrated into the firm, constantly enriching the quality of our services.
+      This international experience is what sets us apart and makes us the preferred law firm among foreigners in the Dominican Republic. Thanks to these global implementations, we strive to create an environment where our clients from other latitudes truly feel at home, understood, and supported by a legal approach that transcends borders.
+    </p>
+    <br/>
+    <p class="text-xl text-primary/80 leading-relaxed">
+      I am deeply rooted in my family values and uphold a strong ethical commitment to society. I strongly believe in the importance of integrity, justice, and transparency in all aspects of my professional life. My dedication to continuous learning drives me to stay updated with legal changes and advancements, ensuring that you always receive the best possible advice and representation.
+      At Evolution Legal, our goal is to inspire trust and bring peace of mind to our clients, assuring them that their interests are in the hands of dedicated, passionate professionals with a global perspective.
+      Thank you for joining us on this journey and allowing us to be part of your success and achievements.
+    </p>`,
+  image: "/person.avif",
+  title: "Meet Our CEO",
+  name: "Abigail Santos de Thibodeau",
+  subtitle: "Founding Attorney and CEO",
+  educationSubtitle: "Solid academic background supported by the country’s top educational institutions.",
+  educationList: [
+    {
+      degree: "Law",
+      institution: "Autonomous University of Santo Domingo",
+      year: "2010",
+      honor: "Magna Cum Laude",
     },
+    {
+      degree: "Specialization in Real Estate Law",
+      institution: "Institute of Legal Training",
+      year: "2015",
+      honor: "Academic Distinction",
+    },
+    {
+      degree: "International Certification",
+      institution: "European Lawyers Association",
+      year: "2020",
+      honor: "Professional Certification",
+    },
+  ],
+  specializations: [
+    "Real Estate Law and Due Diligence",
+    "Immigration and Consular Law",
+    "Corporate and Business Law",
+    "International Family Law",
+    "Legal Document Management",
+    "Legal Training",
+  ],
+  achievements: [
+    {
+      year: "2023",
+      title: "AEI Recognition",
+      organization: "Real Estate Business Association",
+    },
+    {
+      year: "2022",
+      title: "AEA Certification",
+      organization: "European Lawyers Association",
+    },
+    {
+      year: "2021",
+      title: "Distinguished Member",
+      organization: "Dominican Bar Association",
+    },
+    {
+      year: "2020",
+      title: "International Expansion",
+      organization: "Presence in Canada and the United States",
+    },
+  ]
+}
+      
+    ],
     // Services
     services: {
       title: "Our Services",
@@ -631,6 +700,11 @@ export const translations = {
     },
   },
   fr: {
+    founder :{
+        education: "Formation",
+  specializations: "Spécialisations",
+  achievements: "Réalisations"
+    },
     lawyer: {
 
       section: {
@@ -722,20 +796,84 @@ export const translations = {
       },
     },
     // CEO Page
-    ceo: {
-      title: "Rencontrez Notre PDG",
-      name: "Abigail Santos de Thibodeau",
-      subtitle: "Avocate Fondatrice et PDG",
-      experience: "Plus d'une décennie d'expérience",
-      education: "Formation Internationale",
-      specializations: "Spécialisations",
-      achievements: "Réalisations",
-      philosophy: "Ma Philosophie",
-      philosophyText:
-        "Mon engagement envers la communauté juridique et ma soif insatiable d'apprentissage m'ont menée au-delà des frontières, créant un environnement où nos clients se sentent vraiment chez eux.",
-      countries: "Pays Visités",
-      countriesList: "Cuba, Mexique, Pérou, Colombie, États-Unis, Canada, République Dominicaine",
+    ceo: [{
+       lawyerTitle: "Fondatrice",
+  lawyerDescription: "Avocate fondatrice et PDG de Evolution Legal avec plus de 15 ans d’expérience en droit civil et pénal.",
+  MainProfileTitle: "Mon Histoire : Une Passion Mondiale pour le Droit",
+  MainProfileDescription: `
+    <h2 class="text-4xl font-bold text-primary">Mon Histoire : Une Passion Mondiale pour le Droit</h2>
+
+    <br/>
+    <p class="text-xl text-primary/80 leading-relaxed">
+      Mon parcours dans le monde juridique a commencé avec une passion profonde pour l’étude et un désir inébranlable de servir. Dès mes débuts, j’ai eu le privilège de travailler dans divers secteurs économiques, ce qui m’a offert une vision globale et une base solide en tant que professionnelle. Ces expériences m’ont permis de comprendre en profondeur les besoins uniques de chaque client, me permettant ainsi de proposer des solutions juridiques efficaces et véritablement personnalisées.
+    </p>
+    <br/>
+    <p class="text-xl text-primary/80 leading-relaxed">
+      Au cours de ma carrière, j’ai collaboré avec un large éventail d’entreprises et de particuliers, acquérant des connaissances précieuses que j’applique chaque jour chez Evolution Legal. Mon engagement envers la communauté juridique et ma soif insatiable d’apprendre m’ont conduite au-delà des frontières. J’ai eu la chance de voyager dans plus de sept pays, dont Cuba, le Mexique, le Pérou, la Colombie, les États-Unis, le Canada, et bien sûr, ma chère République dominicaine. Chaque culture juridique explorée m’a apporté de nouvelles perspectives et des idées novatrices que j’ai intégrées au sein du cabinet, enrichissant continuellement la qualité de nos services.
+      Cette expérience internationale nous distingue et fait de nous le cabinet juridique privilégié par les étrangers en République dominicaine. Grâce à ces mises en œuvre internationales, nous nous efforçons de créer un environnement dans lequel nos clients étrangers se sentent réellement chez eux, compris et soutenus par une approche juridique qui transcende les frontières.
+    </p>
+    <br/>
+    <p class="text-xl text-primary/80 leading-relaxed">
+      Je suis profondément attachée à mes valeurs familiales et j’entretiens un engagement éthique fort envers la société. Je crois fermement à l’importance de l’intégrité, de la justice et de la transparence dans toutes les facettes de ma vie professionnelle. Mon engagement envers l’apprentissage constant me pousse à rester informée des évolutions du droit afin de garantir les meilleurs conseils et représentations à tout moment.
+      Chez Evolution Legal, notre objectif est d’inspirer la confiance et de procurer la tranquillité d’esprit à nos clients, en leur assurant que leurs intérêts sont entre les mains de professionnels dévoués, passionnés et dotés d’une vision mondiale.
+      Merci de nous accompagner dans ce parcours et de nous permettre de faire partie de vos réussites et accomplissements.
+    </p>`,
+  image: "/person.avif",
+  title: "Rencontrez Notre PDG",
+  name: "Abigail Santos de Thibodeau",
+  subtitle: "Avocate Fondatrice et PDG",
+  educationSubtitle: "Une formation académique solide soutenue par les meilleures institutions du pays.",
+  educationList: [
+    {
+      degree: "Droit",
+      institution: "Université Autonome de Saint-Domingue",
+      year: "2010",
+      honor: "Magna Cum Laude",
     },
+    {
+      degree: "Spécialisation en Droit Immobilier",
+      institution: "Institut de Formation Juridique",
+      year: "2015",
+      honor: "Distinction Académique",
+    },
+    {
+      degree: "Certification Internationale",
+      institution: "Association Européenne des Avocats",
+      year: "2020",
+      honor: "Certification Professionnelle",
+    },
+  ],
+  specializations: [
+    "Droit Immobilier et Due Diligence",
+    "Droit de l’Immigration et Consulaire",
+    "Droit des Sociétés et des Affaires",
+    "Droit International de la Famille",
+    "Gestion des Documents Juridiques",
+    "Formation Juridique",
+  ],
+  achievements: [
+    {
+      year: "2023",
+      title: "Reconnaissance AEI",
+      organization: "Association des Entreprises Immobilières",
+    },
+    {
+      year: "2022",
+      title: "Certification AEA",
+      organization: "Association Européenne des Avocats",
+    },
+    {
+      year: "2021",
+      title: "Membre Distinguée",
+      organization: "Barreau de la République Dominicaine",
+    },
+    {
+      year: "2020",
+      title: "Expansion Internationale",
+      organization: "Présence au Canada et aux États-Unis",
+    },
+  ]
+    }],
     // Services
     services: {
       title: "Nos Services",

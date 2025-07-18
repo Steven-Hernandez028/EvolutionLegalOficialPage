@@ -10,13 +10,13 @@ export  interface FounderProps {
   url  : string  
 }
 export function Education( { url } : FounderProps ) {
-    const { t, getArrayObjects} = useLanguage();
+    const { t, getArrayObjects,language} = useLanguage();
   
   const [education, setEducation] = useState<any>([]);
   
   useEffect(()=>{
     setEducation( getArrayObjects("ceo[0].educationList"))
-  }, [])
+  }, [language])
 
   return (
  
