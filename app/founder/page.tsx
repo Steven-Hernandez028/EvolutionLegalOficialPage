@@ -7,7 +7,6 @@ import Image from "next/image"
 import { MainProfile } from "@/components/MainProfile"
 import { Education } from "@/components/Education"
 import { Specializations } from "@/components/Specializations"
-import { Timeline } from "@/components/Timeline"
 import { NavbarAndTopBar } from "@/components/TopBarAndNavbar"
 
 export default function FounderPage() {
@@ -36,7 +35,6 @@ export default function FounderPage() {
       <MainProfile />
       <Education />
       <Specializations />
-      {/* <Timeline /> */}
       <Footer />
 
     </div>

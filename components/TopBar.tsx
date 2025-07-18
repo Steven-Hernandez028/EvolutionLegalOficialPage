@@ -52,7 +52,6 @@ export function TopBar() {
                   alt="Evolution Legal Advantage Logo"
                   width={36}
                   height={36}
-                  className="rounded-full ring-2 ring-white/20 group-hover:ring-accent/50 transition-all duration-300"
                 />
               </div>
               <span className="text-lg font-bold text-white group-hover:text-accent transition-colors duration-300 hidden sm:block">
