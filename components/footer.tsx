@@ -7,7 +7,7 @@ import Link from "next/link"
 import Image from "next/image"
 
 
-export function Footer() {
+export function Footer( ) {
   const { t } = useLanguage()
   const whatsappNumber = "18092611453"
   const whatsappNumberToShow = "+1 (809) 261-1453"
@@ -28,7 +28,7 @@ export function Footer() {
             >
               <div className="flex items-center space-x-2">
                    <Image
-                              src="/logo.png"
+                              src="/logo.avif"
                               alt="Evolution Legal Advantage Logo"
                               width={32}
                               height={32}

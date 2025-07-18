@@ -5,7 +5,6 @@ import type React from "react"
 import { useEffect, useState } from "react"
 import { motion } from "framer-motion"
 import { Calendar, Clock, User, Tag, MessageSquare, ArrowLeft, Facebook, Twitter, Linkedin } from "lucide-react"
-import { Navbar } from "@/components/navbar"
 import { Footer } from "@/components/footer"
 import { useLanguage } from "@/contexts/language-context"
 import { blogPosts, blogComments } from "@/lib/blog-data"
@@ -16,6 +15,7 @@ import Link from "next/link"
 import Image from "next/image"
 import { useParams } from "next/navigation"
 import { marked } from "marked"
+import { NavbarAndTopBar } from "@/components/TopBarAndNavbar"
 
 
 export interface BlogPost {
@@ -172,8 +172,8 @@ export default function BlogPostPage() {
 
   return (
     <div className="min-h-screen bg-secondary">
-      <Navbar />
-
+      
+      <NavbarAndTopBar/>
       {/* Header */}
       <section className="pt-20 pb-8">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">

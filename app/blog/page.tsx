@@ -3,7 +3,6 @@
 import { useEffect, useState } from "react"
 import { motion } from "framer-motion"
 import { Search, Calendar, Clock, User, Tag } from "lucide-react"
-import { Navbar } from "@/components/navbar"
 import { Footer } from "@/components/footer"
 import { useLanguage } from "@/contexts/language-context"
 import { Input } from "@/components/ui/input"
@@ -11,6 +10,7 @@ import { Button } from "@/components/ui/button"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import Link from "next/link"
 import Image from "next/image"
+import { NavbarAndTopBar } from "@/components/TopBarAndNavbar"
 export interface Blog {
   id: string
   title: string
@@ -98,14 +98,12 @@ export default function BlogPage() {
 
   return (
     <div className="min-h-screen bg-secondary">
-      <Navbar />
-
-      {/* Header */}
+    <NavbarAndTopBar />
       <section className="pt-20 pb-12 bg-gradient-to-br from-primary via-primary to-primary/90">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="text-center space-y-4">
             <div className="flex justify-center mb-6">
-              <Image src="/logo.png" alt="LegalStudio Logo" width={80} height={80} className="rounded-full" />
+              <Image src="/logo.avif" alt="LegalStudio Logo" width={80} height={80} className="rounded-full" />
             </div>
             <h1 className="text-4xl lg:text-5xl font-bold text-white">{t("blog.title")}</h1>
             <div className="text-2xl text-accent font-semibold">{t("blog.subtitle")}</div>

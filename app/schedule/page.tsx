@@ -9,9 +9,9 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { Navbar } from "@/components/navbar"
 import { Footer } from "@/components/footer"
 import Image from "next/image"
+import { NavbarAndTopBar } from "@/components/TopBarAndNavbar"
 
 // Representa la información del formulario de agendamiento
 export interface AppointmentFormData {
@@ -108,7 +108,7 @@ export default function SchedulePage() {
   if (isSubmitted) {
     return (
       <div className="min-h-screen bg-secondary">
-         <Navbar />
+         <NavbarAndTopBar />
         <div className="pt-20 pb-16">
           <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <motion.div
@@ -154,14 +154,13 @@ export default function SchedulePage() {
 
   return (
     <div className="min-h-screen bg-secondary">
-      <Navbar />
-
+         <NavbarAndTopBar />
       {/* Header */}
       <section className="pt-20 pb-12 bg-gradient-to-br from-primary via-primary to-primary/90">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="text-center space-y-4">
             <div className="flex justify-center mb-6">
-              <Image src="/logo.png" alt="LegalStudio Logo" width={80} height={80} className="rounded-full" />
+              <Image src="/logo.avif" alt="LegalStudio Logo" width={80} height={80} className="rounded-full" />
             </div>
             <h1 className="text-4xl lg:text-5xl font-bold text-white">
               Agenda tu

@@ -46,7 +46,7 @@ export default function ExclusiveAboutPage() {
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="text-center mb-12">
           <div className="flex justify-center mb-6">
             <Image
-              src="/logo.png"
+              src="/logo.avif"
               alt="Evolution Legal Advantage Logo"
               width={80}
               height={80}
