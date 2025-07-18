@@ -3,31 +3,20 @@
 import { useLanguage } from "@/contexts/language-context"
 import { motion } from "framer-motion"
 import { GraduationCap } from "lucide-react"
+import { useEffect, useState } from "react"
 
 
-export function Education() {
-    const { t } = useLanguage();
- 
-  const education = [
-    {
-      degree: "Derecho",
-      institution: "Universidad Autónoma de Santo Domingo",
-      year: "2010",
-      honor: "Magna Cum Laude",
-    },
-    {
-      degree: "Especialización en Derecho Inmobiliario",
-      institution: "Instituto de Formación Jurídica",
-      year: "2015",
-      honor: "Distinción Académica",
-    },
-    {
-      degree: "Certificación Internacional",
-      institution: "Asociación Europea de Abogados",
-      year: "2020",
-      honor: "Certificación Profesional",
-    },
-  ]
+export  interface FounderProps { 
+  url  : string  
+}
+export function Education( { url } : FounderProps ) {
+    const { t, getArrayObjects} = useLanguage();
+  
+  const [education, setEducation] = useState<any>([]);
+  
+  useEffect(()=>{
+    setEducation( getArrayObjects("ceo[0].educationList"))
+  }, [])
 
   return (
  
@@ -41,13 +30,12 @@ export function Education() {
             className="text-center mb-16"
           >
             <h2 className="text-4xl font-bold text-white mb-4">{t("founder.education")}</h2>
-            <p className="text-xl text-white/80 max-w-3xl mx-auto">
-              Formación académica sólida respaldada por las mejores instituciones educativas del país.
+            <p className="text-xl text-white/80 max-w-3xl mx-auto"> {t(`${url}.educationSubtitle`)}
             </p>
           </motion.div>
 
           <div className="grid md:grid-cols-3 gap-8">
-            {education.map((edu, index) => (
+            {education.map((edu :any, index : any) => (
               <motion.div
                 key={edu.degree}
                 initial={{ opacity: 0, y: 20 }}

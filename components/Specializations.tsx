@@ -3,42 +3,25 @@
 import { useLanguage } from "@/contexts/language-context"
 import { motion } from "framer-motion"
 import { Trophy } from "lucide-react"
+import { useEffect, useState } from "react"
+
+ 
+export  interface FounderProps { 
+  url  : string  
+}
+export function Specializations(  { url } : FounderProps ) {
+
+    const { t,getArrayObjects,getArrayStrings } = useLanguage();
+    const [specializations, setSpecializations ] = useState<string[]>([]);
+    const [achievements, setAchievements ] = useState<any>([]);
+    
+    useEffect(()=>{
+          setSpecializations(getArrayStrings(`${url}.specializations`));
+          setAchievements(getArrayObjects(`${url}.achievements`));
+
+    }, [])
 
 
-export function Specializations() {
-
-    const { t } = useLanguage();
-  const specializations = [
-    "Derecho Inmobiliario y Due Diligence",
-    "Derecho Migratorio y Consular",
-    "Derecho Societario y Corporativo",
-    "Derecho de Familia Internacional",
-    "Gestión de Documentos Legales",
-    "Capacitación Jurídica",
-  ]
-
-  const achievements = [
-    {
-      year: "2023",
-      title: "Reconocimiento AEI",
-      organization: "Asociación de Empresas Inmobiliarias",
-    },
-    {
-      year: "2022",
-      title: "Certificación AEA",
-      organization: "Asociación Europea de Abogados",
-    },
-    {
-      year: "2021",
-      title: "Miembro Destacado",
-      organization: "Colegio de Abogados de RD",
-    },
-    {
-      year: "2020",
-      title: "Expansión Internacional",
-      organization: "Presencia en Canadá y Estados Unidos",
-    },
-  ]
 
 
   return (
@@ -77,7 +60,7 @@ export function Specializations() {
             >
               <h2 className="text-4xl font-bold text-primary mb-8">{t("founder.achievements")}</h2>
               <div className="space-y-6">
-                {achievements.map((achievement, index) => (
+                {achievements.map((achievement : any, index : any) => (
                   <motion.div
                     key={achievement.title}
                     initial={{ opacity: 0, y: 20 }}

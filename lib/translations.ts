@@ -2,18 +2,11 @@ export const translations = {
   es: {
     // Navigation
     lawyer: {
-      title: [
-        "Fundadora",
-        "Co-Fundador"
-      ],
-      description: [
-        "Abogada fundadora y CEO de Evolution Legal con más de 15 años de experiencia en derecho civil y penal.",
-        "Especialista en derecho corporativo y comercial con amplia experiencia en litigios complejos."
-      ],
+
       section: {
         title: "Nuestro Equipo",
-        subtitle: "Conoce a Nuestros Fundadores",
-        description: "Profesionales comprometidos con la excelencia legal y la satisfacción del cliente"
+        subtitle: "Conozca a Nuestros Fundadores",
+        description: "Profesionales comprometidos con la excelencia jurídica y la satisfacción del cliente"
       }
     },
     founder: {
@@ -102,20 +95,99 @@ export const translations = {
       },
     },
     // CEO Page
-    ceo: {
-      title: "Conoce a Nuestra CEO",
-      name: "Abigail Santos de Thibodeau",
-      subtitle: "Abogada Fundadora y CEO",
-      experience: "Más de una década de experiencia",
-      education: "Formación Internacional",
-      specializations: "Especializaciones",
-      achievements: "Logros",
-      philosophy: "Mi Filosofía",
-      philosophyText:
-        "Mi compromiso con la comunidad jurídica y mi insaciable sed de aprendizaje me han llevado a ir más allá de las fronteras, creando un ambiente donde nuestros clientes se sientan verdaderamente como en casa.",
-      countries: "Países Visitados",
-      countriesList: "Cuba, México, Perú, Colombia, Estados Unidos, Canadá, República Dominicana",
-    },
+    ceo: [
+      {
+        lawyerTitle: "Fundadora",
+        lawyerDescription: "Abogada fundadora y CEO de Evolution Legal con más de 15 años de experiencia en derecho civil y penal.",
+        MainProfileTitle: "Mi Historia: Una Pasión Global por el Derecho",
+        MainProfileDescription: ` 
+                                    <h2 class="text-4xl font-bold text-primary">Mi Historia: Una Pasión Global por el Derecho</h2>
+
+        <br/>
+        <p class="text-xl text-primary/80 leading-relaxed">
+                                Mi camino en el mundo del derecho se inició con una profunda pasión por el estudio y un inquebrantable deseo de servir. Desde mis comienzos, he tenido el privilegio de trabajar en diversos sectores económicos, lo que me ha proporcionado una visión integral y una base sólida como profesional. Estas experiencias me han permitido comprender a fondo las necesidades únicas de cada cliente, capacitándome para ofrecer soluciones jurídicas efectivas y verdaderamente personalizadas.                            </p>
+                                   <br/>
+                            <p class="text-xl text-primary/80 leading-relaxed">
+                                A lo largo de mi carrera, he colaborado con un amplio abanico de empresas y particulares, adquiriendo valiosos conocimientos y habilidades que aplico diariamente en Evolution Legal. Mi compromiso con la comunidad jurídica y mi insaciable sed de aprendizaje me han llevado a ir más allá de las fronteras. He tenido la fortuna de viajar a más de siete países, incluyendo Cuba, México, Perú, Colombia, Estados Unidos, Canadá y, por supuesto, mi amada República Dominicana. Cada cultura legal que he explorado me ha brindado nuevas perspectivas e ideas innovadoras que he integrado en la firma, enriqueciendo constantemente la calidad de nuestros servicios.
+                                Esta experiencia internacional es la que nos distingue y nos convierte en la firma legal elegida y preferida por los extranjeros en la República Dominicana. Gracias a estas implementaciones internacionales, nos esforzamos por crear un ambiente donde nuestros clientes de otras latitudes se sientan verdaderamente como en casa, comprendidos y respaldados por un enfoque legal que trasciende fronteras.
+                            </p>
+                               <br/>
+                            <p class="text-xl text-primary/80 leading-relaxed">
+                                Estoy profundamente arraigada a mis valores familiares y mantengo un firme compromiso ético con la sociedad. Creo fervientemente en la importancia de la integridad, la justicia y la transparencia en todas las facetas de mi vida profesional. Mi dedicación al estudio y al aprendizaje constante me impulsa a mantenerme siempre al día con los cambios y avances en el campo del derecho, garantizando que siempre reciba el mejor asesoramiento y representación posible.
+                                En Evolution Legal, nuestra aspiración es inspirar confianza y brindar tranquilidad a nuestros clientes, asegurándoles que sus intereses están en manos de profesionales dedicados, apasionados y con una visión global.
+                                Gracias por acompañarnos en este viaje y permitirnos ser parte de sus éxitos y logros.                            </p>`,
+        image: "/person.avif",
+        title: "Conoce a Nuestra CEO",
+        name: "Abigail Santos de Thibodeau",
+        subtitle: "Abogada Fundadora y CEO",
+        educationSubtitle: "Formación académica sólida respaldada por las mejores instituciones educativas del país.",
+        educationList: [
+          {
+            degree: "Derecho",
+            institution: "Universidad Autónoma de Santo Domingo",
+            year: "2010",
+            honor: "Magna Cum Laude",
+          },
+          {
+            degree: "Especialización en Derecho Inmobiliario",
+            institution: "Instituto de Formación Jurídica",
+            year: "2015",
+            honor: "Distinción Académica",
+          },
+          {
+            degree: "Certificación Internacional",
+            institution: "Asociación Europea de Abogados",
+            year: "2020",
+            honor: "Certificación Profesional",
+          },
+        ],
+        specializations: [
+          "Derecho Inmobiliario y Due Diligence",
+          "Derecho Migratorio y Consular",
+          "Derecho Societario y Corporativo",
+          "Derecho de Familia Internacional",
+          "Gestión de Documentos Legales",
+          "Capacitación Jurídica",
+        ],
+        achievements: [
+          {
+            year: "2023",
+            title: "Reconocimiento AEI",
+            organization: "Asociación de Empresas Inmobiliarias",
+          },
+          {
+            year: "2022",
+            title: "Certificación AEA",
+            organization: "Asociación Europea de Abogados",
+          },
+          {
+            year: "2021",
+            title: "Miembro Destacado",
+            organization: "Colegio de Abogados de RD",
+          },
+          {
+            year: "2020",
+            title: "Expansión Internacional",
+            organization: "Presencia en Canadá y Estados Unidos",
+          },
+        ]
+      },
+      {
+        title: "Conoce a Nuestro CEO",
+        name: "Mario Martinez",
+        subtitle: "Abogada Fundadora y CEO",
+        experience: "Más de una década de experiencia",
+        education: "Formación Internacional",
+        specializations: "Especializaciones",
+        achievements: "Logros",
+        philosophy: "Mi Filosofía",
+        philosophyText:
+          "Mi compromiso con la comunidad jurídica y mi insaciable sed de aprendizaje me han llevado a ir más allá de las fronteras, creando un ambiente donde nuestros clientes se sientan verdaderamente como en casa.",
+        countries: "Países Visitados",
+        countriesList: "Cuba, México, Perú, Colombia, Estados Unidos, Canadá, República Dominicana",
+      }
+
+    ],
     // Services
     services: {
       title: "Nuestros Servicios",
@@ -284,14 +356,7 @@ export const translations = {
   en: {
     // Navigation
     lawyer: {
-      title: [
-        "Founder",
-        "Co-Founder"
-      ],
-      description: [
-        "Founding attorney and CEO of Evolution Legal with over 15 years of experience in civil and criminal law.",
-        "Specialist in corporate and commercial law with extensive experience in complex litigation."
-      ],
+
       section: {
         title: "Our Team",
         subtitle: "Meet Our Founders",
@@ -567,20 +632,13 @@ export const translations = {
   },
   fr: {
     lawyer: {
-  title: [
-    "Fondatrice",
-    "Co-Fondateur"
-  ],
-  description: [
-    "Avocate fondatrice et PDG de Evolution Legal, avec plus de 15 ans d’expérience en droit civil et pénal.",
-    "Spécialiste en droit des affaires et droit commercial, avec une vaste expérience en contentieux complexes."
-  ],
-  section: {
-    title: "Notre Équipe",
-    subtitle: "Rencontrez Nos Fondateurs",
-    description: "Des professionnels engagés pour l’excellence juridique et la satisfaction du client"
-  }
-},
+
+      section: {
+        title: "Notre Équipe",
+        subtitle: "Rencontrez Nos Fondateurs",
+        description: "Des professionnels engagés pour l’excellence juridique et la satisfaction du client"
+      }
+    },
     // Navigation
     nav: {
       home: "Accueil",

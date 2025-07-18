@@ -4,9 +4,9 @@ import type React from "react"
 
 import { motion, AnimatePresence } from "framer-motion"
 import { usePathname } from "next/navigation"
-import { Navbar } from "@/components/navbar"
 import { BottomBar } from "@/components/bottom-bar"
 import { useRef, useEffect } from "react"
+import { NavbarAndTopBar } from "@/components/TopBarAndNavbar"
 
 const slideVariants = {
   enter: (direction: number) => ({
@@ -80,7 +80,8 @@ export default function ExclusiveClientLayout({
         <div className="absolute inset-0 bg-primary/40" />
       </div>
       <div className="relative z-40">
-        <Navbar />
+        <NavbarAndTopBar/>
+        
       </div>
       <br />
       <br />

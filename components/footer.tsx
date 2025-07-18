@@ -7,7 +7,7 @@ import Link from "next/link"
 import Image from "next/image"
 
 
-export function Footer() {
+export function Footer( ) {
   const { t } = useLanguage()
   const whatsappNumber = "18092611453"
   const whatsappNumberToShow = "+1 (809) 261-1453"

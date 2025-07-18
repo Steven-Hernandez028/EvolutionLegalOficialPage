@@ -12,6 +12,7 @@ import { BottomBar } from "@/components/bottom-bar"
 import { useRef } from "react"
 import { useEffect } from "react"
 import { useRouter } from "next/navigation"
+import { NavbarAndTopBar } from "@/components/TopBarAndNavbar"
 
 export default function ExclusiveClientView() {
   const containerRef = useRef<HTMLDivElement>(null)
@@ -52,7 +53,7 @@ export default function ExclusiveClientView() {
     
       {/* Navbar */}
       <div className="relative z-40">
-        <Navbar />
+        <NavbarAndTopBar/>
       </div>
 
       {/* Main Content with Glass Effect */}

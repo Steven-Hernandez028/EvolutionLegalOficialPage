@@ -11,17 +11,17 @@ export function LawyerSection() {
   const lawyers = [
     {
       id: 1,
-      name: "Abigail Santos de Thibodeau",
-      title: t("lawyer.title[0]"),//"Fundadora",
-      image: "/person.avif",
-      description: t("lawyer.description[0]"),//"Abogada fundadora y CEO de Evolution Legal con más de 15 años de experiencia en derecho civil y penal."
+      name: t("ceo[0].name"),//"Fundadora",,
+      title: t("ceo[0].lawyerTitle"),//"Fundadora",
+      image : t("ceo[0].image"),//"Fundadora",
+      description: t("ceo[0].lawyerDescription"),//"Abogada fundadora y CEO de Evolution Legal con más de 15 años de experiencia en derecho civil y penal."
     },
     {
       id: 2,
-      name: "Guy Jr. Thibodeau",
-      title: t("lawyer.title[1]"),//"Co-Fundador",
-      image: "/person2.avif",
-      description: t("lawyer.description[1]")//"Especialista en derecho corporativo y comercial con amplia experiencia en litigios complejos."
+      name:  t("ceo[1].name"),//"Fundadora",,
+      title: t("ceo[1].lawyerTitle"),//"Co-Fundador",
+      image:  t("ceo[1].image"),//"Fundadora",
+      description: t("ceo[1].lawyerDescription"),//"Abogada fundadora y CEO de Evolution Legal con más de 15 años de experiencia en derecho civil y penal."
     }
   ]
 
