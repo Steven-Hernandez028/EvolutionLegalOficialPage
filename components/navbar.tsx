@@ -123,9 +123,9 @@ export function Navbar() {
           </div>
 
           {/* Language Switcher - Desktop */}
-          <div className="hidden lg:block">
+          {/* <div className="hidden lg:block">
             <LanguageSwitcher />
-          </div>
+          </div> */}
 
           <button onClick={() => setIsOpen(!isOpen)} className="lg:hidden text-white">
             {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
@@ -169,9 +169,9 @@ export function Navbar() {
                 <Link href="/contact" className="block px-3 py-2 text-white hover:text-accent">
                   {t("nav.contact")}
                 </Link>
-                <div className="px-3 py-2">
+                {/* <div className="px-3 py-2">
                   <LanguageSwitcher />
-                </div>
+                </div> */}
               </div>
             </motion.div>
           )}
