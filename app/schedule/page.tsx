@@ -331,12 +331,6 @@ export default function SchedulePage() {
                     <div className="w-6 h-6 bg-accent/20 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
                       <div className="w-2 h-2 bg-accent rounded-full"></div>
                     </div>
-                    <span className="text-primary/80 text-sm">Consulta inicial gratuita de 30 minutos</span>
-                  </div>
-                  <div className="flex items-start space-x-3">
-                    <div className="w-6 h-6 bg-accent/20 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
-                      <div className="w-2 h-2 bg-accent rounded-full"></div>
-                    </div>
                     <span className="text-primary/80 text-sm">Evaluación profesional de su caso</span>
                   </div>
                   <div className="flex items-start space-x-3">
