@@ -5,7 +5,6 @@ import { motion, AnimatePresence } from "framer-motion"
 import { ChevronDown, Menu, X } from "lucide-react"
 import Link from "next/link"
 import Image from "next/image"
-import { LanguageSwitcher } from "@/components/language-switcher"
 import { useLanguage } from "@/contexts/language-context"
 
 const LinkMotion = motion.create(Link)
@@ -85,50 +84,24 @@ export function Navbar() {
               {t("nav.testimonials")}
             </Link>
 
-
-            <div
-              className="relative"
-              onMouseEnter={() => setIsDropdownOpen("resources")}
-              onMouseLeave={() => setIsDropdownOpen(null)}
-            >
-              <button className="flex items-center space-x-1 text-white hover:text-accent transition-colors">
-                <span>{t("nav.resources")}</span>
-                <ChevronDown className="h-4 w-4" />
-              </button>
-              <AnimatePresence>
-                {isDropdownOpen === "resources" && (
-                  <motion.div
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: 10 }}
-                    className="absolute top-full left-0 mt-2 w-64 bg-secondary rounded-lg shadow-xl border border-white/10 overflow-hidden"
-                  >
-                    <Link href="/blog" className="block px-4 py-3 text-primary hover:bg-accent/10 transition-colors">
-                      {t("nav.blog")}
-                    </Link>
-                    <Link href="/news" className="block px-4 py-3 text-primary hover:bg-accent/10 transition-colors">
-                      {t("nav.news")}
-                    </Link>
-                    <Link href="/resources" className="block px-4 py-3 text-primary hover:bg-accent/10 transition-colors">
-                      {t("nav.resources")}
-                    </Link>
-                    <Link href="/links" className="block px-4 py-3 text-primary hover:bg-accent/10 transition-colors">
-                      {t("nav.links")}
-                    </Link>
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </div>
-
-            <Link href="/contact" className="text-white hover:text-accent transition-colors">
+            <Link href="/blog" className="flex items-center space-x-1 text-white hover:text-accent transition-colors">
+              {t("nav.blog")}
+            </Link>
+            <Link href="/news" className="flex items-center space-x-1 text-white hover:text-accent transition-colors">
+              {t("nav.news")}
+            </Link>
+            <Link href="/resources" className="flex items-center space-x-1 text-white hover:text-accent transition-colors">
+              {t("nav.resources")}
+            </Link>
+            <Link href="/links" className="flex items-center space-x-1 text-white hover:text-accent transition-colors">
+              {t("nav.links")}
+            </Link>
+            <Link href="/contact"className="flex items-center space-x-1 text-white hover:text-accent transition-colors">
               {t("nav.contact")}
             </Link>
           </div>
 
-          {/* Language Switcher - Desktop */}
-          {/* <div className="hidden lg:block">
-            <LanguageSwitcher />
-          </div> */}
+
 
           <button onClick={() => setIsOpen(!isOpen)} className="lg:hidden text-white">
             {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
@@ -153,22 +126,7 @@ export function Navbar() {
                     <Link href="/founder/guy-thibodeau" className="block px-2 py-1 text-white hover:text-accent">{t("nav.cofounder")}</Link>
                   </div>
                 </details>
-                {/* <AnimatePresence> {isDropdownOpen === "about" && (
-                  <motion.div
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: 10 }}
-                    className="absolute top-full left-0 mt-2 w-64 bg-secondary rounded-lg shadow-xl border border-white/10 overflow-hidden"
-                  >
-                    <Link href="/founder/0" className="block px-4 py-3 text-primary hover:bg-accent/10 transition-colors">
-                      {t("nav.founder")}
-                    </Link>
-                    <Link href="/founder/1" className="block px-4 py-3 text-primary hover:bg-accent/10 transition-colors">
-                      {t("nav.cofounder")}
-                    </Link>
-                  </motion.div>
-                )}
-              </AnimatePresence> */}
+          
                 <Link href="/services" className="block px-3 py-2 text-white hover:text-accent">
                   {t("nav.services")}
                 </Link>
@@ -193,9 +151,7 @@ export function Navbar() {
                 <Link href="/contact" className="block px-3 py-2 text-white hover:text-accent">
                   {t("nav.contact")}
                 </Link>
-                {/* <div className="px-3 py-2">
-                  <LanguageSwitcher />
-                </div> */}
+           
               </div>
             </motion.div>
           )}
