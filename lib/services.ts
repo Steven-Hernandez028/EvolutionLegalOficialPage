@@ -1,0 +1,233 @@
+import { Service } from "@/components/services/service"
+import {
+  Scale,
+  Shield,
+  FileText,
+  Users,
+  Building,
+  Heart,
+  HeartHandshake,
+  FileCheck,
+  Briefcase,
+  Building2,
+  Gavel,
+} from "lucide-react"
+
+export const services: Service[] = [
+  {
+    id: "due-diligence",
+    icon: Scale,
+    title: "Investigación Jurídica Inmobiliaria",
+    subtitle: "Su Inversión Segura",
+    description:
+      "Verificamos títulos, permisos, ubicación, deudas y cláusulas contractuales para asegurar que su inversión inmobiliaria sea sólida y libre de riesgos.",
+    features: [
+      "Verificación de Permisos y Títulos",
+      "Evaluación de Riesgos Jurídicos",
+      "Revisión de Documentación Legal",
+    ],
+    process: [
+      "Análisis inicial de la propiedad",
+      "Verificación en registros públicos",
+      "Evaluación de riesgos legales",
+      "Informe detallado de hallazgos",
+    ],
+    duration: "5-10 días hábiles",
+    price: "Desde RD$15,000",
+  },
+  {
+    id: "relocation",
+    icon: Users,
+    title: "Reubicación Integral para Extranjeros",
+    subtitle: "Su Nuevo Comienzo en RD",
+    description:
+      "Le asistimos en cada aspecto de su transición a RD: seguros, licencias, vivienda, educación, servicios y legalidad. Una reubicación sin contratiempos.",
+    features: ["Gestión de Seguros de Salud", "Licencias de Conducir", "Asesoría de Zonificación"],
+    process: [
+      "Evaluación de necesidades específicas",
+      "Planificación del proceso de reubicación",
+      "Gestión de documentación requerida",
+      "Acompañamiento durante la transición",
+    ],
+    duration: "2-4 semanas",
+    price: "Paquete desde RD$25,000",
+  },
+  {
+    id: "real-estate",
+    icon: Building,
+    title: "Asesoría y Gestión de Bienes Inmuebles",
+    subtitle: "Compra, Venta y Renta",
+    description:
+      "Asesoría legal completa en transacciones inmobiliarias para asegurar decisiones informadas y proteger sus intereses en todo momento.",
+    features: ["Compra y Venta de Propiedades", "Contratos de Arrendamiento", "Protección de Intereses"],
+    process: [
+      "Análisis de la transacción inmobiliaria",
+      "Revisión de contratos y documentos",
+      "Negociación de términos favorables",
+      "Cierre seguro de la operación",
+    ],
+    duration: "1-3 semanas",
+    price: "Desde RD$20,000",
+  },
+  {
+    id: "rural-lands",
+    icon: Heart,
+    title: "Tierras Vírgenes del Norte",
+    subtitle: "Su Retiro Soñado en el Campo",
+    description:
+      "Ofrecemos terrenos y fincas en el norte del país, ideales para proyectos personales, retiro o inversión sostenible en contacto con la naturaleza.",
+    features: ["Terrenos Rurales Vírgenes", "Fincas Productivas del Norte", "Proyectos de Retiro"],
+    process: [
+      "Identificación de propiedades disponibles",
+      "Verificación legal de terrenos",
+      "Evaluación de potencial de desarrollo",
+      "Gestión completa de la compra",
+    ],
+    duration: "2-6 semanas",
+    price: "Consultar disponibilidad",
+  },
+  {
+    id: "immigration",
+    icon: FileText,
+    title: "Extranjería: Residencia y Ciudadanía",
+    subtitle: "Establecimiento Legal en RD",
+    description:
+      "Asistencia legal para obtener residencia dominicana, ciudadanía y permisos especiales, facilitando su integración formal en el país.",
+    features: ["Residencia Dominicana", "Ciudadanía Dominicana", "Permisos de Salida de Menores"],
+    process: [
+      "Evaluación de elegibilidad",
+      "Preparación de documentación",
+      "Presentación ante autoridades",
+      "Seguimiento hasta la aprobación",
+    ],
+    duration: "3-6 meses",
+    price: "Desde RD$30,000",
+  },
+  {
+    id: "consular",
+    icon: Shield,
+    title: "Derecho Migratorio y Consular",
+    subtitle: "Conectando Familias y Oportunidades",
+    description:
+      "Preparación integral para solicitar visas de turismo a EE. UU. y Canadá, incluyendo evaluación de perfil, documentación y entrevistas.",
+    features: ["Visas de Turismo USA", "Visas de Turismo Canadá", "Evaluación de Perfil"],
+    process: [
+      "Evaluación detallada del perfil",
+      "Preparación de documentación",
+      "Entrenamiento para entrevista",
+      "Acompañamiento en el proceso",
+    ],
+    duration: "4-8 semanas",
+    price: "Desde RD$35,000",
+  },
+  {
+    id: "corporate",
+    icon: Building2,
+    title: "Derecho Societario",
+    subtitle: "Fundamentando su Negocio",
+    description:
+      "Le asesoramos en la creación, modificación y disolución de empresas, así como en compra de acciones y debida diligencia corporativa.",
+    features: ["Creación de Sociedades", "Compra y Venta de Acciones", "Due Diligence Empresarial"],
+    process: [
+      "Análisis de estructura empresarial",
+      "Preparación de documentos societarios",
+      "Registro ante autoridades competentes",
+      "Asesoría post-constitución",
+    ],
+    duration: "2-4 semanas",
+    price: "Desde RD$25,000",
+  },
+  {
+    id: "family-law",
+    icon: HeartHandshake,
+    title: "Derecho de Familia",
+    subtitle: "Protegiendo lo que Más Importa",
+    description:
+      "Le apoyamos legalmente en procesos familiares delicados como divorcios, paternidad, matrimonios y planificación sucesoral.",
+    features: [
+      "Divorcio por Mutuo Consentimiento",
+      "Matrimonio de Extranjeros",
+      "Testamentos y Planificación Sucesoral",
+    ],
+    process: [
+      "Consulta inicial confidencial",
+      "Análisis de la situación familiar",
+      "Preparación de documentos legales",
+      "Representación y seguimiento",
+    ],
+    duration: "1-6 meses",
+    price: "Desde RD$20,000",
+  },
+  {
+    id: "vehicular-due-diligence",
+    icon: FileCheck,
+    title: "Debida Diligencia Vehicular",
+    subtitle: "Conduciendo sin Preocupaciones",
+    description:
+      "Verificamos historial, impuestos, matrícula y estado legal de vehículos nuevos y usados, asegurando una compra sin sorpresas.",
+    features: ["Verificación de Historial (Carfax)", "Revisión de Impuestos y Matrícula", "Validación en Plan Piloto"],
+    process: [
+      "Verificación de documentos del vehículo",
+      "Consulta en bases de datos oficiales",
+      "Revisión de historial de accidentes",
+      "Informe detallado de hallazgos",
+    ],
+    duration: "3-5 días hábiles",
+    price: "Desde RD$8,000",
+  },
+  {
+    id: "contract-review",
+    icon: Gavel,
+    title: "Estudio y Revisión de Contratos",
+    subtitle: "Su Seguridad Legal",
+    description:
+      "Analizamos sus contratos, detectamos cláusulas abusivas y proponemos ajustes para proteger sus intereses antes de firmar.",
+    features: ["Análisis de Cláusulas Abusivas", "Informe Legal Detallado", "Acompañamiento en Negociación"],
+    process: [
+      "Revisión exhaustiva del contrato",
+      "Identificación de riesgos legales",
+      "Propuesta de modificaciones",
+      "Acompañamiento en negociación",
+    ],
+    duration: "3-7 días hábiles",
+    price: "Desde RD$12,000",
+  },
+  {
+    id: "document-management",
+    icon: FileText,
+    title: "Gestión de Documentos",
+    subtitle: "Eficiencia Sin Fronteras",
+    description:
+      "Nos encargamos de todo: notarización, legalización, apostilla, traducción y homologación de documentos para uso local o internacional.",
+    features: ["Legalización y Apostilla", "Traducción Oficial", "Homologación de Documentos"],
+    process: [
+      "Recepción y análisis de documentos",
+      "Gestión ante autoridades competentes",
+      "Traducción y certificación",
+      "Entrega de documentos procesados",
+    ],
+    duration: "1-3 semanas",
+    price: "Desde RD$5,000",
+  },
+  {
+    id: "legal-training",
+    icon: Briefcase,
+    title: "Capacitación Jurídica",
+    subtitle: "Impulsando la Profesión",
+    description:
+      "Formamos a nuevos abogados y estudiantes con talleres, recursos prácticos y mentoría para un inicio sólido en la carrera jurídica.",
+    features: [
+      "Talleres y Charlas Especializadas",
+      "Desarrollo de Habilidades Profesionales",
+      "Mentoría para Nuevos Abogados",
+    ],
+    process: [
+      "Evaluación de necesidades formativas",
+      "Diseño de programa personalizado",
+      "Implementación de talleres",
+      "Seguimiento y mentoría continua",
+    ],
+    duration: "Programas flexibles",
+    price: "Consultar programas disponibles",
+  },
+]

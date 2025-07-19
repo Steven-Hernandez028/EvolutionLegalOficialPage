@@ -26,9 +26,9 @@ export function Navbar() {
         <div className="flex justify-between items-center h-16">
           {/* Logo - Solo visible en móvil */}
           <div className="lg:hidden">
-            <LinkMotion 
-              href="/" 
-              whileHover={{ scale: 1.02 }} 
+            <LinkMotion
+              href="/"
+              whileHover={{ scale: 1.02 }}
               className="flex items-center space-x-3 group"
             >
               <div className="relative">
@@ -64,8 +64,11 @@ export function Navbar() {
                     exit={{ opacity: 0, y: 10 }}
                     className="absolute top-full left-0 mt-2 w-64 bg-secondary rounded-lg shadow-xl border border-white/10 overflow-hidden"
                   >
-                    <Link href="/founder" className="block px-4 py-3 text-primary hover:bg-accent/10 transition-colors">
+                    <Link href="/founder/abigail-santos-de-thibodeau" className="block px-4 py-3 text-primary hover:bg-accent/10 transition-colors">
                       {t("nav.founder")}
+                    </Link>
+                    <Link href="/founder/guy-thibodeau" className="block px-4 py-3 text-primary hover:bg-accent/10 transition-colors">
+                      {t("nav.cofounder")}
                     </Link>
                   </motion.div>
                 )}
@@ -82,7 +85,7 @@ export function Navbar() {
               {t("nav.testimonials")}
             </Link>
 
-          
+
             <div
               className="relative"
               onMouseEnter={() => setIsDropdownOpen("resources")}
@@ -142,9 +145,30 @@ export function Navbar() {
               className="lg:hidden bg-primary/95 backdrop-blur-md"
             >
               <div className="px-2 pt-2 pb-3 space-y-1">
-                <Link href="/founder" className="block px-3 py-2 text-white hover:text-accent">
-                  {t("nav.founder")}
-                </Link>
+
+                <details className="px-3 py-2 text-white">
+                  <summary className="cursor-pointer hover:text-accent">{t("nav.about")}</summary>
+                  <div className="ml-3 space-y-1 mt-2">
+                    <Link href="/founder/abigail-santos-de-thibodeau" className="block px-2 py-1 text-white hover:text-accent">{t("nav.founder")}</Link>
+                    <Link href="/founder/guy-thibodeau" className="block px-2 py-1 text-white hover:text-accent">{t("nav.cofounder")}</Link>
+                  </div>
+                </details>
+                {/* <AnimatePresence> {isDropdownOpen === "about" && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: 10 }}
+                    className="absolute top-full left-0 mt-2 w-64 bg-secondary rounded-lg shadow-xl border border-white/10 overflow-hidden"
+                  >
+                    <Link href="/founder/0" className="block px-4 py-3 text-primary hover:bg-accent/10 transition-colors">
+                      {t("nav.founder")}
+                    </Link>
+                    <Link href="/founder/1" className="block px-4 py-3 text-primary hover:bg-accent/10 transition-colors">
+                      {t("nav.cofounder")}
+                    </Link>
+                  </motion.div>
+                )}
+              </AnimatePresence> */}
                 <Link href="/services" className="block px-3 py-2 text-white hover:text-accent">
                   {t("nav.services")}
                 </Link>

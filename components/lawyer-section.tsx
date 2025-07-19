@@ -4,24 +4,28 @@ import { useLanguage } from "@/contexts/language-context"
 import { motion } from "framer-motion"
 import { Award, BookOpen, Users, Scale, ArrowRight } from "lucide-react"
 import Image from "next/image"
+import { useRouter } from "next/navigation"
 
 export function LawyerSection() {
   const { t } = useLanguage();
+  const router = useRouter();
 
   const lawyers = [
     {
       id: 1,
       name: t("ceo[0].name"),//"Fundadora",,
       title: t("ceo[0].lawyerTitle"),//"Fundadora",
-      image : t("ceo[0].image"),//"Fundadora",
-      description: t("ceo[0].lawyerDescription"),//"Abogada fundadora y CEO de Evolution Legal con más de 15 años de experiencia en derecho civil y penal."
+      image: t("ceo[0].image"),//"Fundadora",
+      description: t("ceo[0].lawyerDescription"),
+      link: 'founder/abigail-santos-de-thibodeau'
     },
     {
       id: 2,
-      name:  t("ceo[1].name"),//"Fundadora",,
+      name: t("ceo[1].name"),//"Fundadora",,
       title: t("ceo[1].lawyerTitle"),//"Co-Fundador",
-      image:  t("ceo[1].image"),//"Fundadora",
-      description: t("ceo[1].lawyerDescription"),//"Abogada fundadora y CEO de Evolution Legal con más de 15 años de experiencia en derecho civil y penal."
+      image: t("ceo[1].image"),//"Fundadora",
+      description: t("ceo[1].lawyerDescription"),
+      link: 'founder/guy-thibodeau'
     }
   ]
 
@@ -42,12 +46,12 @@ export function LawyerSection() {
             }
           </div>
           <h2 className="text-4xl lg:text-5xl font-bold text-primary mb-4">
-               {
+            {
               t("lawyer.section.subtitle")
             }
           </h2>
           <p className="text-xl text-primary/80 max-w-3xl mx-auto">
-             {
+            {
               t("lawyer.section.description")
             }
           </p>
@@ -73,8 +77,8 @@ export function LawyerSection() {
                     className="object-cover group-hover:scale-105 transition-transform duration-500"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-primary/60 via-primary/20 to-transparent" />
-                  
-         
+
+
                 </div>
 
                 <div className="p-8">
@@ -92,14 +96,15 @@ export function LawyerSection() {
                       {lawyer.description}
                     </p>
 
-                  
+
                     {/* Button */}
                     <motion.button
                       whileHover={{ scale: 1.02 }}
                       whileTap={{ scale: 0.98 }}
+                      onClick={() => router.push(lawyer.link)}
                       className="w-full bg-accent hover:bg-accent/90 text-white font-semibold py-3 px-6 rounded-xl transition-all duration-300 flex items-center justify-center space-x-2 group/btn"
                     >
-                      <span>{t("common.showMore")}</span> 
+                      <span>{t("common.showMore")}</span>
                       <ArrowRight className="h-4 w-4 group-hover/btn:translate-x-1 transition-transform duration-300" />
                     </motion.button>
                   </div>
@@ -109,7 +114,7 @@ export function LawyerSection() {
           ))}
         </div>
 
-      
+
 
       </div>
     </section>

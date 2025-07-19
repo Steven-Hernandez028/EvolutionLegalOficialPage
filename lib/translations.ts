@@ -18,6 +18,7 @@ export const translations = {
       home: "Inicio",
       about: "Nosotros",
       founder: "Nuestra CEO",
+      cofounder: "Nuestro Cofundador",
       services: "Nuestros Servicios",
       schedule: "Agendar Cita",
       testimonials: "Opiniones",
@@ -174,7 +175,10 @@ export const translations = {
       },
       {
         title: "Conoce a Nuestro CEO",
-        name: "Mario Martinez",
+        name: "Guy Thibodeau",
+        lawyerTitle: "Co-Fundador",
+        lawyerDescription : "Abogado Co-fundador de Evolution Legal Advance",
+        image: "/person2.avif",
         subtitle: "Abogada Fundadora y CEO",
         experience: "Más de una década de experiencia",
         education: "Formación Internacional",
@@ -354,9 +358,11 @@ export const translations = {
     },
   },
   en: {
-    founder: {  education: "Education",
-  specializations: "Specializations",
-  achievements: "Achievements"},
+    founder: {
+      education: "Education",
+      specializations: "Specializations",
+      achievements: "Achievements"
+    },
     lawyer: {
 
       section: {
@@ -369,6 +375,7 @@ export const translations = {
       home: "Home",
       about: "About Us",
       founder: "Our CEO",
+      cofounder: "Our Co-funder",
       services: "Our Services",
       schedule: "Schedule Appointment",
       testimonials: "Client Reviews",
@@ -446,12 +453,13 @@ export const translations = {
       },
     },
     // CEO Page
-    ceo:[
+    ceo: [
       {
+
         lawyerTitle: "Founder",
-  lawyerDescription: "Founding attorney and CEO of Evolution Legal with over 15 years of experience in civil and criminal law.",
-  MainProfileTitle: "My Story: A Global Passion for Law",
-  MainProfileDescription: `
+        lawyerDescription: "Founding attorney and CEO of Evolution Legal with over 15 years of experience in civil and criminal law.",
+        MainProfileTitle: "My Story: A Global Passion for Law",
+        MainProfileDescription: `
     <h2 class="text-4xl font-bold text-primary">My Story: A Global Passion for Law</h2>
 
     <br/>
@@ -469,63 +477,69 @@ export const translations = {
       At Evolution Legal, our goal is to inspire trust and bring peace of mind to our clients, assuring them that their interests are in the hands of dedicated, passionate professionals with a global perspective.
       Thank you for joining us on this journey and allowing us to be part of your success and achievements.
     </p>`,
-  image: "/person.avif",
-  title: "Meet Our CEO",
-  name: "Abigail Santos de Thibodeau",
-  subtitle: "Founding Attorney and CEO",
-  educationSubtitle: "Solid academic background supported by the country’s top educational institutions.",
-  educationList: [
-    {
-      degree: "Law",
-      institution: "Autonomous University of Santo Domingo",
-      year: "2010",
-      honor: "Magna Cum Laude",
-    },
-    {
-      degree: "Specialization in Real Estate Law",
-      institution: "Institute of Legal Training",
-      year: "2015",
-      honor: "Academic Distinction",
-    },
-    {
-      degree: "International Certification",
-      institution: "European Lawyers Association",
-      year: "2020",
-      honor: "Professional Certification",
-    },
-  ],
-  specializations: [
-    "Real Estate Law and Due Diligence",
-    "Immigration and Consular Law",
-    "Corporate and Business Law",
-    "International Family Law",
-    "Legal Document Management",
-    "Legal Training",
-  ],
-  achievements: [
-    {
-      year: "2023",
-      title: "AEI Recognition",
-      organization: "Real Estate Business Association",
-    },
-    {
-      year: "2022",
-      title: "AEA Certification",
-      organization: "European Lawyers Association",
-    },
-    {
-      year: "2021",
-      title: "Distinguished Member",
-      organization: "Dominican Bar Association",
-    },
-    {
-      year: "2020",
-      title: "International Expansion",
-      organization: "Presence in Canada and the United States",
-    },
-  ]
-}
-      
+        image: "/person.avif",
+        title: "Meet Our CEO",
+        name: "Abigail Santos de Thibodeau",
+        subtitle: "Founding Attorney and CEO",
+        educationSubtitle: "Solid academic background supported by the country’s top educational institutions.",
+        educationList: [
+          {
+            degree: "Law",
+            institution: "Autonomous University of Santo Domingo",
+            year: "2010",
+            honor: "Magna Cum Laude",
+          },
+          {
+            degree: "Specialization in Real Estate Law",
+            institution: "Institute of Legal Training",
+            year: "2015",
+            honor: "Academic Distinction",
+          },
+          {
+            degree: "International Certification",
+            institution: "European Lawyers Association",
+            year: "2020",
+            honor: "Professional Certification",
+          },
+        ],
+        specializations: [
+          "Real Estate Law and Due Diligence",
+          "Immigration and Consular Law",
+          "Corporate and Business Law",
+          "International Family Law",
+          "Legal Document Management",
+          "Legal Training",
+        ],
+        achievements: [
+          {
+            year: "2023",
+            title: "AEI Recognition",
+            organization: "Real Estate Business Association",
+          },
+          {
+            year: "2022",
+            title: "AEA Certification",
+            organization: "European Lawyers Association",
+          },
+          {
+            year: "2021",
+            title: "Distinguished Member",
+            organization: "Dominican Bar Association",
+          },
+          {
+            year: "2020",
+            title: "International Expansion",
+            organization: "Presence in Canada and the United States",
+          },
+        ]
+      },
+      {
+        name: "Guy Thibodeau",
+        lawyerTitle : "Co-Fundador",
+        image: "person.avif",
+        lawyerDescription :"Abogado con fundador de Evolution Legal con más de 15 años de experiencia en derecho civil y penal."
+      }
+
     ],
     // Services
     services: {
@@ -700,10 +714,10 @@ export const translations = {
     },
   },
   fr: {
-    founder :{
-        education: "Formation",
-  specializations: "Spécialisations",
-  achievements: "Réalisations"
+    founder: {
+      education: "Formation",
+      specializations: "Spécialisations",
+      achievements: "Réalisations"
     },
     lawyer: {
 
@@ -718,6 +732,7 @@ export const translations = {
       home: "Accueil",
       about: "À Propos",
       founder: "Notre PDG",
+      cofounder: "Notre Cofondateur",
       services: "Nos Services",
       schedule: "Prendre Rendez-vous",
       testimonials: "Avis Clients",
@@ -796,11 +811,12 @@ export const translations = {
       },
     },
     // CEO Page
-    ceo: [{
-       lawyerTitle: "Fondatrice",
-  lawyerDescription: "Avocate fondatrice et PDG de Evolution Legal avec plus de 15 ans d’expérience en droit civil et pénal.",
-  MainProfileTitle: "Mon Histoire : Une Passion Mondiale pour le Droit",
-  MainProfileDescription: `
+    ceo: [
+      {
+      lawyerTitle: "Fondatrice",
+      lawyerDescription: "Avocate fondatrice et PDG de Evolution Legal avec plus de 15 ans d’expérience en droit civil et pénal.",
+      MainProfileTitle: "Mon Histoire : Une Passion Mondiale pour le Droit",
+      MainProfileDescription: `
     <h2 class="text-4xl font-bold text-primary">Mon Histoire : Une Passion Mondiale pour le Droit</h2>
 
     <br/>
@@ -818,61 +834,63 @@ export const translations = {
       Chez Evolution Legal, notre objectif est d’inspirer la confiance et de procurer la tranquillité d’esprit à nos clients, en leur assurant que leurs intérêts sont entre les mains de professionnels dévoués, passionnés et dotés d’une vision mondiale.
       Merci de nous accompagner dans ce parcours et de nous permettre de faire partie de vos réussites et accomplissements.
     </p>`,
-  image: "/person.avif",
-  title: "Rencontrez Notre PDG",
-  name: "Abigail Santos de Thibodeau",
-  subtitle: "Avocate Fondatrice et PDG",
-  educationSubtitle: "Une formation académique solide soutenue par les meilleures institutions du pays.",
-  educationList: [
-    {
-      degree: "Droit",
-      institution: "Université Autonome de Saint-Domingue",
-      year: "2010",
-      honor: "Magna Cum Laude",
-    },
-    {
-      degree: "Spécialisation en Droit Immobilier",
-      institution: "Institut de Formation Juridique",
-      year: "2015",
-      honor: "Distinction Académique",
-    },
-    {
-      degree: "Certification Internationale",
-      institution: "Association Européenne des Avocats",
-      year: "2020",
-      honor: "Certification Professionnelle",
-    },
-  ],
-  specializations: [
-    "Droit Immobilier et Due Diligence",
-    "Droit de l’Immigration et Consulaire",
-    "Droit des Sociétés et des Affaires",
-    "Droit International de la Famille",
-    "Gestion des Documents Juridiques",
-    "Formation Juridique",
-  ],
-  achievements: [
-    {
-      year: "2023",
-      title: "Reconnaissance AEI",
-      organization: "Association des Entreprises Immobilières",
-    },
-    {
-      year: "2022",
-      title: "Certification AEA",
-      organization: "Association Européenne des Avocats",
-    },
-    {
-      year: "2021",
-      title: "Membre Distinguée",
-      organization: "Barreau de la République Dominicaine",
-    },
-    {
-      year: "2020",
-      title: "Expansion Internationale",
-      organization: "Présence au Canada et aux États-Unis",
-    },
-  ]
+      image: "/person.avif",
+      title: "Rencontrez Notre PDG",
+      name: "Abigail Santos de Thibodeau",
+      subtitle: "Avocate Fondatrice et PDG",
+      educationSubtitle: "Une formation académique solide soutenue par les meilleures institutions du pays.",
+      educationList: [
+        {
+          degree: "Droit",
+          institution: "Université Autonome de Saint-Domingue",
+          year: "2010",
+          honor: "Magna Cum Laude",
+        },
+        {
+          degree: "Spécialisation en Droit Immobilier",
+          institution: "Institut de Formation Juridique",
+          year: "2015",
+          honor: "Distinction Académique",
+        },
+        {
+          degree: "Certification Internationale",
+          institution: "Association Européenne des Avocats",
+          year: "2020",
+          honor: "Certification Professionnelle",
+        },
+      ],
+      specializations: [
+        "Droit Immobilier et Due Diligence",
+        "Droit de l’Immigration et Consulaire",
+        "Droit des Sociétés et des Affaires",
+        "Droit International de la Famille",
+        "Gestion des Documents Juridiques",
+        "Formation Juridique",
+      ],
+      achievements: [
+        {
+          year: "2023",
+          title: "Reconnaissance AEI",
+          organization: "Association des Entreprises Immobilières",
+        },
+        {
+          year: "2022",
+          title: "Certification AEA",
+          organization: "Association Européenne des Avocats",
+        },
+        {
+          year: "2021",
+          title: "Membre Distinguée",
+          organization: "Barreau de la République Dominicaine",
+        },
+        {
+          year: "2020",
+          title: "Expansion Internationale",
+          organization: "Présence au Canada et aux États-Unis",
+        },
+      ]
+    },{
+        
     }],
     // Services
     services: {
