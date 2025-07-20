@@ -15,6 +15,7 @@ export const translations = {
       achievements: 'Logros'
     },
     nav: {
+      catalogo: "Catalogo",
       home: "Inicio",
       about: "Nosotros",
       founder: "Nuestra CEO",
@@ -372,6 +373,7 @@ export const translations = {
       }
     },
     nav: {
+      catalogo:"Client Portfolio",
       home: "Home",
       about: "About Us",
       founder: "Our CEO",
@@ -729,6 +731,7 @@ export const translations = {
     },
     // Navigation
     nav: {
+      catalogo : "Portefeuille clients",
       home: "Accueil",
       about: "À Propos",
       founder: "Notre PDG",

@@ -13,7 +13,12 @@ export function LawyerSection() {
   const [hoveredCard, setHoveredCard] = useState<number | null>(null)
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
   const sectionRef = useRef<HTMLElement>(null)
+  const [random, setRandom] = useState<number>(1);
 
+  useEffect(() => {
+    setRandom(Math.random());
+  }, []);
+  
   const lawyers = [
     {
       id: 1,
@@ -68,18 +73,18 @@ export function LawyerSection() {
         opacity: [0, 1, 0],
         scale: [0, 1, 0],
         y: [-20, -100],
-        x: [0, Math.random() * 40 - 20],
+        x: [0, random * 40 - 20],
       }}
       transition={{
         duration: 3,
         delay,
         repeat: Number.POSITIVE_INFINITY,
-        repeatDelay: Math.random() * 2,
+        repeatDelay: random * 2,
       }}
       className={`absolute w-${size} h-${size} bg-[#cba258] rounded-full blur-sm`}
       style={{
-        left: `${Math.random() * 100}%`,
-        top: `${Math.random() * 100}%`,
+        left: `${random * 100}%`,
+        top: `${random * 100}%`,
       }}
     />
   )
@@ -90,7 +95,7 @@ export function LawyerSection() {
       <div className="absolute inset-0 overflow-hidden">
         {/* Floating Particles */}
         {Array.from({ length: 15 }).map((_, i) => (
-          <FloatingParticle key={i} delay={i * 0.2} size={Math.random() * 3 + 2} />
+          <FloatingParticle key={i} delay={i * 0.2} size={random * 3 + 2} />
         ))}
 
         {/* Parallax Orbs */}
@@ -227,15 +232,18 @@ export function LawyerSection() {
               className="group perspective-1000"
             >
               <div className="relative bg-white/95 backdrop-blur-sm rounded-3xl overflow-hidden shadow-2xl hover:shadow-[0_25px_50px_-12px_rgba(203,162,88,0.25)] transition-all duration-700 transform-gpu">
-                {/* Animated Border */}
+                {/* Animated Border - CORREGIDO */}
                 <motion.div
                   initial={{ pathLength: 0 }}
                   whileInView={{ pathLength: 1 }}
                   transition={{ delay: index * 0.3 + 0.5, duration: 2 }}
                   className="absolute inset-0 rounded-3xl"
                   style={{
-                    background:
-                      hoveredCard === lawyer.id ? "linear-gradient(45deg, #cba258, #d4b366, #cba258)" : "transparent",
+                    // Reemplazado 'background' con propiedades específicas
+                    backgroundImage: hoveredCard === lawyer.id 
+                      ? "linear-gradient(45deg, #cba258, #d4b366, #cba258)" 
+                      : "none",
+                    backgroundColor: hoveredCard === lawyer.id ? undefined : "transparent",
                     padding: "2px",
                     backgroundSize: "200% 200%",
                     animation: hoveredCard === lawyer.id ? "gradient-shift 3s ease infinite" : "none",
@@ -262,43 +270,6 @@ export function LawyerSection() {
                       whileHover={{ opacity: 1 }}
                       className="absolute inset-0 bg-gradient-to-t from-[#cba258]/60 via-transparent to-transparent"
                     />
-                  </motion.div>
-
-                  {/* Floating Stats */}
-                  <motion.div
-                    initial={{ opacity: 0, x: -50, rotateY: -90 }}
-                    whileInView={{
-                      opacity: 1,
-                      x: 0,
-                      rotateY: 0,
-                      transition: { delay: index * 0.3 + 0.8, duration: 0.8 },
-                    }}
-                    className="absolute top-4 left-4 bg-white/90 backdrop-blur-sm rounded-2xl p-3 shadow-lg"
-                  >
-                    <div className="flex items-center space-x-2">
-                      <div className="flex">
-                        {Array.from({ length: 5 }).map((_, i) => (
-                          <motion.div
-                            key={i}
-                            initial={{ scale: 0, rotate: -180 }}
-                            whileInView={{
-                              scale: 1,
-                              rotate: 0,
-                              transition: {
-                                delay: index * 0.3 + 1 + i * 0.1,
-                                type: "spring",
-                                stiffness: 200,
-                              },
-                            }}
-                          >
-                            <Star
-                              className={`h-4 w-4 ${i < Math.floor(lawyer.rating) ? "text-[#cba258] fill-current" : "text-gray-300"}`}
-                            />
-                          </motion.div>
-                        ))}
-                      </div>
-                      <span className="text-sm font-semibold text-primary">{lawyer.rating}</span>
-                    </div>
                   </motion.div>
 
                   {/* Experience Badge */}

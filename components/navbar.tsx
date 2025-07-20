@@ -6,6 +6,7 @@ import { ChevronDown, Menu, X, Sparkles } from "lucide-react"
 import Link from "next/link"
 import Image from "next/image"
 import { useLanguage } from "@/contexts/language-context"
+import { dropdownItemVariants, dropdownVariants, hamburgerVariants, logoVariants, mobileItemVariants, mobileMenuVariants, navItemVariants } from "@/styles/variants"
 
 const LinkMotion = motion.create(Link)
 
@@ -22,121 +23,17 @@ export function Navbar() {
     setIsScrolled(latest > 50)
   })
 
-  // Animaciones para los elementos del navbar
-  const navItemVariants : any= {
-    initial: { opacity: 0, y: -20 },
-    animate: { opacity: 1, y: 0 },
-    hover: {
-      scale: 1.05,
-      y: -2,
-      transition: { type: "spring", stiffness: 400, damping: 10 },
-    },
-    tap: { scale: 0.95 },
-  }
 
-  const logoVariants : any = {
-    initial: { opacity: 0, x: -50, rotate: -180 },
-    animate: {
-      opacity: 1,
-      x: 0,
-      rotate: 0,
-      transition: { type: "spring", stiffness: 200, damping: 20, delay: 0.2 },
-    },
-    hover: {
-      scale: 1.1,
-      rotate: 5,
-      transition: { type: "spring", stiffness: 400, damping: 10 },
-    },
-  }
-
-  const dropdownVariants : any = {
-    initial: {
-      opacity: 0,
-      y: -20,
-      scale: 0.95,
-      rotateX: -15,
-    },
-    animate: {
-      opacity: 1,
-      y: 0,
-      scale: 1,
-      rotateX: 0,
-      transition: {
-        type: "spring",
-        stiffness: 300,
-        damping: 20,
-        staggerChildren: 0.1,
-      },
-    },
-    exit: {
-      opacity: 0,
-      y: -10,
-      scale: 0.95,
-      rotateX: -15,
-      transition: { duration: 0.2 },
-    },
-  }
-
-  const dropdownItemVariants : any= {
-    initial: { opacity: 0, x: -20 },
-    animate: {
-      opacity: 1,
-      x: 0,
-      transition: { type: "spring", stiffness: 300, damping: 20 },
-    },
-    hover: {
-      x: 10,
-      backgroundColor: "rgba(203, 162, 88, 0.1)",
-      transition: { type: "spring", stiffness: 400, damping: 10 },
-    },
-  }
-
-  const mobileMenuVariants : any= {
-    initial: { opacity: 0, height: 0, y: -20 },
-    animate: {
-      opacity: 1,
-      height: "auto",
-      y: 0,
-      transition: {
-        type: "spring",
-        stiffness: 200,
-        damping: 20,
-        staggerChildren: 0.1,
-        delayChildren: 0.1,
-      },
-    },
-    exit: {
-      opacity: 0,
-      height: 0,
-      y: -20,
-      transition: { duration: 0.3 },
-    },
-  }
-
-  const mobileItemVariants : any= {
-    initial: { opacity: 0, x: -30 },
-    animate: {
-      opacity: 1,
-      x: 0,
-      transition: { type: "spring", stiffness: 300, damping: 20 },
-    },
-  }
-
-  const hamburgerVariants : any= {
-    closed: { rotate: 0 },
-    open: { rotate: 180 },
-  }
 
   return (
     <motion.nav
       initial={{ y: -100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ type: "spring", stiffness: 200, damping: 20 }}
-      className={`sticky top-0 w-full z-50 transition-all duration-500 ${
-        isScrolled
+      className={`sticky top-0 w-full z-50 transition-all duration-500 ${isScrolled
           ? "bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 shadow-2xl shadow-[#cba258]/20"
           : "bg-gradient-to-r from-slate-900/95 via-slate-800/95 to-slate-900/95"
-      } backdrop-blur-xl border-b border-[#cba258]/30`}
+        } backdrop-blur-xl border-b border-[#cba258]/30`}
     >
       {/* Línea decorativa animada */}
       <motion.div
@@ -267,6 +164,7 @@ export function Navbar() {
               { href: "/resources", label: t("nav.resources") },
               { href: "/links", label: t("nav.links") },
               { href: "/contact", label: t("nav.contact") },
+         //     { href: "/catalogo", label: t("nav.catalogo") }
             ].map((item, index) => (
               <motion.div
                 key={item.href}
@@ -467,6 +365,18 @@ export function Navbar() {
                     {t("nav.contact")}
                   </Link>
                 </motion.div>
+                {/* <motion.div
+                  variants={mobileItemVariants}
+                  whileHover={{ x: 10, backgroundColor: "rgba(203, 162, 88, 0.1)" }}
+                  className="rounded-lg transition-colors duration-300"
+                >
+                  <Link
+                    href="/catalogo"
+                    className="block px-3 py-2 text-white hover:text-[#cba258] transition-colors duration-300"
+                  >
+                    {t("nav.catalogo")}
+                  </Link>
+                </motion.div> */}
               </div>
 
               {/* Decorative bottom line */}

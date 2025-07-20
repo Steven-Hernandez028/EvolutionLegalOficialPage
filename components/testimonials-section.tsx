@@ -1,8 +1,9 @@
 "use client"
 
 import { motion, useInView, useMotionValue, useSpring } from "framer-motion"
-import { Star, Quote, ChevronLeft, ChevronRight } from "lucide-react"
+import { Star, Quote, ChevronLeft, ChevronRight, FolderOpen, ArrowRight } from "lucide-react"
 import { useState, useRef, useEffect } from "react"
+import { useRouter } from "next/navigation"
 
 const testimonials = [
   {
@@ -11,7 +12,7 @@ const testimonials = [
     content:
       "La Dra. González me ayudó a resolver un caso complejo de derecho corporativo. Su profesionalismo y dedicación fueron excepcionales. Recomiendo sus servicios sin dudarlo.",
     rating: 5,
-    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQBVJitqHkEFQQ9F76SFWogI3yXf5oe8xjZzg&s",
+    image: "/placeholder.svg?height=120&width=120",
     location: "Santo Domingo",
     service: "Derecho Societario",
   },
@@ -21,7 +22,7 @@ const testimonials = [
     content:
       "En un momento muy difícil de mi vida, encontré en la Dra. González no solo una excelente abogada, sino también una persona comprensiva que luchó por mis derechos.",
     rating: 5,
-    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQBVJitqHkEFQQ9F76SFWogI3yXf5oe8xjZzg&s",
+    image: "/placeholder.svg?height=120&width=120",
     location: "Santiago",
     service: "Derecho de Familia",
   },
@@ -31,7 +32,7 @@ const testimonials = [
     content:
       "Gracias a su asesoría legal, pude resolver exitosamente un conflicto laboral que parecía imposible. Su experiencia y estrategia fueron clave para el resultado positivo.",
     rating: 5,
-    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQBVJitqHkEFQQ9F76SFWogI3yXf5oe8xjZzg&s",
+    image: "/placeholder.svg?height=120&width=120",
     location: "La Romana",
     service: "Asesoría Legal",
   },
@@ -41,7 +42,7 @@ const testimonials = [
     content:
       "La atención personalizada y el seguimiento constante de mi caso me dieron la tranquilidad que necesitaba. Una abogada comprometida con sus clientes.",
     rating: 5,
-    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQBVJitqHkEFQQ9F76SFWogI3yXf5oe8xjZzg&s",
+    image: "/placeholder.svg?height=120&width=120",
     location: "Puerto Plata",
     service: "Extranjería",
   },
@@ -51,7 +52,7 @@ const testimonials = [
     content:
       "Después de años de lucha legal, finalmente encontré la representación que necesitaba. La Dra. González logró lo que otros no pudieron.",
     rating: 5,
-    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQBVJitqHkEFQQ9F76SFWogI3yXf5oe8xjZzg&s",
+    image: "/placeholder.svg?height=120&width=120",
     location: "Punta Cana",
     service: "Due Diligence",
   },
@@ -116,7 +117,9 @@ export function TestimonialsSection() {
   const [isAutoPlaying, setIsAutoPlaying] = useState(true)
   const sectionRef = useRef<HTMLElement>(null)
   const isInView = useInView(sectionRef, { once: true, margin: "-200px" })
+  const router = useRouter()
 
+  // Auto-play functionality
   useEffect(() => {
     if (!isAutoPlaying) return
 
@@ -136,53 +139,7 @@ export function TestimonialsSection() {
     setCurrentIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length)
     setIsAutoPlaying(false)
   }
-  function ClientViewPreview() {
-    return (<motion.div
-      initial={{ opacity: 0, y: 50 }}
-      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
-      transition={{ duration: 0.8, delay: 1.0 }}
-      className="mt-16"
-    >
-      <div className="text-center mb-8">
-        <h3 className="text-2xl font-bold text-white mb-2">Nuestros Clientes Satisfechos</h3>
-        <p className="text-white/60">Una muestra de quienes confían en nosotros</p>
-      </div>
 
-      <div className="grid grid-cols-3 lg:grid-cols-6 gap-4">
-        {testimonials.map((testimonial, index) => (
-          <motion.div
-            key={testimonial.name}
-            initial={{ opacity: 0, scale: 0, rotate: -180 }}
-            animate={isInView ? { opacity: 1, scale: 1, rotate: 0 } : { opacity: 0, scale: 0, rotate: -180 }}
-            transition={{
-              duration: 0.6,
-              delay: 1.2 + index * 0.1,
-              type: "spring",
-              bounce: 0.6,
-            }}
-            whileHover={{ scale: 1.1, y: -5 }}
-            className="group cursor-pointer"
-            onClick={() => setCurrentIndex(index)}
-          >
-            <div className="relative">
-              <div className="w-16 h-16 lg:w-20 lg:h-20 rounded-full overflow-hidden border-2 border-white/20 group-hover:border-[#cba258]/50 transition-all duration-300 shadow-lg">
-                <img
-                  src={testimonial.image || "/placeholder.svg"}
-                  alt={testimonial.name}
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
-                />
-              </div>
-              <div className="absolute -bottom-1 -right-1 w-4 h-4 bg-gradient-to-br from-[#cba258] to-[#d4b366] rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-            </div>
-            <div className="mt-2 text-center">
-              <div className="text-xs text-white/80 font-medium truncate">{testimonial.name}</div>
-              <div className="text-xs text-[#cba258]/80">{testimonial.location}</div>
-            </div>
-          </motion.div>
-        ))}
-      </div>
-    </motion.div>)
-  }
   return (
     <section
       ref={sectionRef}
@@ -353,10 +310,11 @@ export function TestimonialsSection() {
                     setCurrentIndex(index)
                     setIsAutoPlaying(false)
                   }}
-                  className={`w-3 h-3 rounded-full transition-all duration-300 ${index === currentIndex
-                    ? "bg-gradient-to-r from-[#cba258] to-[#d4b366] shadow-lg shadow-[#cba258]/50"
-                    : "bg-white/30 hover:bg-white/50"
-                    }`}
+                  className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                    index === currentIndex
+                      ? "bg-gradient-to-r from-[#cba258] to-[#d4b366] shadow-lg shadow-[#cba258]/50"
+                      : "bg-white/30 hover:bg-white/50"
+                  }`}
                 />
               ))}
             </div>
@@ -368,9 +326,10 @@ export function TestimonialsSection() {
           initial={{ opacity: 0, y: 100 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 100 }}
           transition={{ duration: 0.8, delay: 0.6, type: "spring", bounce: 0.3 }}
-          className="relative"
+          className="relative mb-16"
         >
           <div className="bg-gradient-to-r from-slate-800/80 via-slate-700/80 to-slate-800/80 backdrop-blur-xl rounded-2xl p-8 lg:p-12 border border-[#cba258]/20 shadow-2xl shadow-[#cba258]/10">
+            {/* Background Pattern */}
             <div className="absolute inset-0 bg-gradient-to-r from-[#cba258]/5 via-transparent to-[#cba258]/5 rounded-2xl" />
 
             <div className="relative z-10 grid grid-cols-2 lg:grid-cols-4 gap-8">
@@ -408,7 +367,50 @@ export function TestimonialsSection() {
           </div>
         </motion.div>
 
+        {/* Catalog CTA Button */}
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+          transition={{ duration: 0.8, delay: 1.2 }}
+          className="text-center"
+        >
+          <motion.button
+            whileHover={{
+              scale: 1.05,
+              boxShadow: "0 20px 40px rgba(203, 162, 88, 0.3)",
+            }}
+            whileTap={{ scale: 0.95 }}
+            onClick={() => router.push("/catalogo")}
+            className="bg-gradient-to-r from-[#cba258] to-[#d4b366] hover:from-[#d4b366] hover:to-[#cba258] text-white font-bold py-4 px-8 rounded-2xl shadow-lg transition-all duration-300 flex items-center space-x-3 mx-auto group relative overflow-hidden"
+          >
+            {/* Button Background Animation */}
+            <motion.div
+              initial={{ x: "-100%" }}
+              whileHover={{ x: "100%" }}
+              transition={{ duration: 0.6 }}  
+              className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent"
+            />
 
+            <FolderOpen className="h-6 w-6 group-hover:rotate-12 transition-transform duration-300" />
+            <span className="relative z-10">Ver Catálogo de Casos</span>
+            <motion.div whileHover={{ x: 5 }} transition={{ type: "spring", stiffness: 400, damping: 10 }}>
+              <ArrowRight className="h-6 w-6" />
+            </motion.div>
+          </motion.button>
+
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={isInView ? { opacity: 1 } : { opacity: 0 }}
+            transition={{ delay: 1.4, duration: 0.6 }}
+            className="text-white/60 text-sm mt-4"
+          >
+            Descubre casos reales y resultados exitosos de nuestros clientes
+          </motion.p>
+        </motion.div>
+
+  
+
+   
       </div>
     </section>
   )
