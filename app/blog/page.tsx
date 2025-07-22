@@ -33,7 +33,7 @@ export default function BlogPage() {
   const [selectedCategory, setSelectedCategory] = useState("all")
   const [selectedTag, setSelectedTag] = useState("all")
   const [blogs, setBlogs] = useState<Blog[]>([])
-  const featuredPosts = blogs.filter((post) => post.featured)
+  const featuredPosts = blogs?.filter((post) => post.featured)
   const [limit, setLimit] = useState(10);
   const [blogTags, setBlogTags] = useState<string[]>([])
   const [blogCategories, setBlogCategories] = useState<{ name: string, slug: string }[]>([]);
@@ -315,7 +315,7 @@ export default function BlogPage() {
             ))}
           </div>
 
-          {blogs.filter(a => a.featured).length === 0 && (
+          {blogs?.filter(a => a.featured).length === 0 && (
             <div className="text-center py-12">
               <p className="text-white/80 text-lg">No se encontraron artículos que coincidan con tu búsqueda.</p>
             </div>

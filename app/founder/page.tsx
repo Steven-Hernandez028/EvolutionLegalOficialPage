@@ -6,7 +6,7 @@ import { redirect } from "next/navigation"
 
 export default function FounderPage() {
   useEffect(()=>{
-    redirect('founder/1');
+    redirect('founder/abigail-santos-de-thibodeau');
 
   }, []);
   

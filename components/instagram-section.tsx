@@ -157,32 +157,6 @@ export function InstagramSection() {
             </motion.div>
           ))}
         </div>
-
-        {/* CTA */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.5 }}
-          viewport={{ once: true }}
-          className="text-center mt-16"
-        >
-          <div className="bg-gradient-to-r from-pink-500/10 to-purple-500/10 rounded-2xl p-8 border border-pink-200">
-            <h3 className="text-2xl font-bold text-primary mb-4">¿Te gusta nuestro contenido?</h3>
-            <p className="text-primary/80 mb-6">
-              Síguenos para recibir consejos legales diarios, casos de éxito y contenido educativo que te ayudará a
-              estar mejor informado sobre tus derechos.
-            </p>
-            <Link
-              href={instagramUrl}
-              target="_blank"
-              className="inline-flex items-center space-x-2 bg-gradient-to-r from-pink-500 to-purple-600 text-white px-8 py-4 rounded-full font-semibold hover:shadow-lg transition-all duration-300 group"
-            >
-              <Instagram className="h-5 w-5" />
-              <span>Seguir en Instagram</span>
-              <ExternalLink className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
-            </Link>
-          </div>
-        </motion.div>
       </div>
     </section>
   )

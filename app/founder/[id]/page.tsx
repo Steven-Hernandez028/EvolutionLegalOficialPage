@@ -22,7 +22,9 @@ export default function FounderDetailPage() {
 
   useEffect(() => {
     console.log(founderId)
-    setUrl(`ceo[${founderId}]`);
+    const id = founderId === "abigail-santos-de-thibodeau"? 0 : 1;
+    console.log(id)
+    setUrl(`ceo[${id}]`);
 
   }, []);
 
