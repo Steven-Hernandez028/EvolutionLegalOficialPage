@@ -58,7 +58,7 @@ export default function NewsEvents({ selectedEvent, setSelectedEvent } : INewEve
                     </motion.div>
 
                     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        {events?.map((event, index) => (
+                        {events && events?.map((event, index) => (
                             <motion.div
                                 key={event.id}
                                 initial={{ opacity: 0, y: 20 }}
